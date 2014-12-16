@@ -8,9 +8,8 @@ rem ****************************************************************************
 
 rem *******************************************************************************
 rem internal generator paths
-rem set MAIN_BRANCH=master
-rem set MAIN_BRANCH=head
-set MAIN_BRANCH=trunk
+rem set MAIN_BRANCH=trunk
+set MAIN_BRANCH=main
 set SCRIPTS_PATH=scripts
 set CONF_PATH=conf
 set WORKSPACES_PATH=workspaces
