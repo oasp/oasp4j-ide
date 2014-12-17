@@ -2,13 +2,19 @@
 <!-- $Id: pom.xml 6 2013-09-13 10:20:34Z hohwille $ -->
 <project  xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.oasp.java</groupId>
+  <groupId>io.oasp.java.dev</groupId>
   <artifactId>oasp4j-ide</artifactId>
   <packaging>pom</packaging>
-  <version>1.0.0</version>
+  <version>dev-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>This project provides automatic setup and update of the local development environment.</description>
+  <url>https://github.com/oasp/oasp4j-ide/wiki</url>
+  <inceptionYear>2013</inceptionYear>
 
+  <properties>
+    <oasp4j-ide.version>1.3.0-SNAPSHOT</oasp4j-ide.version>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -26,6 +32,38 @@
 
   <build>  
     <plugins>
+      <!-- http://mojo.codehaus.org/flatten-maven-plugin/ -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.0.0-beta-3</version>
+        <configuration>
+          <pomElements>
+            <description/>
+            <inceptionYear/>
+            <url/>
+            <scm/>
+          </pomElements>
+          <updatePomFile>true</updatePomFile>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -35,23 +73,7 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-  
-      <!-- unit-tests -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <!-- for software cockpit -->
-          <reportFormat>xml</reportFormat>
-          <!-- set explicit include-pattern for tests -->
-          <!--
-          <includes>
-          <include>**/*Test.java</include>
-          </includes>
-           -->
-        </configuration>
-      </plugin>    
- 
+   
       <!-- advanced manifest with versions -->
       <plugin>
       <groupId>org.apache.maven.plugins</groupId>
@@ -65,22 +87,100 @@
         </archive>
       </configuration>
       </plugin>
-  
-      <!-- also create  *-sources.jar files-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-          <id>source-jar</id>
-          <phase>package</phase>
-          <goals>
-            <goal>jar</goal>
-          </goals>
-          </execution>
-        </executions>    
-      </plugin>
     </plugins>
+    
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+            <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <versionRange>[0.0,)</versionRange>
+                    <goals>
+                      <goal>flatten</goal>
+                      <goal>clean</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore/>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+  <profiles>
+    <profile>
+      <id>oasp.release</id>
+      <build>
+        <plugins>
+          <!-- also generate javadoc JARs -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Sign artifacts with PGP -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <configuration>
+            	<keyname>joerg.hohwiller@capgemini.com</keyname>
+            </configuration>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+  
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+  
+  <scm>
+    <url>https://github.com/oasp/oasp4j-ide/tree/master</url>
+  </scm>
+  
+  <licenses>
+    <license>
+      <name>Apache Software Licenese</name>
+      <url>http://oasp.github.io/terms-of-use.html</url>
+      <distribution>repo</distribution>
+      <comments/>
+    </license>
+  </licenses>
   
 </project>

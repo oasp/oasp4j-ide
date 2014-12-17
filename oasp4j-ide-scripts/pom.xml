@@ -4,14 +4,14 @@
   
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>io.oasp.java</groupId>
+    <groupId>io.oasp.java.dev</groupId>
     <artifactId>oasp4j-ide</artifactId>
-    <version>1.0.0</version>
-    <relativePath>../pom.xml</relativePath>
+    <version>dev-SNAPSHOT</version>
   </parent>
+  <groupId>io.oasp.java.ide</groupId>
   <artifactId>oasp4j-ide-scripts</artifactId>
   <packaging>pom</packaging>
-  <version>1.2.1-SNAPSHOT</version>
+  <version>${oasp4j-ide.version}</version>
   <name>${project.artifactId}</name>
   <description>Scripts for setup and update of the development environment.</description>
   <properties>
