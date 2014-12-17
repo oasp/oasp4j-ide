@@ -121,7 +121,7 @@
   </build>
   <profiles>
     <profile>
-      <id>oasp.release</id>
+      <id>deploy</id>
       <build>
         <plugins>
           <!-- also generate javadoc JARs -->
