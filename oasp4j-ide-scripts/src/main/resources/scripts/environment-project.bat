@@ -63,3 +63,4 @@ if exist "%SOFTWARE_PATH%\nodejs" (
   )
   set "PATH=%PATH%;%APPDATA%\npm"
 )
+echo IDE environment has been initialized.

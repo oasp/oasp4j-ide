@@ -13,7 +13,6 @@ if not exist scripts\environment-project.bat (
 	goto :iterate_backwards
 ) else (
 	call scripts\environment-project.bat
-	echo IDE environment has been initialized.
 )
 
 :end
