@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# pushd .
+pushd $OASP_PROJECT_HOME > /dev/null
 
 if [ -n $1 ]; then
     OASP_WORKSPACE=$1
@@ -68,4 +68,4 @@ WORKSPACE_PATH=$OASP_WORKSPACE_REL_PATH \
 echo "Eclipse preferences for workspace: $OASP_WORKSPACE have been created/updated"
 
 
-# popd
+popd > /dev/null
