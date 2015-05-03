@@ -10,6 +10,21 @@
     <fileSet>
       <directory>${project.build.outputDirectory}</directory>
       <outputDirectory>/</outputDirectory>
+      <excludes>
+        <exclude>create-or-update-workspace</exclude>
+        <exclude>update-all-workspaces</exclude>
+        <exclude>scripts/eclipse-start</exclude>
+      </excludes>
+    </fileSet>
+    <fileSet>
+      <directory>${project.build.outputDirectory}</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>create-or-update-workspace</include>
+        <include>update-all-workspaces</include>
+        <include>scripts/eclipse-start</include>
+      </includes>
+      <fileMode>0755</fileMode>
     </fileSet>
   </fileSets>
 </assembly>
