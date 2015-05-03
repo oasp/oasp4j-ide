@@ -8,7 +8,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>
-      <directory>../../oasp4j/settings</directory>
+      <directory>src/main/settings</directory>
       <outputDirectory>/settings</outputDirectory>
       <useDefaultExcludes>false</useDefaultExcludes>
     </fileSet>
