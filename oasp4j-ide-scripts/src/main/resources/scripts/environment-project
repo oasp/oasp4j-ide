@@ -1,24 +1,29 @@
-. $OASP_PROJECT_HOME/variables.sh
-if [ -f $OASP_PROJECT_HOME/variables-customized.sh ]; then
-    . $OASP_PROJECT_HOME/variables-customized.sh
+##!/bin/bash
+#cd `dirname $0`
+#cd ..
+#echo $PWD
+export OASP_PROJECT_HOME=$PWD
+. $OASP_PROJECT_HOME/variables
+if [ -f $OASP_PROJECT_HOME/variables-customized ]; then
+    . $OASP_PROJECT_HOME/variables-customized
 fi
 
-if [ -z $OASP_WORKSPACE ]; then
-    export OASP_WORKSPACE=$OASP_MAIN_BRANCH
+if [ -z $WORKSPACE ]; then
+    export WORKSPACE=$MAIN_BRANCH
 fi
-export OASP_WORKSPACE_REL_PATH=workspaces/$OASP_WORKSPACE
-export OASP_WORKSPACE_PATH=$OASP_WORKSPACES_PATH/$OASP_WORKSPACE
+export WORKSPACE_REL_PATH=workspaces/$WORKSPACE
+export WORKSPACE_PATH=$WORKSPACES_PATH/$WORKSPACE
 
-export OASP_WORKSPACE_PLUGINS_PATH=$OASP_WORKSPACE_PATH/.metadata/.plugins
-export OASP_SETTINGS_PATH=$OASP_WORKSPACE_PATH/$OASP_SETTINGS_REL_PATH
-export OASP_ECLIPSE_TEMPLATES_PATH=$OASP_WORKSPACE_REL_PATH/$OASP_SETTINGS_REL_PATH/$OASP_ECLIPSE_TEMPLATES_REL_PATH
+export WORKSPACE_PLUGINS_PATH=$WORKSPACE_PATH/.metadata/.plugins
+export SETTINGS_PATH=$OASP_PROJECT_PATH/$WORKSPACES_PATH/$MAIN_BRANCH/$SETTINGS_REL_PATH
+export ECLIPSE_TEMPLATES_PATH=$SETTINGS_PATH/$ECLIPSE_TEMPLATES_REL_PATH
 
-if [ -f $OASP_SETTINGS_PATH/ide-properties.sh ]; then
-    . $OASP_SETTINGS_PATH/ide-properties.sh
+if [ -f $SETTINGS_PATH/ide-properties ]; then
+    . $SETTINGS_PATH/ide-properties
 fi
 
-export OASP4J_IDE_VERSION=1.3.1
-export OASP4J_ECLIPSE_CONFIGURATOR=oasp4j-ide-eclipse-configurator-1.3.1.jar
+export IDE_VERSION=1.3.1
+export ECLIPSE_CONFIGURATOR=oasp4j-ide-eclipse-configurator-1.3.1.jar
 
 ###
 # JAVA
@@ -28,16 +33,17 @@ export OASP4J_ECLIPSE_CONFIGURATOR=oasp4j-ide-eclipse-configurator-1.3.1.jar
 ###
 # MAVEN
 ###
-export M2_HOME=$OASP_SOFTWARE_PATH/maven
-export M2_CONF=$OASP_CONF_PATH/.m2/settings.xml
-export MAVEN_OPTS="-Xmx512m -Duser.home=$OASP_CONF_PATH"
+export M2_HOME=$SOFTWARE_PATH/maven
+export M2_CONF=$CONF_PATH/.m2/settings.xml
+export MAVEN_OPTS="-Xmx512m -Duser.home=$CONF_PATH"
 export MAVEN_HOME=$M2_HOME
 export PATH=$M2_HOME/bin:$PATH
 
 ###
 # Eclipse
-# TODO: Port this
 ###
+export ECLIPSE_HOME=$SOFTWARE_PATH/eclipse
+export ECLIPSE=$ECLIPSE_HOME/eclipse
 
 ###
 # NodeJS

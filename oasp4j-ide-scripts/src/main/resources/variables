@@ -5,14 +5,14 @@
 # Whenever variables-customized.bat is present it will override the property values defined here.
 #********************************************************************************
 
-export OASP_MAIN_BRANCH=main
+export MAIN_BRANCH=main
 
-export OASP_SCRIPTS_PATH=$OASP_PROJECT_HOME/scripts
-export OASP_CONF_PATH=$OASP_PROJECT_HOME/conf
-export OASP_WORKSPACES_PATH=$OASP_PROJECT_HOME/workspaces
-export OASP_SETTINGS_REL_PATH=development/settings
-export OASP_ECLIPSE_TEMPLATES_REL_PATH=eclipse/workspace
-export OASP_SOFTWARE_PATH=$OASP_PROJECT_HOME/software
+export SCRIPTS_PATH=$OASP_PROJECT_HOME/scripts
+export CONF_PATH=$OASP_PROJECT_HOME/conf
+export WORKSPACES_PATH=$OASP_PROJECT_HOME/workspaces
+export SETTINGS_REL_PATH=development/settings
+export ECLIPSE_TEMPLATES_REL_PATH=eclipse/workspace
+export SOFTWARE_PATH=$OASP_PROJECT_HOME/software
 
-export M2_REPO=$OASP_CONF_PATH/.m2/repository
+export M2_REPO=$CONF_PATH/.m2/repository
 
