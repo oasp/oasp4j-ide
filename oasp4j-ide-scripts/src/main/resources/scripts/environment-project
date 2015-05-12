@@ -27,8 +27,10 @@ export ECLIPSE_CONFIGURATOR=oasp4j-ide-eclipse-configurator-${eclipse-configurat
 
 ###
 # JAVA
-# TODO: Port this
 ###
+export JAVA_HOME=$SOFTWARE_PATH/java
+# export JAVA_OPTS=-Dhttp.proxyHost=myproxy.com -Dhttp.proxyPort=8080
+export PATH=$JAVA_HOME/bin:$PATH
 
 ###
 # MAVEN
@@ -47,6 +49,10 @@ export ECLIPSE=$ECLIPSE_HOME/eclipse
 
 ###
 # NodeJS
-# TODO: Port this
 ###
+if [ -d "$SOFTWARE_PATH/nodejs" ]; then
+  export PATH=$SOFTWARE_PATH/nodejs/bin:$PATH
+fi
 
+
+echo "IDE environment has been initialized."
