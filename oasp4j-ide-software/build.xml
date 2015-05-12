@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project name="oasp4j-ide" default="zip" basedir=".">
+  <property name="version" value="1.4.0"/>
+  <target name="clean">
+    <delete>
+      <fileset dir="${basedir}" includes="oasp4j-ide-software-*.zip"/>
+    </delete>
+  </target>
+ 
+  <target name="zip">
+    <delete>
+      <fileset dir="${basedir}" includes="oasp4j-ide-software-${version}*.zip"/>
+    </delete>
+    <zip zipfile="${basedir}/oasp4j-ide-software-${version}-capgemini-only.zip">
+      <zipfileset dir="${basedir}">
+        <include name="software/**"/>
+        <include name="workspaces/main/CobiGen_Templates/**"/>
+      </zipfileset>
+    </zip>
+    <zip zipfile="${basedir}/oasp4j-ide-software-${version}-public.zip">
+      <zipfileset dir="${basedir}">
+        <include name="software/**"/>
+        <exclude name="software/License.CobiGen.txt"/>
+        <exclude name="software/eclipse/features/cobigen-*"/>
+        <exclude name="software/eclipse/plugins/cobigen-*"/>
+      </zipfileset>
+    </zip>
+  </target>
+</project>
