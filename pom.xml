@@ -27,7 +27,7 @@
   <modules>
     <module>oasp4j-ide-eclipse-configurator</module>
     <module>oasp4j-ide-scripts</module>
-    <module>oasp4j-ide-scripts-tgz</module>
+    <module>oasp4j-ide-scripts-linux</module>
     <module>oasp4j-ide-settings</module>
   </modules>
 

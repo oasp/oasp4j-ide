@@ -11,20 +11,19 @@
       <directory>${project.build.outputDirectory}</directory>
       <outputDirectory>/</outputDirectory>
       <excludes>
-        <exclude>create-or-update-workspace</exclude>
-        <exclude>update-all-workspaces</exclude>
-        <exclude>scripts/eclipse-start</exclude>
+        <exclude>**/*.txt</exclude>
+        <exclude>**/*.jar</exclude>
       </excludes>
+      <fileMode>0755</fileMode>
     </fileSet>
     <fileSet>
       <directory>${project.build.outputDirectory}</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
-        <include>create-or-update-workspace</include>
-        <include>update-all-workspaces</include>
-        <include>scripts/eclipse-start</include>
+        <include>**/*.txt</include>
+        <include>**/*.jar</include>
       </includes>
-      <fileMode>0755</fileMode>
+      <fileMode>0644</fileMode>
     </fileSet>
   </fileSets>
 </assembly>

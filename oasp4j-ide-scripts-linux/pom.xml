@@ -9,11 +9,11 @@
     <version>dev-SNAPSHOT</version>
   </parent>
   <groupId>io.oasp.java.ide</groupId>
-  <artifactId>oasp4j-ide-scripts-tgz</artifactId>
+  <artifactId>oasp4j-ide-scripts-linux</artifactId>
   <packaging>pom</packaging>
   <version>${oasp4j-ide.version}</version>
   <name>${project.artifactId}</name>
-  <description>Scripts for setup and update of the development environment.</description>
+  <description>Scripts for setup and update of the development environment on Unix/Linux/MacOS.</description>
   <properties>
     <eclipse-configurator.version>${project.version}</eclipse-configurator.version>
   </properties>
@@ -22,7 +22,7 @@
     <outputDirectory>${project.build.directory}/package</outputDirectory>
     <resources>
     <resource>
-      <directory>../oasp4j-ide-scripts/src/main/resources</directory>
+      <directory>src/main/resources</directory>
       <filtering>true</filtering>
       <excludes>
         <exclude>**/*.bak</exclude>
