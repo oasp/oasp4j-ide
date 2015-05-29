@@ -55,5 +55,12 @@ if [ -d "$SOFTWARE_PATH/nodejs" ]; then
   export PATH=$SOFTWARE_PATH/nodejs/bin:$PATH
 fi
 
+###
+# Sencha Cmd
+###
+if [ -d "$SOFTWARE_PATH/Sencha/Cmd/default" ]; then
+    export SENCHA_CMD_3_0_0="$SOFTWARE_PATH/Sencha/Cmd/default"
+    export PATH=$SENCHA_CMD_3_0_0:$PATH
+fi
 
 echo "IDE environment has been initialized."

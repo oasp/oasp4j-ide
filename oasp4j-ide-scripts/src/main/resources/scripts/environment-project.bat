@@ -63,4 +63,10 @@ if exist "%SOFTWARE_PATH%\nodejs" (
   )
   set "PATH=%PATH%;%APPDATA%\npm"
 )
+rem ********************************************************************************
+rem SenchaCmd support
+if exist "%SOFTWARE_PATH%\Sencha\Cmd\default" (
+  set "SENCHA_CMD_3_0_0=%SOFTWARE_PATH%\Sencha\Cmd\default"
+  set "PATH=%SOFTWARE_PATH%\Sencha\Cmd\default;%PATH%"
+)
 echo IDE environment has been initialized.
