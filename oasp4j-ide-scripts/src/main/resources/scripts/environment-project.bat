@@ -15,8 +15,8 @@ set ECLIPSE_TEMPLATES_PATH=%SETTINGS_PATH%\%ECLIPSE_TEMPLATES_REL_PATH%
 rem absolute workspace path
 set WORKSPACE_PATH=%CD%\%WORKSPACES_PATH%\%WORKSPACE%
 
-if exist ide-properties.bat (
-call %SETTINGS_PATH%\ide-properties.bat
+if exist "%SETTINGS_PATH%\ide-properties.bat" (
+  call "%SETTINGS_PATH%\ide-properties.bat"
 )
 
 set OASP4J_IDE_VERSION=${project.version}
