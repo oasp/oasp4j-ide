@@ -67,7 +67,7 @@ export PATH=$IDE_PATH:$PATH
 # NodeJS
 ###
 if [ -d "$SOFTWARE_PATH/nodejs" ]; then
-  export PATH=`npm bin -g`:$PATH
+  export PATH=`npm bin -g 2> /dev/null`:$PATH
 fi
 
 echo "IDE environment has been initialized."
