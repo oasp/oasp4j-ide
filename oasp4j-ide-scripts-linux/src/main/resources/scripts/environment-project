@@ -49,7 +49,7 @@ export ECLIPSE_OPT="-vm $JAVA_HOME/bin/java -showlocation $WORKSPACE -vmargs $EC
 ###
 # Path
 ###
-for i in `find $SOFTWARE_PATH -maxdepth 1 ! -path $SOFTWARE_PATH`; do
+for i in $SOFTWARE_PATH/*; do
     if [ -d "$i/bin" ]; then
         IDE_PATH="$i/bin:$IDE_PATH"
     else
