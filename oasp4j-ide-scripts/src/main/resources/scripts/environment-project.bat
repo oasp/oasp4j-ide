@@ -50,6 +50,10 @@ for /f "delims=" %%i in ('dir /a:d /b "%SOFTWARE_PATH%\*.*"') do (
   ) else (
     set "IDE_PATH=%SOFTWARE_PATH%\%%i;!IDE_PATH!"
   )
+
+  if exist "%SOFTWARE_PATH%\%%i\ide-config.bat" (
+    call "%SOFTWARE_PATH%\%%i\ide-config.bat"
+  )
 )
 (
   endlocal
@@ -63,4 +67,5 @@ if exist "%SOFTWARE_PATH%\nodejs" (
   )
   set "PATH=%PATH%;%APPDATA%\npm"
 )
+
 echo IDE environment has been initialized.

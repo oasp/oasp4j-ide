@@ -30,7 +30,6 @@ export ECLIPSE_CONFIGURATOR=oasp4j-ide-eclipse-configurator-${eclipse-configurat
 ###
 export JAVA_HOME=$SOFTWARE_PATH/java
 # export JAVA_OPTS=-Dhttp.proxyHost=myproxy.com -Dhttp.proxyPort=8080
-export PATH=$JAVA_HOME/bin:$PATH
 
 ###
 # MAVEN
@@ -39,7 +38,6 @@ export M2_HOME=$SOFTWARE_PATH/maven
 export M2_CONF=$OASP_PROJECT_HOME/$CONF_PATH/.m2/settings.xml
 export MAVEN_OPTS="-Xmx512m -Duser.home=$OASP_PROJECT_HOME/$CONF_PATH"
 export MAVEN_HOME=$M2_HOME
-export PATH=$M2_HOME/bin:$PATH
 
 ###
 # Eclipse
@@ -49,11 +47,27 @@ export ECLIPSE=$ECLIPSE_HOME/eclipse
 export ECLIPSE_OPT="-vm $JAVA_HOME/bin/java -showlocation $WORKSPACE -vmargs $ECLIPSE_VMARGS"
 
 ###
+# Path
+###
+for i in $SOFTWARE_PATH/*; do
+    if [ -d "$i/bin" ]; then
+        IDE_PATH="$i/bin:$IDE_PATH"
+    else
+        IDE_PATH="$i:$IDE_PATH"
+    fi
+
+    # Load custom configuration of software
+    if [ -e "$i/ide-config" ]; then
+        . "$i/ide-config"
+    fi
+done
+export PATH=$IDE_PATH:$PATH
+
+###
 # NodeJS
 ###
 if [ -d "$SOFTWARE_PATH/nodejs" ]; then
-  export PATH=$SOFTWARE_PATH/nodejs/bin:$PATH
+  export PATH=`npm bin -g 2> /dev/null`:$PATH
 fi
-
 
 echo "IDE environment has been initialized."
