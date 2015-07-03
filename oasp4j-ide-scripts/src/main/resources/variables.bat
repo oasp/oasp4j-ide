@@ -17,7 +17,15 @@ rem set SETTINGS_REL_PATH=settings
 set SETTINGS_REL_PATH=development\settings
 set ECLIPSE_TEMPLATES_REL_PATH=eclipse\workspace
 rem absolute software path
-set SOFTWARE_PATH=%CD%\software
+if "%CD:~-1%" == "/" (
+  set SOFTWARE_PATH=%CD%software
+) else (
+  if "%CD:~-1%" == "\" (
+    set SOFTWARE_PATH=%CD%software
+  ) else (
+    set SOFTWARE_PATH=%CD%/software
+  )
+)
 rem *******************************************************************************
 rem by default the OASP4J IDE configures its own repository per instance.
 set M2_REPO=%CD%\%CONF_PATH%\.m2\repository
