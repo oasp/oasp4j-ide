@@ -35,7 +35,7 @@ call mvn install
 echo Finished installing npm and maven
 
 :startEclipse
-echo oeffnet eclipse-workspace
+echo opens eclipse-workspace
 call \eclipse-main.bat
 
 :end
