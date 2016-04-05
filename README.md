@@ -1,4 +1,5 @@
 tools-oasp4j-ide
 ================
 
-tool to automate setup and update of development environment (for Java projects)
+Tool to automate setup and update of development environment (for Java projects).
+See our [wiki](wiki) for further details.
