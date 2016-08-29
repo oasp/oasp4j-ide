@@ -28,7 +28,7 @@
       xsi:type="setup:RedirectionTask"
       id="oomph.redirection.oasp"
       sourceURL="index:/redirectable.products.setup"
-      targetURL="https://raw.githubusercontent.com/themetalone/oomph-server/master/v1.0/com.github.products.oasp4j.setup"/>
+      targetURL="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>"/>
   <setupTask
       xsi:type="setup:CompoundTask"
       id="config.user.input"
@@ -885,6 +885,49 @@
         name="org.tmatesoft.svnkit.feature.group"
         versionRange="[1.8.7,2.0.0)"
         optional="true"/>
+    <requirement
+        name="org.eclipse.jst.enterprise_ui.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.wb.swing.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.wb.swing.doc.user.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.wb.core.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.wb.doc.user.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.wb.core.ui.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.wb.layout.group.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.wb.core.java.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.wb.core.xml.feature.feature.group"
+        versionRange="[1.8.0,1.9.0)"/>
+    <requirement
+        name="org.eclipse.jst.web_ui.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.jst.enterprise_ui.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.wst.server_adapters.feature.feature.group"
+        filter=""/>
+    <requirement
+        name="org.eclipse.jst.server_adapters.feature.feature.group"
+        filter=""/>
+    <requirement
+        name="org.eclipse.jst.server_adapters.ext.feature.feature.group"
+        filter=""/>
+    <requirement
+        name="org.eclipse.jst.server_ui.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.datatools.enablement.sdk.feature.feature.group"/>
     <repository
         url="http://andrei.gmxhome.de/eclipse/"/>
     <repository
@@ -957,6 +1000,8 @@
         url="http://zipeditor.sourceforge.net/update/"/>
     <repository
         url="https://basti1302.github.com/startexplorer/update/"/>
+    <repository
+        url="http://download.eclipse.org/windowbuilder/WB/release/R201506241200-1/4.5/"/>
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
@@ -976,7 +1021,7 @@
       </detail>
       <detail
           key="imageURI">
-        <value>https://raw.githubusercontent.com/themetalone/oomph-server/master/resources/oasp-logo.png</value>
+        <value>https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/resources/oasp-logo.png</value>
       </detail>
       <detail
           key="siteURI">
@@ -1061,7 +1106,7 @@
       </detail>
       <detail
           key="imageURI">
-        <value>https://raw.githubusercontent.com/themetalone/oomph-server/master/resources/oasp-logo.png</value>
+        <value>https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/resources/oasp-logo.png</value>
       </detail>
       <detail
           key="siteURI">
