@@ -11,7 +11,7 @@
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://maybeec.github.io/task-fsmove/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsmove/master/task-fsmove-updatesite/model/Oomph-task-fsmove.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore"
+    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://maybeec.github.io/task-fsmove/1.0 https://raw.githubusercontent.com/themetalone/oomph-task-fsmove/master/task-fsmove-updatesite/model/Oomph-task-fsmove.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/themetalone/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore"
     name="com.github.products.oasp4j"
     label="OASP4J">
   <annotation
@@ -933,8 +933,6 @@
     <repository
         url="http://basti1302.github.com/startexplorer/update/"/>
     <repository
-        url="http://dist.springsource.com/release/TOOLS/update/e4.4/"/>
-    <repository
         url="http://download.eclipse.org/e4/snapshots/org.eclipse.e4.ui"/>
     <repository
         url="http://download.eclipse.org/eclipse/updates/4.4/"/>
@@ -1005,8 +1003,7 @@
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"
-      location="${jre.location-1.7}"/>
+      version="JavaSE-1.7"/>
   <product name="oasp4j"
       label="OASP4J">
     <annotation
@@ -1029,27 +1026,6 @@
       </detail>
     </annotation>
     <version
-        name="Mars"
-        label="Mars"
-        requiredJavaVersion="1.7">
-      <setupTask
-          xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
-        <repository
-            url="http://download.eclipse.org/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/mylyn/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/webtools/repository/mars"/>
-      </setupTask>
-      <description>OASP4J for Mars.</description>
-    </version>
-    <version
         name="Luna"
         label="Luna"
         requiredJavaVersion="1.7">
@@ -1067,8 +1043,33 @@
             url="http://download.eclipse.org/mylyn/releases/luna"/>
         <repository
             url="http://download.eclipse.org/webtools/repository/luna"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.4/"/>
       </setupTask>
       <description>OASP4J for Luna</description>
+    </version>
+    <version
+        name="Mars"
+        label="Mars"
+        requiredJavaVersion="1.7">
+      <setupTask
+          xsi:type="setup.p2:P2Task">
+        <requirement
+            name="org.eclipse.platform.ide"/>
+        <requirement
+            name="org.eclipse.platform.feature.group"/>
+        <requirement
+            name="org.eclipse.rcp.feature.group"/>
+        <repository
+            url="http://download.eclipse.org/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/webtools/repository/mars"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.5/"/>
+      </setupTask>
+      <description>OASP4J for Mars.</description>
     </version>
     <version
         name="Neon"
@@ -1088,6 +1089,22 @@
             url="http://download.eclipse.org/mylyn/releases/neon"/>
         <repository
             url="http://download.eclipse.org/webtools/repository/neon"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.6/"/>
+      </setupTask>
+      <setupTask
+          xsi:type="jdt:JRETask"
+          version="JavaSE-1.8"
+          location="${jre.location-1.8}"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="jre.location-1.7"
+          value="${jre.location-1.8}"
+          defaultValue="${jre.location-1.8}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
       </setupTask>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
@@ -1124,27 +1141,6 @@
           url="jar:file:////de-file10/ClientPE/OASP/CobiGenerator/Releases/stable/cobigen-eclipse.zip!/"/>
     </setupTask>
     <version
-        name="Mars"
-        label="Mars"
-        requiredJavaVersion="1.7">
-      <setupTask
-          xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
-        <repository
-            url="http://download.eclipse.org/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/mylyn/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/webtools/repository/mars"/>
-      </setupTask>
-      <description>OASP4J for Mars.</description>
-    </version>
-    <version
         name="Luna"
         label="Luna"
         requiredJavaVersion="1.7">
@@ -1162,8 +1158,33 @@
             url="http://download.eclipse.org/mylyn/releases/luna"/>
         <repository
             url="http://download.eclipse.org/webtools/repository/luna"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.4/"/>
       </setupTask>
       <description>OASP4J for Luna</description>
+    </version>
+    <version
+        name="Mars"
+        label="Mars"
+        requiredJavaVersion="1.7">
+      <setupTask
+          xsi:type="setup.p2:P2Task">
+        <requirement
+            name="org.eclipse.platform.ide"/>
+        <requirement
+            name="org.eclipse.platform.feature.group"/>
+        <requirement
+            name="org.eclipse.rcp.feature.group"/>
+        <repository
+            url="http://download.eclipse.org/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/webtools/repository/mars"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.5/"/>
+      </setupTask>
+      <description>OASP4J for Mars.</description>
     </version>
     <version
         name="Neon"
@@ -1183,6 +1204,22 @@
             url="http://download.eclipse.org/mylyn/releases/neon"/>
         <repository
             url="http://download.eclipse.org/webtools/repository/neon"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.6/"/>
+      </setupTask>
+      <setupTask
+          xsi:type="jdt:JRETask"
+          version="JavaSE-1.8"
+          location="${jre.location-1.8}"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="jre.location-1.7"
+          value="${jre.location-1.8}"
+          defaultValue="${jre.location-1.8}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
       </setupTask>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
