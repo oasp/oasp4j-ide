@@ -39,7 +39,7 @@ set MAVEN_HOME=%M2_HOME%
 rem ********************************************************************************
 rem Eclipse
 set ECLIPSE_HOME=%SOFTWARE_PATH%\eclipse
-set ECLIPSE_OPT=-vm %JAVA_HOME%\bin\javaw -showlocation %WORKSPACE% -vmargs %ECLIPSE_VMARGS%
+set ECLIPSE_OPT=-vm "%JAVA_HOME%\bin\javaw" -showlocation %WORKSPACE% -vmargs %ECLIPSE_VMARGS%
 
 rem ********************************************************************************
 rem Path
