@@ -6,12 +6,13 @@
     xmlns:com.github.maybeec.oomph.task="http://maybeec.github.io/oomph-task-download/1.0"
     xmlns:com.github.maybeec.oomph.task_1="http://maybeec.github.io/oomph-task-unzip/1.0"
     xmlns:com.github.maybeec.oomph.task_2="http://maybeec.github.io/oomph-task-cli/1.0"
+    xmlns:fscopy="http://com.github.maybeec/task-fscopy/1.0"
     xmlns:fsmove="http://maybeec.github.io/task-fsmove/1.0"
     xmlns:fsrename="http://maybeec.github.io/task-fsrename/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://maybeec.github.io/task-fsmove/1.0 https://raw.githubusercontent.com/themetalone/oomph-task-fsmove/master/task-fsmove-updatesite/model/Oomph-task-fsmove.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/themetalone/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore"
+    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsmove/1.0 https://raw.githubusercontent.com/themetalone/oomph-task-fsmove/master/task-fsmove-updatesite/model/Oomph-task-fsmove.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/themetalone/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore"
     name="com.github.products.oasp4j"
     label="OASP4J">
   <annotation
@@ -641,30 +642,6 @@
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
-          id="mkdir.software.java"
-          excludedTriggers="STARTUP"
-          predecessor="config.versions.noneclipse.resources"
-          command="mkdir"
-          priority="100">
-        <argument>${software.location/java/}</argument>
-      </setupTask>
-      <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
-          id="xcopy.java"
-          excludedTriggers="STARTUP"
-          predecessor="mkdir.software.java"
-          command="xcopy"
-          priority="100">
-        <argument>${jre.location-1.7/}*</argument>
-        <argument>&quot;${software.location/java/}&quot;</argument>
-        <argument>/s</argument>
-        <argument>/e</argument>
-        <argument>/i</argument>
-        <argument>/h</argument>
-        <argument>/y</argument>
-      </setupTask>
-      <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="update.workspaces"
           excludedTriggers="STARTUP"
           predecessor="unzip.oasp.scripts"
@@ -696,6 +673,14 @@
         <argument>${installation.root/help.bat}</argument>
         <description>Remove help.bat</description>
       </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="fscopy:FileSystemCopyTask"
+        id="fscopy.java"
+        resource="${jre.location-1.7}"
+        destination="${software.location/java/}"
+        priority="100">
+      <description>Copies the chosen JDK into the software folder</description>
     </setupTask>
     <setupTask
         xsi:type="fsrename:FSRenameTask"
