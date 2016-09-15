@@ -1030,6 +1030,12 @@
     <requirement
         name="org.eclipse.pde.feature.group"/>
     <requirement
+        name="org.eclipse.platform.ide"/>
+    <requirement
+        name="org.eclipse.platform.feature.group"/>
+    <requirement
+        name="org.eclipse.rcp.feature.group"/>
+    <requirement
         name="org.eclipse.recommenders.rcp.feature.feature.group"/>
     <requirement
         name="org.eclipse.rse.feature.group"/>
@@ -1133,15 +1139,15 @@
     <repository
         url="http://basti1302.github.com/startexplorer/update/"/>
     <repository
-        url="http://download.eclipse.org/e4/snapshots/org.eclipse.e4.ui"/>
+        url="http://dist.springsource.com/release/TOOLS/cloudfoundry/"/>
     <repository
-        url="http://download.eclipse.org/eclipse/updates/4.4/"/>
+        url="http://download.eclipse.org/e4/snapshots/org.eclipse.e4.ui"/>
     <repository
         url="http://download.eclipse.org/egit/github/updates/"/>
     <repository
         url="http://download.eclipse.org/egit/updates"/>
     <repository
-        url="http://download.eclipse.org/mylyn/releases/3.17"/>
+        url="http://download.eclipse.org/jetty/updates/jetty-wtp/"/>
     <repository
         url="http://download.eclipse.org/oomph/updates/milestone/latest"/>
     <repository
@@ -1149,11 +1155,19 @@
     <repository
         url="http://download.eclipse.org/technology/subversive/3.0/update-site/"/>
     <repository
+        url="http://download.eclipse.org/tm/terminal/marketplace"/>
+    <repository
         url="http://download.eclipse.org/tools/gef/updates/releases"/>
+    <repository
+        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20150821153341/repository/"/>
     <repository
         url="http://download.eclipse.org/webtools/updates"/>
     <repository
         url="http://download.forge.objectweb.org/eclipse-update/"/>
+    <repository
+        url="http://download.jboss.org/jbosstools/updates/webtools/mars"/>
+    <repository
+        url="http://downloads.sonarsource.com/eclipse/eclipse"/>
     <repository
         url="http://eclipse-color-theme.github.com/update"/>
     <repository
@@ -1163,7 +1177,15 @@
     <repository
         url="http://findbugs.cs.umd.edu/eclipse/"/>
     <repository
+        url="http://jope.ow2.org/update/jope/"/>
+    <repository
         url="http://ifedorenko.github.com/m2e-extras/"/>
+    <repository
+        url="http://marketplace.eclipse.org/content/tm-terminal"/>
+    <repository
+        url="http://master.dl.sourceforge.net/project/sapnweclipse/updates/"/>
+    <repository
+        url="https://m-m-m.github.io/eclipse-templatevariables/latest"/>
     <repository
         url="http://oss.opensagres.fr/tern.repository/1.1.0/"/>
     <repository
@@ -1173,17 +1195,21 @@
     <repository
         url="http://sourceforge.net/projects/dep4e/files/repository/"/>
     <repository
+        url="http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.16.0"/>
+    <repository
         url="http://subclipse.tigris.org/update_1.10.x"/>
     <repository
         url="http://update.eclemma.org/"/>
+    <repository
+        url="http://www.apache.org/dist/geronimo/eclipse/updates/"/>
     <repository
         url="http://www.nodeclipse.org/updates/"/>
     <repository
         url="http://www.objectaid.net/update"/>
     <repository
-        url="http://zipeditor.sourceforge.net/update/"/>
+        url="http://www.pramati.com/downloads/eclipse/updates/"/>
     <repository
-        url="https://basti1302.github.com/startexplorer/update/"/>
+        url="http://zipeditor.sourceforge.net/update/"/>
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
@@ -1215,20 +1241,22 @@
         requiredJavaVersion="1.7">
       <setupTask
           xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
         <repository
             url="http://download.eclipse.org/releases/luna"/>
         <repository
             url="http://download.eclipse.org/mylyn/releases/luna"/>
         <repository
+            url="http://download.eclipse.org/mylyn/releases/3.17"/>
+        <repository
             url="http://download.eclipse.org/webtools/repository/luna"/>
         <repository
             url="http://dist.springsource.com/release/TOOLS/update/e4.4/"/>
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.4/"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/luna"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
       </setupTask>
       <description>OASP4J for Luna</description>
     </version>
@@ -1238,12 +1266,10 @@
         requiredJavaVersion="1.7">
       <setupTask
           xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/3.17"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.5/"/>
         <repository
             url="http://download.eclipse.org/releases/mars"/>
         <repository
@@ -1251,7 +1277,13 @@
         <repository
             url="http://download.eclipse.org/webtools/repository/mars"/>
         <repository
-            url="http://dist.springsource.com/release/TOOLS/update/e4.5/"/>
+            url="http://download.eclipse.org/eclipse/updates/4.5/"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/mars"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/mars/repository/dependencies"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
       </setupTask>
       <description>OASP4J for Mars.</description>
     </version>
@@ -1261,12 +1293,6 @@
         requiredJavaVersion="1.7">
       <setupTask
           xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
         <repository
             url="http://download.eclipse.org/releases/neon"/>
         <repository
@@ -1275,6 +1301,16 @@
             url="http://download.eclipse.org/webtools/repository/neon"/>
         <repository
             url="http://dist.springsource.com/release/TOOLS/update/e4.6/"/>
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.6/"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/3.20"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/neon"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/neon/repository/dependencies"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
       </setupTask>
       <setupTask
           xsi:type="jdt:JRETask"
@@ -1330,20 +1366,22 @@
         requiredJavaVersion="1.7">
       <setupTask
           xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
         <repository
             url="http://download.eclipse.org/releases/luna"/>
         <repository
             url="http://download.eclipse.org/mylyn/releases/luna"/>
         <repository
+            url="http://download.eclipse.org/mylyn/releases/3.17"/>
+        <repository
             url="http://download.eclipse.org/webtools/repository/luna"/>
         <repository
             url="http://dist.springsource.com/release/TOOLS/update/e4.4/"/>
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.4/"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/luna"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
       </setupTask>
       <description>OASP4J for Luna</description>
     </version>
@@ -1353,12 +1391,6 @@
         requiredJavaVersion="1.7">
       <setupTask
           xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
         <repository
             url="http://download.eclipse.org/releases/mars"/>
         <repository
@@ -1367,6 +1399,16 @@
             url="http://download.eclipse.org/webtools/repository/mars"/>
         <repository
             url="http://dist.springsource.com/release/TOOLS/update/e4.5/"/>
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.5/"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/3.17"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/mars"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/mars/repository/dependencies"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
       </setupTask>
       <description>OASP4J for Mars.</description>
     </version>
@@ -1376,12 +1418,6 @@
         requiredJavaVersion="1.7">
       <setupTask
           xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.platform.ide"/>
-        <requirement
-            name="org.eclipse.platform.feature.group"/>
-        <requirement
-            name="org.eclipse.rcp.feature.group"/>
         <repository
             url="http://download.eclipse.org/releases/neon"/>
         <repository
@@ -1390,6 +1426,16 @@
             url="http://download.eclipse.org/webtools/repository/neon"/>
         <repository
             url="http://dist.springsource.com/release/TOOLS/update/e4.6/"/>
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.6/"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/3.20"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/neon"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/neon/repository/dependencies"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
       </setupTask>
       <setupTask
           xsi:type="jdt:JRETask"
