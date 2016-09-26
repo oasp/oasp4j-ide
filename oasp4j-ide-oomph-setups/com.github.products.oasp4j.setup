@@ -26,11 +26,6 @@
       xsi:type="setup:InstallationTask"
       id="installation"/>
   <setupTask
-      xsi:type="setup:RedirectionTask"
-      id="oomph.redirection.oasp"
-      sourceURL="index:/redirectable.products.setup"
-      targetURL="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>"/>
-  <setupTask
       xsi:type="setup:CompoundTask"
       id="config.user.input"
       name="unset config as simple user interface">
