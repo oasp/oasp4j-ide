@@ -995,7 +995,7 @@
     <requirement
         name="org.eclipse.mylyn.context_feature.feature.group"/>
     <requirement
-        name="org.eclipse.mylyn.discover.feature.group"/>
+        name="org.eclipse.mylyn.discovery.feature.group"/>
     <requirement
         name="org.eclipse.mylyn.github.feature.feature.group"
         optional="true"/>
@@ -1021,7 +1021,7 @@
     <requirement
         name="org.eclipse.oomph.setup.feature.group"/>
     <requirement
-        name="org.eclipse.oomph.setup.ecore.feature.group"/>
+        name="org.eclipse.oomph.setup.core.feature.group"/>
     <requirement
         name="org.eclipse.pde.feature.group"/>
     <requirement
@@ -1122,15 +1122,19 @@
     <requirement
         name="org.tigris.subversion.clientadapter.javahl.feature.feature.group"
         optional="true"/>
+    <!-- svnkit repo not reachable
     <requirement
         name="org.tigris.subversion.clientadapter.svnkit.feature.feature.group"
         optional="true"/>
+    -->
     <requirement
         name="org.tigris.subversion.subclipse.feature.group"
         optional="true"/>
+    <!-- svnkit repo not reachable
     <requirement
         name="org.tmatesoft.svnkit.feature.group"
         optional="true"/>
+    -->
     <repository
         url="http://basti1302.github.com/startexplorer/update/"/>
     <repository
@@ -1167,16 +1171,20 @@
         url="http://eclipse-color-theme.github.com/update"/>
     <repository
         url="http://eclipse-cs.sf.net/update/"/>
+    <!-- not existing
     <repository
         url="http://eclipse.svnkit.com/1.8.x/"/>
+    -->
     <repository
         url="http://findbugs.cs.umd.edu/eclipse/"/>
     <repository
         url="http://jope.ow2.org/update/jope/"/>
     <repository
         url="http://ifedorenko.github.com/m2e-extras/"/>
+    <!-- not existing
     <repository
         url="http://marketplace.eclipse.org/content/tm-terminal"/>
+    -->
     <repository
         url="http://master.dl.sourceforge.net/project/sapnweclipse/updates/"/>
     <repository
