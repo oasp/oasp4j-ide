@@ -723,202 +723,138 @@
       xsi:type="setup.p2:P2Task"
       label="${scope.product.label} (${scope.product.version.label})">
     <requirement
-        name="AnyEditTools.feature.group"
-        optional="true"/>
+        name="AnyEditTools.feature.group"/>
     <requirement
         name="com.ess.regexutil.feature.group"
-        optional="true"
         filter=""/>
     <requirement
-        name="com.github.eclipsecolortheme.feature.feature.group"
-        optional="true"/>
+        name="com.github.eclipsecolortheme.feature.feature.group"/>
     <requirement
-        name="com.github.sevntu.checkstyle.checks.feature.feature.group"
-        optional="true"/>
+        name="com.github.sevntu.checkstyle.checks.feature.feature.group"/>
     <requirement
-        name="com.ifedorenko.m2e.sourcelookup.feature.feature.group"
-        optional="true"/>
+        name="com.ifedorenko.m2e.sourcelookup.feature.feature.group"/>
     <requirement
-        name="com.mountainminds.eclemma.feature.feature.group"
-        optional="true"/>
+        name="com.mountainminds.eclemma.feature.feature.group"/>
     <requirement
-        name="com.objectaid.uml.addon.feature.group"
-        optional="true"/>
+        name="com.objectaid.uml.addon.feature.group"/>
     <requirement
-        name="com.objectaid.uml.cls.feature.group"
-        optional="true"/>
+        name="com.objectaid.uml.cls.feature.group"/>
     <requirement
-        name="com.objectaid.uml.seq.feature.group"
-        optional="true"/>
+        name="com.objectaid.uml.seq.feature.group"/>
     <requirement
-        name="de.bastiankrol.startexplorer.feature.feature.group"
-        optional="true"/>
+        name="de.bastiankrol.startexplorer.feature.feature.group"/>
     <requirement
-        name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"
-        optional="true"/>
+        name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
     <requirement
         name="epp.package.jee"/>
     <requirement
-        name="net.sf.eclipsecs.feature.group"
-        optional="true"/>
+        name="net.sf.eclipsecs.feature.group"/>
     <requirement
-        name="org.apache.batik.feature.group"
-        optional="true"/>
+        name="org.apache.batik.feature.group"/>
     <requirement
-        name="org.eclipse.aether.maven.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.aether.maven.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.common.doc.user.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.common.doc.user.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.connectivity.doc.user.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.connectivity.doc.user.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.connectivity.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.connectivity.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.connectivity.oda.designer.core.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.connectivity.oda.designer.core.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.connectivity.oda.designer.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.connectivity.oda.designer.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.connectivity.oda.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.connectivity.oda.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.doc.user.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.doc.user.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.derby.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.derby.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.hsqldb.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.hsqldb.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.ibm.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.ibm.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.ingres.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.ingres.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.jdbc.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.jdbc.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.jdt.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.jdt.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.msft.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.msft.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.mysql.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.mysql.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.oda.designer.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.oda.designer.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.oda.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.oda.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.oracle.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.oracle.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.postgresql.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.postgresql.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.sap.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.sap.feature.feature.group"/>
     <requirement
         name="org.eclipse.datatools.enablement.sdk.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.sqlite.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.sqlite.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.sybase.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.enablement.sybase.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.intro.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.intro.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.modelbase.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.modelbase.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.sqldevtools.ddlgen.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.sqldevtools.ddlgen.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.sqldevtools.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.sqldevtools.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.sqldevtools.parsers.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.sqldevtools.parsers.feature.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.sqltools.doc.user.feature.group"
-        optional="true"/>
+        name="org.eclipse.datatools.sqltools.doc.user.feature.group"/>
     <requirement
-        name="org.eclipse.draw2d.feature.group"
-        optional="true"/>
+        name="org.eclipse.draw2d.feature.group"/>
     <requirement
-        name="org.eclipse.egit.feature.group"
-        optional="true"/>
+        name="org.eclipse.egit.feature.group"/>
     <requirement
-        name="org.eclipse.egit.mylyn.feature.group"
-        optional="true"/>
+        name="org.eclipse.egit.mylyn.feature.group"/>
     <requirement
-        name="org.eclipse.emf.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.feature.group"/>
     <requirement
-        name="org.eclipse.emf.codegen.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.codegen.feature.group"/>
     <requirement
-        name="org.eclipse.emf.codegen.ecore.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.codegen.ecore.feature.group"/>
     <requirement
-        name="org.eclipse.emf.codegen.ecore.ui.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.codegen.ecore.ui.feature.group"/>
     <requirement
-        name="org.eclipse.emf.common.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.common.feature.group"/>
     <requirement
-        name="org.eclipse.emf.common.ui.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.common.ui.feature.group"/>
     <requirement
-        name="org.eclipse.emf.converter.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.converter.feature.group"/>
     <requirement
-        name="org.eclipse.emf.databinding.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.databinding.feature.group"/>
     <requirement
-        name="org.eclipse.emf.databinding.edit.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.databinding.edit.feature.group"/>
     <requirement
-        name="org.eclipse.emf.ecore.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.ecore.feature.group"/>
     <requirement
-        name="org.eclipse.emf.ecore.edit.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.ecore.edit.feature.group"/>
     <requirement
-        name="org.eclipse.emf.edit.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.edit.feature.group"/>
     <requirement
-        name="org.eclipse.emf.edit.ui.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.edit.ui.feature.group"/>
     <requirement
-        name="org.eclipse.emf.mapping.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.mapping.feature.group"/>
     <requirement
-        name="org.eclipse.emf.mapping.ecore.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.mapping.ecore.feature.group"/>
     <requirement
-        name="org.eclipse.emf.mapping.ecore.editor.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.mapping.ecore.editor.feature.group"/>
     <requirement
-        name="org.eclipse.emf.mapping.ui.feature.group"
-        optional="true"/>
+        name="org.eclipse.emf.mapping.ui.feature.group"/>
     <requirement
-        name="org.eclipse.epp.mpc.feature.group"
-        optional="true"/>
+        name="org.eclipse.epp.mpc.feature.group"/>
     <requirement
         name="org.eclipse.epp.package.jee.feature.feature.group"/>
     <requirement
@@ -964,8 +900,7 @@
     <requirement
         name="org.eclipse.jst.ws.jaxws.feature.feature.group"/>
     <requirement
-        name="org.eclipse.m2e.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.m2e.feature.feature.group"/>
     <requirement
         name="org.eclipse.m2e.logback.feature.feature.group"/>
     <requirement
@@ -997,11 +932,9 @@
     <requirement
         name="org.eclipse.mylyn.discovery.feature.group"/>
     <requirement
-        name="org.eclipse.mylyn.github.feature.feature.group"
-        optional="true"/>
+        name="org.eclipse.mylyn.github.feature.feature.group"/>
     <requirement
-        name="org.eclipse.mylyn.hudson.feature.group"
-        optional="true"/>
+        name="org.eclipse.mylyn.hudson.feature.group"/>
     <requirement
         name="org.eclipse.mylyn.ide_feature.feature.group"/>
     <requirement
@@ -1076,64 +1009,46 @@
     <requirement
         name="org.sonar.ide.eclipse.m2e.feature.feature.group"/>
     <requirement
-        name="org.sonatype.m2e.buildhelper.feature.feature.group"
-        optional="true"/>
+        name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
     <requirement
         name="org.sonatype.m2e.mavenarchiver.feature.feature.group"/>
     <requirement
-        name="org.sonatype.tycho.m2e.feature.feature.group"
-        optional="true"/>
+        name="org.sonatype.tycho.m2e.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.ajdt.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.ajdt.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.aop.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.aop.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.autowire.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.autowire.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.batch.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.batch.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.boot.dash.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.boot.dash.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.data.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.data.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.integration.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.integration.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.maven.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.maven.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.mylyn.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.mylyn.feature.feature.group"/>
     <requirement
-        name="org.springframework.ide.eclipse.security.feature.feature.group"
-        optional="true"/>
+        name="org.springframework.ide.eclipse.security.feature.feature.group"/>
     <requirement
-        name="org.tigris.subversion.clientadapter.feature.feature.group"
-        optional="true"/>
+        name="org.tigris.subversion.clientadapter.feature.feature.group"/>
     <requirement
-        name="org.tigris.subversion.clientadapter.javahl.feature.feature.group"
-        optional="true"/>
+        name="org.tigris.subversion.clientadapter.javahl.feature.feature.group"/>
     <!-- svnkit repo not reachable
     <requirement
-        name="org.tigris.subversion.clientadapter.svnkit.feature.feature.group"
-        optional="true"/>
+        name="org.tigris.subversion.clientadapter.svnkit.feature.feature.group"/>
     -->
     <requirement
-        name="org.tigris.subversion.subclipse.feature.group"
-        optional="true"/>
+        name="org.tigris.subversion.subclipse.feature.group"/>
     <!-- svnkit repo not reachable
     <requirement
-        name="org.tmatesoft.svnkit.feature.group"
-        optional="true"/>
+        name="org.tmatesoft.svnkit.feature.group"/>
     -->
     <repository
         url="http://basti1302.github.com/startexplorer/update/"/>
