@@ -26,6 +26,13 @@
       xsi:type="setup:InstallationTask"
       id="installation"/>
   <setupTask
+      xsi:type="setup:RedirectionTask"
+      id=""
+      sourceURL="index:/redirectable.products.setup"
+      targetURL="https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/com.github.products.oasp4j.setup">
+    <description></description>
+  </setupTask>
+  <setupTask
       xsi:type="setup:CompoundTask"
       id="config.user.input"
       name="unset config as simple user interface">
@@ -177,8 +184,7 @@
         readTimeout="5000"
         destinationPath="${tmp.download.location}"
         destinationFile="apache-ant-${ant.version}-bin.zip"
-        priority="100"
-        estimatedSize="8">
+        priority="100">
       <description>Downloads the ant binaries as zip file</description>
     </setupTask>
     <setupTask
@@ -191,8 +197,7 @@
         readTimeout="5000"
         destinationPath="${tmp.download.location}"
         destinationFile="elasticsearch-${elasticsearch.version}.zip"
-        priority="100"
-        estimatedSize="27">
+        priority="100">
       <description>Downloads the elasticsearch binaries as zip file</description>
     </setupTask>
     <setupTask
@@ -205,8 +210,7 @@
         readTimeout="5000"
         destinationPath="${tmp.download.location}"
         destinationFile="logstash-${logstash.version}.zip"
-        priority="100"
-        estimatedSize="77">
+        priority="100">
       <description>Downloads the logstash binaries as zip file</description>
     </setupTask>
     <setupTask
@@ -219,8 +223,7 @@
         readTimeout="5000"
         destinationPath="${tmp.download.location}"
         destinationFile="apache-maven-${maven.version}-bin.zip"
-        priority="100"
-        estimatedSize="8">
+        priority="100">
       <description>Downloads the maven binaries as a zip file</description>
     </setupTask>
     <setupTask
@@ -282,8 +285,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="apache-tomcat-${tomcat.version}.zip"
-            priority="100"
-            estimatedSize="9">
+            priority="100">
           <description>Downloads the tomcat binaries as zip file</description>
         </setupTask>
         <setupTask
@@ -296,8 +298,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="node-v${nodejs.version}.msi"
-            priority="100"
-            estimatedSize="6">
+            priority="100">
           <description>Downloads a nodejs installer</description>
         </setupTask>
         <setupTask
@@ -310,8 +311,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="python-${python.version}.msi"
-            priority="100"
-            estimatedSize="225">
+            priority="100">
           <description>Downloads the python installable</description>
         </setupTask>
         <description>Download tasks for external ressources on windows x64</description>
@@ -331,8 +331,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="apache-tomcat-${tomcat.version}.zip"
-            priority="100"
-            estimatedSize="9">
+            priority="100">
           <description>Downloads the tomcat binaries as zip file</description>
         </setupTask>
         <setupTask
@@ -345,8 +344,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="node-v${nodejs.version}.msi"
-            priority="100"
-            estimatedSize="6">
+            priority="100">
           <description>Downloads a nodejs installer</description>
         </setupTask>
         <setupTask
@@ -359,8 +357,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="python-${python.version}.msi"
-            priority="100"
-            estimatedSize="225">
+            priority="100">
           <description>Downloads the python installable</description>
         </setupTask>
         <description></description>
@@ -382,8 +379,7 @@
           readTimeout="5000"
           destinationPath="${tmp.download.location}"
           destinationFile="apache-tomcat-${tomcat.version}.zip"
-          priority="100"
-          estimatedSize="9">
+          priority="100">
         <description>Downloads the tomcat binaries as zip file</description>
       </setupTask>
       <setupTask
@@ -396,8 +392,7 @@
           readTimeout="5000"
           destinationPath="${tmp.download.location}"
           destinationFile="python-${python.version}.tgz"
-          priority="100"
-          estimatedSize="15">
+          priority="100">
         <description>Downloads the python installable</description>
       </setupTask>
       <setupTask
@@ -424,8 +419,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="node-v${nodejs.version}.tgz"
-            priority="100"
-            estimatedSize="6">
+            priority="100">
           <description>Downloads a nodejs installer</description>
         </setupTask>
       </setupTask>
@@ -444,8 +438,7 @@
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
             destinationFile="node-v${nodejs.version}.tgz"
-            priority="100"
-            estimatedSize="6">
+            priority="100">
           <description>Downloads a nodejs installer</description>
         </setupTask>
       </setupTask>
@@ -1040,16 +1033,8 @@
         name="org.tigris.subversion.clientadapter.feature.feature.group"/>
     <requirement
         name="org.tigris.subversion.clientadapter.javahl.feature.feature.group"/>
-    <!-- svnkit repo not reachable
-    <requirement
-        name="org.tigris.subversion.clientadapter.svnkit.feature.feature.group"/>
-    -->
     <requirement
         name="org.tigris.subversion.subclipse.feature.group"/>
-    <!-- svnkit repo not reachable
-    <requirement
-        name="org.tmatesoft.svnkit.feature.group"/>
-    -->
     <repository
         url="http://basti1302.github.com/startexplorer/update/"/>
     <repository
@@ -1086,20 +1071,12 @@
         url="http://eclipse-color-theme.github.com/update"/>
     <repository
         url="http://eclipse-cs.sf.net/update/"/>
-    <!-- not existing
-    <repository
-        url="http://eclipse.svnkit.com/1.8.x/"/>
-    -->
     <repository
         url="http://findbugs.cs.umd.edu/eclipse/"/>
     <repository
         url="http://jope.ow2.org/update/jope/"/>
     <repository
         url="http://ifedorenko.github.com/m2e-extras/"/>
-    <!-- not existing
-    <repository
-        url="http://marketplace.eclipse.org/content/tm-terminal"/>
-    -->
     <repository
         url="http://master.dl.sourceforge.net/project/sapnweclipse/updates/"/>
     <repository
