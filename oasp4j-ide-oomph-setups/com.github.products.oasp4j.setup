@@ -761,7 +761,7 @@
     <requirement
         name="org.eclipse.datatools.doc.user.feature.group"/>
     <requirement
-        name="org.eclipse.datatools.enablement.derby.feature.feature.group"/>
+        name="org.eclipse.datatools.enablement.apache.derby.feature.feature.group"/>
     <requirement
         name="org.eclipse.datatools.enablement.feature.feature.group"/>
     <requirement
@@ -1036,6 +1036,8 @@
     <requirement
         name="org.tigris.subversion.subclipse.feature.group"/>
     <repository
+        url="http://andrei.gmxhome.de/eclipse/"/>
+    <repository
         url="http://basti1302.github.com/startexplorer/update/"/>
     <repository
         url="http://dist.springsource.com/release/TOOLS/cloudfoundry/"/>
@@ -1083,6 +1085,8 @@
         url="https://m-m-m.github.io/eclipse-templatevariables/latest"/>
     <repository
         url="http://oss.opensagres.fr/tern.repository/1.1.0/"/>
+    <repository
+        url="http://regex-util.sourceforge.net/update/"/>
     <repository
         url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201207090124/"/>
     <repository
