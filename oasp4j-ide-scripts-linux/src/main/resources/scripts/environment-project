@@ -7,6 +7,7 @@ export OASP_PROJECT_HOME=$PWD
 if [ -f $OASP_PROJECT_HOME/variables-customized ]; then
     . $OASP_PROJECT_HOME/variables-customized
 fi
+export SOFTWARE_PATH=$OASP_PROJECT_HOME/software
 
 if [ -z $WORKSPACE ]; then
     export WORKSPACE=$MAIN_BRANCH
