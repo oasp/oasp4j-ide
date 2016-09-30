@@ -665,10 +665,10 @@
     <setupTask
         xsi:type="fscopy:FileSystemCopyTask"
         id="fscopy.java"
-        resource="${jre.location-1.7}"
-        destination="${software.location/java/}"
+        resource="${java.location}"
+        destination="${jre.target.location-1.7}"
         priority="100">
-      <description>Copies the chosen JDK into the software folder</description>
+      <description>Copies the chosen Java 7 DK into ${jre.target.location-1.7}</description>
     </setupTask>
     <setupTask
         xsi:type="fsrename:FSRenameTask"
@@ -1112,7 +1112,9 @@
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"/>
+      id=""
+      version="JavaSE-1.7"
+      location="${jre.target.location-1.7}"/>
   <product name="oasp4j"
       label="OASP4J">
     <annotation
@@ -1157,6 +1159,21 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
       </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="java.location"
+          value="${jre.location-1.7}"
+          defaultValue="${jre.location-1.7}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.7"
+          value="${software.location/java}"
+          storageURI="scope://Installation"/>
       <description>OASP4J for Luna</description>
     </version>
     <version
@@ -1184,6 +1201,21 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
       </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="java.location"
+          value="${jre.location-1.7}"
+          defaultValue="${jre.location-1.7}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.7"
+          value="${software.location/java}"
+          storageURI="scope://Installation"/>
       <description>OASP4J for Mars.</description>
     </version>
     <version
@@ -1212,18 +1244,41 @@
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
       </setupTask>
       <setupTask
-          xsi:type="jdt:JRETask"
-          version="JavaSE-1.8"
-          location="${jre.location-1.8}"/>
-      <setupTask
           xsi:type="setup:VariableTask"
           id="neon.jre.map"
           type="JRE"
-          name="jre.location-1.7"
+          name="java.location"
           value="${jre.location-1.8}"
           defaultValue="${jre.location-1.8}"
           storageURI="scope://Installation">
         <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          excludedTriggers="STARTUP"
+          type="PATTERN"
+          name="jre.target.location-1.7"
+          value="${software.location/java-1.7}"
+          defaultValue="${software.location/java-1.7}"
+          storageURI="scope://Installation"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          excludedTriggers="STARTUP"
+          name="jre.target.location-1.8"
+          value="${software.location/java}"
+          defaultValue="${software.location/java}"
+          storageURI="scope://Installation"/>
+      <setupTask
+          xsi:type="jdt:JRETask"
+          version="JavaSE-1.8"
+          location="${jre.target.location-1.8}"/>
+      <setupTask
+          xsi:type="fscopy:FileSystemCopyTask"
+          id="fscopy.java.8"
+          resource="${java.location}"
+          destination="${jre.target.location-1.8}"
+          priority="100">
+        <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
       </setupTask>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
@@ -1282,6 +1337,21 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
       </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="java.location"
+          value="${jre.location-1.7}"
+          defaultValue="${jre.location-1.7}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.7"
+          value="${software.location/java}"
+          storageURI="scope://Installation"/>
       <description>OASP4J for Luna</description>
     </version>
     <version
@@ -1309,6 +1379,21 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
       </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="java.location"
+          value="${jre.location-1.7}"
+          defaultValue="${jre.location-1.7}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.7"
+          value="${software.location/java}"
+          storageURI="scope://Installation"/>
       <description>OASP4J for Mars.</description>
     </version>
     <version
@@ -1337,18 +1422,36 @@
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
       </setupTask>
       <setupTask
-          xsi:type="jdt:JRETask"
-          version="JavaSE-1.8"
-          location="${jre.location-1.8}"/>
-      <setupTask
           xsi:type="setup:VariableTask"
           id="neon.jre.map"
           type="JRE"
-          name="jre.location-1.7"
+          name="java.location"
           value="${jre.location-1.8}"
           defaultValue="${jre.location-1.8}"
           storageURI="scope://Installation">
         <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.7"
+          value="${software.location/java-1.7}"
+          storageURI="scope://Installation"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.8"
+          value="${software.location/java}"
+          storageURI="scope://Installation"/>
+      <setupTask
+          xsi:type="jdt:JRETask"
+          version="JavaSE-1.8"
+          location="${jre.target.location-1.8}"/>
+      <setupTask
+          xsi:type="fscopy:FileSystemCopyTask"
+          id="fscopy.java.8"
+          resource="${java.location}"
+          destination="${jre.target.location-1.8}"
+          priority="100">
+        <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
       </setupTask>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
