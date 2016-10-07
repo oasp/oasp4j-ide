@@ -1258,9 +1258,10 @@
           excludedTriggers="STARTUP"
           type="PATTERN"
           name="jre.target.location-1.7"
-          value="${software.location/java-1.7}"
-          defaultValue="${software.location/java-1.7}"
-          storageURI="scope://Installation"/>
+          value="${software.location/_java-1.7}"
+          defaultValue="${software.location/_java-1.7}"
+          storageURI="scope://Installation"
+          label=""/>
       <setupTask
           xsi:type="setup:VariableTask"
           excludedTriggers="STARTUP"
@@ -1280,6 +1281,11 @@
           priority="100">
         <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
       </setupTask>
+      <setupTask
+          xsi:type="setup:ResourceCreationTask"
+          content="eclipse.preferences.version=1&#xA;org.eclipse.jdt.launching.PREF_VM_XML=&lt;?xml version\=&quot;1.0&quot; encoding\=&quot;UTF-8&quot; standalone\=&quot;no&quot;?>&lt;vmSettings defaultVM\=&quot;57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1475673706825&quot;>&lt;vmType id\=&quot;org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType&quot;>&lt;vm id\=&quot;1475673699000&quot; name\=&quot;java-1.8&quot; path\=&quot;${jre.target.location-1.8|property}&quot;/>&lt;vm id\=&quot;1475673706825&quot; name\=&quot;java-1.7&quot; path\=&quot;${jre.target.location-1.7|property}&quot;/>&lt;/vmType>&lt;/vmSettings>"
+          targetURL="${settings.location/development/settings/eclipse/workspace/setup/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs|uri}"
+          encoding="UTF-8"/>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
     <description>This setup provides an eclipse instance of the OASP4J with all needed plugins, external software packages and the OASP4J folder structure.</description>
