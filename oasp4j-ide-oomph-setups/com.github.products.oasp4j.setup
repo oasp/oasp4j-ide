@@ -1258,8 +1258,8 @@
           excludedTriggers="STARTUP"
           type="PATTERN"
           name="jre.target.location-1.7"
-          value="${software.location/_java-1.7}"
-          defaultValue="${software.location/_java-1.7}"
+          value="${software.location/additionalJDKs/java-1.7}"
+          defaultValue="${software.location/additionalJDKs/java-1.7}"
           storageURI="scope://Installation"
           label=""/>
       <setupTask
@@ -1441,7 +1441,8 @@
       <setupTask
           xsi:type="setup:VariableTask"
           name="jre.target.location-1.7"
-          value="${software.location/java-1.7}"
+          value="${software.location/additionalJDKs/java-1.7}"
+          defaultValue="${software.location/additionalJDKs/java-1.7}"
           storageURI="scope://Installation"/>
       <setupTask
           xsi:type="setup:VariableTask"
