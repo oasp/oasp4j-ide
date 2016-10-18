@@ -386,12 +386,13 @@
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.linux.python"
           excludedTriggers="STARTUP"
+          successor="unzip.linux.python"
           filter=""
           resourceLocation="https://www.python.org/ftp/python/${python.version}/python-${python.version}.tgz"
           isURL="true"
           readTimeout="5000"
           destinationPath="${tmp.download.location}"
-          destinationFile="python-${python.version}.tgz"
+          destinationFile="python.tar.gz"
           priority="100">
         <description>Downloads the python installable</description>
       </setupTask>
@@ -413,12 +414,13 @@
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.linux.nodejs"
             excludedTriggers="STARTUP"
+            successor="unzip.linux.nodejs"
             filter=""
             resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x64.tar.gz"
             isURL="true"
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
-            destinationFile="node-v${nodejs.version}.tgz"
+            destinationFile="node.tar.gz"
             priority="100">
           <description>Downloads a nodejs installer</description>
         </setupTask>
@@ -432,12 +434,13 @@
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.linux.nodejs"
             excludedTriggers="STARTUP"
+            successor="unzip.linux.nodejs"
             filter=""
             resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x86.tar.gz"
             isURL="true"
             readTimeout="5000"
             destinationPath="${tmp.download.location}"
-            destinationFile="node-v${nodejs.version}.tgz"
+            destinationFile="node.tar.gz"
             priority="100">
           <description>Downloads a nodejs installer</description>
         </setupTask>
@@ -527,7 +530,26 @@
         xsi:type="setup:CompoundTask"
         id="tasks.download.external.ressources.linux"
         filter="(osgi.os=linux)"
-        name="linux"/>
+        name="linux">
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.linux.python"
+          excludedTriggers="STARTUP"
+          zipFile="${temp.download.location/python.tar.gz}"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>unzips the python tar ball</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.linux.nodejs"
+          excludedTriggers="STARTUP"
+          zipFile="${temp.download.location/node.tar.gz}"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>unarchives the nodejs tar ball</description>
+      </setupTask>
+    </setupTask>
     <description></description>
   </setupTask>
   <setupTask
@@ -566,30 +588,6 @@
         <argument>/qn</argument>
         <argument>TARGETDIR=&quot;${software.location/nodejs/}&quot;</argument>
         <description>Extracts NodeJS</description>
-      </setupTask>
-      <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
-          id="install.nodejs.reordering"
-          excludedTriggers="STARTUP"
-          command="xcopy"
-          priority="100">
-        <argument>&quot;${software.location/nodejs/nodejs}&quot;</argument>
-        <argument>&quot;${software.location/nodejs}&quot;</argument>
-        <argument>/s</argument>
-        <argument>/e</argument>
-        <argument>/i</argument>
-        <argument>/h</argument>
-        <argument>/y</argument>
-      </setupTask>
-      <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
-          id="install.nodejs.cleanup"
-          excludedTriggers="STARTUP"
-          command="rmdir"
-          priority="100">
-        <argument>&quot;${software.location/nodejs/nodejs}&quot;</argument>
-        <argument>/s</argument>
-        <argument>/q</argument>
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
