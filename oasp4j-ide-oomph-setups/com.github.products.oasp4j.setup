@@ -30,7 +30,7 @@
       id=""
       sourceURL="index:/redirectable.products.setup"
       targetURL="https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/com.github.products.oasp4j.setup">
-    <description></description>
+    <description>points to the repo this setup lies</description>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -133,13 +133,17 @@
         id="software.location"
         name="software.location"
         value="${installation.root/software}"
-        storageURI="scope://Installation"/>
+        storageURI="scope://Installation">
+      <description>Software bundles folder</description>
+    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         name="workspaces.location"
         value="${installation.root/workspaces}"
         storageURI="scope://Installation"
-        label=""/>
+        label="">
+      <description></description>
+    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         name="settings.location"
