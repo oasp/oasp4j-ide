@@ -527,11 +527,6 @@
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
-        id="tasks.unzip.external.resources.win"
-        filter="(os.name=Windows*)"
-        name="Windows"/>
-    <setupTask
-        xsi:type="setup:CompoundTask"
         id="tasks.download.external.ressources.linux"
         filter="(osgi.os=linux)"
         name="linux">
@@ -561,17 +556,65 @@
       id="tasks.finalize.external.resources"
       name="finalize external resources">
     <setupTask
+        xsi:type="fscopy:FileSystemCopyTask"
+        id="fscopy.java"
+        resource="${java.location}"
+        destination="${jre.target.location-1.7}"
+        priority="100">
+      <description>Copies the chosen Java 7 DK into ${jre.target.location-1.7}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="fsrename:FSRenameTask"
+        id="rename.ant"
+        predecessor="unzip.ant"
+        resource="${software.location/}apache-ant-${ant.version}"
+        destination="ant"
+        priority="100">
+      <description>Removes the version from the ant folder</description>
+    </setupTask>
+    <setupTask
+        xsi:type="fsrename:FSRenameTask"
+        id="rename.maven"
+        predecessor="unzip.maven"
+        filter=""
+        resource="${software.location/}apache-maven-${maven.version}"
+        destination="maven"
+        priority="100"/>
+    <setupTask
+        xsi:type="fsrename:FSRenameTask"
+        id="rename.tomcat"
+        predecessor="unzip.tomcat"
+        resource="${software.location/}apache-tomcat-${tomcat.version}"
+        destination="tomcat"
+        priority="100"/>
+    <setupTask
+        xsi:type="fsrename:FSRenameTask"
+        id="rename.elasticsearch"
+        predecessor="unzip.elasticsearch"
+        resource="${software.location/}elasticsearch-${elasticsearch.version}"
+        destination="elasticsearch"
+        priority="100">
+      <description></description>
+    </setupTask>
+    <setupTask
+        xsi:type="fsrename:FSRenameTask"
+        id="rename.logstash"
+        predecessor="unzip.logstash"
+        resource="${software.location/}logstash-${logstash.version}"
+        destination="logstash"
+        priority="100"/>
+    <setupTask
+        xsi:type="fsmove:FSMoveTask"
+        id="move.settings"
+        predecessor="unzip.oasp.scripts"
+        resource="${tmp.download.location/oasp4j-ide-master/oasp4j-ide-settings/src/main/settings}"
+        destination="${settings.location/development/settings}"
+        priority="100"/>
+    <setupTask
         xsi:type="setup:CompoundTask"
         id="tasks.finalize.external.resources.win"
         filter="(os.name=Windows*)"
         name="Windows">
-      <setupTask
-          xsi:type="fsmove:FSMoveTask"
-          id="move.settings"
-          predecessor="unzip.oasp.scripts"
-          resource="${tmp.download.location/oasp4j-ide-master/oasp4j-ide-settings/src/main/settings}"
-          destination="${settings.location/development/settings}"
-          priority="100"/>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="mkdir.nodejs.folder"
@@ -665,53 +708,30 @@
       </setupTask>
     </setupTask>
     <setupTask
-        xsi:type="fscopy:FileSystemCopyTask"
-        id="fscopy.java"
-        resource="${java.location}"
-        destination="${jre.target.location-1.7}"
-        priority="100">
-      <description>Copies the chosen Java 7 DK into ${jre.target.location-1.7}</description>
+        xsi:type="setup:CompoundTask"
+        filter="(osgi.os=linux)"
+        name="Linux">
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          id="update.workspaces"
+          excludedTriggers="STARTUP"
+          command="cd"
+          priority="1000">
+        <argument>${installation.root}</argument>
+        <argument>&amp;&amp;</argument>
+        <argument>./update-all-workspaces</argument>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          id="remove.tmp.files"
+          excludedTriggers="STARTUP"
+          filter=""
+          command="rm"
+          priority="2000">
+        <argument>-rfv</argument>
+        <argument>${temp.download.location}</argument>
+      </setupTask>
     </setupTask>
-    <setupTask
-        xsi:type="fsrename:FSRenameTask"
-        id="rename.ant"
-        predecessor="unzip.ant"
-        resource="${software.location/}apache-ant-${ant.version}"
-        destination="ant"
-        priority="100">
-      <description>Removes the version from the ant folder</description>
-    </setupTask>
-    <setupTask
-        xsi:type="fsrename:FSRenameTask"
-        id="rename.maven"
-        predecessor="unzip.maven"
-        filter=""
-        resource="${software.location/}apache-maven-${maven.version}"
-        destination="maven"
-        priority="100"/>
-    <setupTask
-        xsi:type="fsrename:FSRenameTask"
-        id="rename.tomcat"
-        predecessor="unzip.tomcat"
-        resource="${software.location/}apache-tomcat-${tomcat.version}"
-        destination="tomcat"
-        priority="100"/>
-    <setupTask
-        xsi:type="fsrename:FSRenameTask"
-        id="rename.elasticsearch"
-        predecessor="unzip.elasticsearch"
-        resource="${software.location/}elasticsearch-${elasticsearch.version}"
-        destination="elasticsearch"
-        priority="100">
-      <description></description>
-    </setupTask>
-    <setupTask
-        xsi:type="fsrename:FSRenameTask"
-        id="rename.logstash"
-        predecessor="unzip.logstash"
-        resource="${software.location/}logstash-${logstash.version}"
-        destination="logstash"
-        priority="100"/>
     <description></description>
   </setupTask>
   <setupTask
