@@ -534,7 +534,7 @@
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.linux.python"
           excludedTriggers="STARTUP"
-          zipFile="${temp.download.location/python.tar.gz}"
+          zipFile="${tmp.download.location/python.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
         <description>unzips the python tar ball</description>
@@ -543,7 +543,7 @@
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.linux.nodejs"
           excludedTriggers="STARTUP"
-          zipFile="${temp.download.location/node.tar.gz}"
+          zipFile="${tmp.download.location/node.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
         <description>unarchives the nodejs tar ball</description>
