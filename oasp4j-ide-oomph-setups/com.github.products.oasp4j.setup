@@ -729,7 +729,7 @@
           command="rm"
           priority="2000">
         <argument>-rfv</argument>
-        <argument>${temp.download.location}</argument>
+        <argument>${tmp.download.location}</argument>
       </setupTask>
     </setupTask>
     <description></description>
