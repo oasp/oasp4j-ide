@@ -392,7 +392,7 @@
           excludedTriggers="STARTUP"
           successor="unzip.linux.python"
           filter=""
-          resourceLocation="https://www.python.org/ftp/python/${python.version}/python-${python.version}.tgz"
+          resourceLocation="https://www.python.org/ftp/python/${python.version}/Python-${python.version}.tgz"
           isURL="true"
           readTimeout="5000"
           destinationPath="${tmp.download.location}"
