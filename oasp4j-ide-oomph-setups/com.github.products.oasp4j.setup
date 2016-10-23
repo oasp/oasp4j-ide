@@ -491,14 +491,6 @@
       id="tasks.finalize.external.resources"
       name="finalize external resources">
     <setupTask
-        xsi:type="fscopy:FileSystemCopyTask"
-        id="fscopy.java"
-        resource="${java.location}"
-        destination="${jre.target.location-1.7}"
-        priority="100">
-      <description>Copies the chosen Java 7 DK into ${jre.target.location-1.7}</description>
-    </setupTask>
-    <setupTask
         xsi:type="fsrename:FSRenameTask"
         id="rename.ant"
         predecessor="unzip.ant"
@@ -652,6 +644,78 @@
       </setupTask>
     </setupTask>
     <description></description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      id="tasks.jre.config"
+      name="JDK configuration">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id="neon.jre.map"
+        type="JRE"
+        name="java.location"
+        value="${jre.location-1.7}"
+        defaultValue="${jre.location-1.7}"
+        storageURI="scope://Installation">
+      <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id="neon.jre.map"
+        type="JRE"
+        name="java.location"
+        value="${jre.location-1.8}"
+        defaultValue="${jre.location-1.8}"
+        storageURI="scope://Installation">
+      <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP"
+        type="PATTERN"
+        name="jre.target.location-1.7"
+        value="${software.location/additionalJDKs/java-1.7}"
+        defaultValue="${software.location/additionalJDKs/java-1.7}"
+        storageURI="scope://Installation"
+        label=""/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP"
+        name="jre.target.location-1.8"
+        value="${software.location/java}"
+        defaultValue="${software.location/java}"
+        storageURI="scope://Installation"/>
+    <setupTask
+        xsi:type="fscopy:FileSystemCopyTask"
+        id="fscopy.java7"
+        resource="${java.location}"
+        destination="${jre.target.location-1.7}"
+        priority="100">
+      <description>Copies the chosen Java 7 DK into ${jre.target.location-1.7}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="fscopy:FileSystemCopyTask"
+        id="fscopy.java8"
+        resource="${java.location}"
+        destination="${jre.target.location-1.8}"
+        priority="100">
+      <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:ResourceCreationTask"
+        excludedTriggers="STARTUP"
+        content="eclipse.preferences.version=1&#xA;org.eclipse.jdt.launching.PREF_VM_XML=&lt;?xml version\=&quot;1.0&quot; encoding\=&quot;UTF-8&quot; standalone\=&quot;no&quot;?>&lt;vmSettings defaultVM\=&quot;57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1475673706825&quot;>&lt;vmType id\=&quot;org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType&quot;>&lt;vm id\=&quot;1475673699000&quot; name\=&quot;java-1.8&quot; path\=&quot;${jre.target.location-1.8|property}&quot;/>&lt;vm id\=&quot;1475673706825&quot; name\=&quot;java-1.7&quot; path\=&quot;${jre.target.location-1.7|property}&quot;/>&lt;/vmType>&lt;/vmSettings>"
+        targetURL="${settings.location/development/settings/eclipse/workspace/setup/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs|uri}"
+        encoding="UTF-8"/>
+    <setupTask
+        xsi:type="jdt:JRETask"
+        version="JavaSE-1.7"
+        location="${jre.target.location-1.7}"/>
+    <setupTask
+        xsi:type="jdt:JRETask"
+        version="JavaSE-1.8"
+        location="${jre.target.location-1.8}"/>
+    <description>JDK configuration</description>
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
@@ -1051,10 +1115,6 @@
     <repository
         url="http://zipeditor.sourceforge.net/update/"/>
   </setupTask>
-  <setupTask
-      xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"
-      location="${jre.target.location-1.7}"/>
   <product name="oasp4j"
       label="OASP4J">
     <annotation
@@ -1099,21 +1159,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
       <description>OASP4J for Luna</description>
     </version>
     <version
@@ -1141,21 +1186,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
       <description>OASP4J for Mars.</description>
     </version>
     <version
@@ -1183,50 +1213,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.8}"
-          defaultValue="${jre.location-1.8}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          excludedTriggers="STARTUP"
-          type="PATTERN"
-          name="jre.target.location-1.7"
-          value="${software.location/additionalJDKs/java-1.7}"
-          defaultValue="${software.location/additionalJDKs/java-1.7}"
-          storageURI="scope://Installation"
-          label=""/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          excludedTriggers="STARTUP"
-          name="jre.target.location-1.8"
-          value="${software.location/java}"
-          defaultValue="${software.location/java}"
-          storageURI="scope://Installation"/>
-      <setupTask
-          xsi:type="jdt:JRETask"
-          version="JavaSE-1.8"
-          location="${jre.target.location-1.8}"/>
-      <setupTask
-          xsi:type="fscopy:FileSystemCopyTask"
-          id="fscopy.java.8"
-          resource="${java.location}"
-          destination="${jre.target.location-1.8}"
-          priority="100">
-        <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:ResourceCreationTask"
-          excludedTriggers="STARTUP"
-          content="eclipse.preferences.version=1&#xA;org.eclipse.jdt.launching.PREF_VM_XML=&lt;?xml version\=&quot;1.0&quot; encoding\=&quot;UTF-8&quot; standalone\=&quot;no&quot;?>&lt;vmSettings defaultVM\=&quot;57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1475673706825&quot;>&lt;vmType id\=&quot;org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType&quot;>&lt;vm id\=&quot;1475673699000&quot; name\=&quot;java-1.8&quot; path\=&quot;${jre.target.location-1.8|property}&quot;/>&lt;vm id\=&quot;1475673706825&quot; name\=&quot;java-1.7&quot; path\=&quot;${jre.target.location-1.7|property}&quot;/>&lt;/vmType>&lt;/vmSettings>"
-          targetURL="${settings.location/development/settings/eclipse/workspace/setup/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs|uri}"
-          encoding="UTF-8"/>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
     <description>This setup provides an eclipse instance of the OASP4J with all needed plugins, external software packages and the OASP4J folder structure.</description>
@@ -1284,21 +1270,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
       <description>OASP4J for Luna</description>
     </version>
     <version
@@ -1326,21 +1297,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
       <description>OASP4J for Mars.</description>
     </version>
     <version
@@ -1368,45 +1324,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.8}"
-          defaultValue="${jre.location-1.8}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/additionalJDKs/java-1.7}"
-          defaultValue="${software.location/additionalJDKs/java-1.7}"
-          storageURI="scope://Installation"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.8"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
-      <setupTask
-          xsi:type="jdt:JRETask"
-          version="JavaSE-1.8"
-          location="${jre.target.location-1.8}"/>
-      <setupTask
-          xsi:type="fscopy:FileSystemCopyTask"
-          id="fscopy.java.8"
-          resource="${java.location}"
-          destination="${jre.target.location-1.8}"
-          priority="100">
-        <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:ResourceCreationTask"
-          excludedTriggers="STARTUP"
-          content="eclipse.preferences.version=1&#xA;org.eclipse.jdt.launching.PREF_VM_XML=&lt;?xml version\=&quot;1.0&quot; encoding\=&quot;UTF-8&quot; standalone\=&quot;no&quot;?>&lt;vmSettings defaultVM\=&quot;57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1475673706825&quot;>&lt;vmType id\=&quot;org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType&quot;>&lt;vm id\=&quot;1475673699000&quot; name\=&quot;java-1.8&quot; path\=&quot;${jre.target.location-1.8|property}&quot;/>&lt;vm id\=&quot;1475673706825&quot; name\=&quot;java-1.7&quot; path\=&quot;${jre.target.location-1.7|property}&quot;/>&lt;/vmType>&lt;/vmSettings>"
-          targetURL="${settings.location/development/settings/eclipse/workspace/setup/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs|uri}"
-          encoding="UTF-8"/>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
     <description>This setup provides an eclipse instance of the OASP4J with all needed plugins, external software packages and the OASP4J folder structure. Furthermore the current version of the Cobigen Eclipse Plugin is installed. This requires access to the corperate network during the installation</description>
