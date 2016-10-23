@@ -69,24 +69,6 @@
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
-        id="elasticsearch.version"
-        name="elasticsearch.version"
-        defaultValue="2.3.0"
-        storageURI="scope://Installation"
-        label="elasticsearch version">
-      <description>ElasticSearch version to be installed</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="logstash.version"
-        name="logstash.version"
-        defaultValue="2.3.0"
-        storageURI="scope://Installation"
-        label="logstash version">
-      <description>LogStash version to be installed</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
         id="maven.version"
         name="maven.version"
         defaultValue="3.3.9"
@@ -189,32 +171,6 @@
         destinationFile="apache-ant-${ant.version}-bin.zip"
         priority="100">
       <description>Downloads the ant binaries as zip file</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task:downloadTask"
-        id="download.elasticsearch"
-        excludedTriggers="STARTUP"
-        filter=""
-        resourceLocation="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/zip/elasticsearch/${elasticsearch.version}/elasticsearch-${elasticsearch.version}.zip"
-        isURL="true"
-        readTimeout="5000"
-        destinationPath="${tmp.download.location}"
-        destinationFile="elasticsearch-${elasticsearch.version}.zip"
-        priority="100">
-      <description>Downloads the elasticsearch binaries as zip file</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task:downloadTask"
-        id="download.logstash"
-        excludedTriggers="STARTUP"
-        filter=""
-        resourceLocation="https://download.elastic.co/logstash/logstash/logstash-${logstash.version}.zip"
-        isURL="true"
-        readTimeout="5000"
-        destinationPath="${tmp.download.location}"
-        destinationFile="logstash-${logstash.version}.zip"
-        priority="100">
-      <description>Downloads the logstash binaries as zip file</description>
     </setupTask>
     <setupTask
         xsi:type="com.github.maybeec.oomph.task:downloadTask"
@@ -477,26 +433,6 @@
     </setupTask>
     <setupTask
         xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
-        id="unzip.elasticsearch"
-        excludedTriggers="STARTUP"
-        predecessor="download.elasticsearch"
-        zipFile="${tmp.download.location/}elasticsearch-${elasticsearch.version}.zip"
-        destinationDir="${software.location}"
-        priority="100">
-      <description>unzips the elasticsearch binaries</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
-        id="unzip.logstash"
-        excludedTriggers="STARTUP"
-        predecessor="download.logstash"
-        zipFile="${tmp.download.location/}logstash-${logstash.version}.zip"
-        destinationDir="${software.location}"
-        priority="100">
-      <description>Unzips the logstash binaries</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
         id="unzip.maven"
         excludedTriggers="STARTUP"
         predecessor="download.maven"
@@ -585,22 +521,6 @@
         predecessor="unzip.tomcat"
         resource="${software.location/}apache-tomcat-${tomcat.version}"
         destination="tomcat"
-        priority="100"/>
-    <setupTask
-        xsi:type="fsrename:FSRenameTask"
-        id="rename.elasticsearch"
-        predecessor="unzip.elasticsearch"
-        resource="${software.location/}elasticsearch-${elasticsearch.version}"
-        destination="elasticsearch"
-        priority="100">
-      <description></description>
-    </setupTask>
-    <setupTask
-        xsi:type="fsrename:FSRenameTask"
-        id="rename.logstash"
-        predecessor="unzip.logstash"
-        resource="${software.location/}logstash-${logstash.version}"
-        destination="logstash"
         priority="100"/>
     <setupTask
         xsi:type="fsmove:FSMoveTask"
