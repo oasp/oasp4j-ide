@@ -27,7 +27,6 @@
       id="installation"/>
   <setupTask
       xsi:type="setup:RedirectionTask"
-      id=""
       sourceURL="index:/redirectable.products.setup"
       targetURL="https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/com.github.products.oasp4j.setup">
     <description>points to the repo this setup lies</description>
@@ -1126,7 +1125,7 @@
     <repository
         url="http://www.nodeclipse.org/updates/"/>
     <repository
-        url="http://www.objectaid.net/update"/>
+        url="http://www.objectaid.com/update"/>
     <repository
         url="http://www.pramati.com/downloads/eclipse/updates/"/>
     <repository
@@ -1134,7 +1133,6 @@
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
-      id=""
       version="JavaSE-1.7"
       location="${jre.target.location-1.7}"/>
   <product name="oasp4j"
