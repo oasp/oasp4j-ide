@@ -539,6 +539,7 @@
           id="mkdir.nodejs.folder"
           excludedTriggers="STARTUP"
           predecessor="download.win.nodejs"
+          directory="${installation.root}"
           command="mkdir"
           priority="100">
         <argument>${software.location/nodejs}</argument>
@@ -547,6 +548,7 @@
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="install.nodejs"
           excludedTriggers="STARTUP"
+          directory="${installation.root}"
           command="msiexec"
           priority="100">
         <argument>/a</argument>
@@ -559,6 +561,7 @@
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="install.nodejs.cleanup.msi"
           excludedTriggers="STARTUP"
+          directory="${installation.root}"
           command="del"
           priority="100">
         <argument>&quot;${software.location/nodejs/}node-v${nodejs.version}.msi&quot;</argument>
@@ -567,6 +570,7 @@
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="mkdir.python.folder"
           excludedTriggers="STARTUP"
+          directory="${installation.root}"
           command="mkdir"
           priority="100">
         <argument>${software.location/python}</argument>
@@ -576,6 +580,7 @@
           id="install.python"
           excludedTriggers="STARTUP"
           filter=""
+          directory="${installation.root}"
           command="msiexec"
           priority="100">
         <argument>/a</argument>
@@ -588,6 +593,7 @@
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="install.python.cleanup"
           excludedTriggers="STARTUP"
+          directory="${installation.root}"
           command="del"
           priority="100">
         <argument>&quot;${software.location/python/}python-${python.version}.msi&quot;</argument>
@@ -598,17 +604,14 @@
           excludedTriggers="STARTUP"
           predecessor="unzip.oasp.scripts"
           filter=""
-          command="chdir"
-          priority="1000">
-        <argument>/D</argument>
-        <argument>${installation.root}</argument>
-        <argument>&amp;&amp;</argument>
-        <argument>help.bat</argument>
-      </setupTask>
+          directory="${installation.root}"
+          command="help.bat"
+          priority="1000"/>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="remove.tmp.files"
           excludedTriggers="STARTUP"
+          directory="${installation.root}"
           command="rmdir"
           priority="2000">
         <argument>${tmp.download.location}</argument>
@@ -620,6 +623,7 @@
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="remove.tmp.help.bat"
           excludedTriggers="STARTUP"
+          directory="${installation.root}"
           command="del"
           priority="2000">
         <argument>${installation.root/help.bat}</argument>
@@ -634,17 +638,15 @@
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="update.workspaces"
           excludedTriggers="STARTUP"
-          command="cd"
-          priority="1000">
-        <argument>${installation.root}</argument>
-        <argument>&amp;&amp;</argument>
-        <argument>./update-all-workspaces</argument>
-      </setupTask>
+          directory="${installation.root}"
+          command="./update-all-workspaces"
+          priority="1000"/>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="remove.tmp.files"
           excludedTriggers="STARTUP"
           filter=""
+          directory="${installation.root}"
           command="rm"
           priority="2000">
         <argument>-rfv</argument>
