@@ -636,6 +636,20 @@
         name="Linux">
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          id="set.permissions"
+          excludedTriggers="STARTUP"
+          successor="update.workspaces"
+          directory="${installation.root}"
+          command="chmod">
+        <argument>+x</argument>
+        <argument>update-all-workspaces</argument>
+        <argument>create-or-update-workspace</argument>
+        <argument>env.sh</argument>
+        <argument>variables</argument>
+        <argument>scripts/*</argument>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="update.workspaces"
           excludedTriggers="STARTUP"
           directory="${installation.root}"
