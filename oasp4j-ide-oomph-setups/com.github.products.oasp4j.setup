@@ -103,6 +103,13 @@
         label="nodejs version">
       <description>NodeJS version to be installed</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id="java.7.location"
+        type="JRE"
+        name="java.7.location"
+        defaultValue="${java.location}"
+        storageURI="scope://Installation"/>
     <description>Configuration of product versions of non-eclipse resources</description>
   </setupTask>
   <setupTask
@@ -492,8 +499,8 @@
       name="finalize external resources">
     <setupTask
         xsi:type="fscopy:FileSystemCopyTask"
-        id="fscopy.java"
-        resource="${java.location}"
+        id="fscopy.java.7"
+        resource="${java.7.location}"
         destination="${jre.target.location-1.7}"
         priority="100">
       <description>Copies the chosen Java 7 DK into ${jre.target.location-1.7}</description>
