@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
+    xmlns:maven="http://www.eclipse.org/oomph/setup/maven/1.0"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore"
+    name="oasp4j"
+    label="OASP4J">
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="workspace.name"
+      storageURI="scope://Workspace"/>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Github">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.user.id"
+        label="Github user ID">
+      <description>The Github user ID</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.author.name"
+        label="Github author name"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.author.email"
+        label="Github author email"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.remoteURIs"
+        label="Github repository">
+      <choice
+          value="git@github.com:@{remoteURI}.git"
+          label="Git (read-write)"/>
+      <choice
+          value="https://${github.user.id|username}@github.com/@{remoteURI}.git"
+          label="HTTPS (read-write)"/>
+      <choice
+          value="https://github.com/@{remoteURI}.git"
+          label="HTTPS (read-only, anonymous)"/>
+      <description>Choose from the available Github URIs</description>
+    </setupTask>
+  </setupTask>
+  <project name="OASP4J">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="remoteURI"
+        value="oasp/oasp4j"
+        storageURI="scope://Workspace"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id="mvn.root.oasp4j"
+        name="mvn.root.oasp4j"
+        value="${workspaces.location/${workspace.name}/oasp4j}"
+        storageURI="scope://Workspace"/>
+    <setupTask
+        xsi:type="git:GitCloneTask"
+        id="git.oasp"
+        location="${mvn.root.oasp4j}"
+        remoteURI="${github.remoteURIs}"
+        pushURI="https://github.com/oasp/oasp4j"
+        checkoutBranch="develop"/>
+    <setupTask
+        xsi:type="maven:MavenImportTask"
+        id="mvn.import.oasp4j">
+      <sourceLocator
+          rootFolder="${mvn.root.oasp4j}"
+          locateNestedProjects="true"/>
+    </setupTask>
+  </project>
+  <logicalProjectContainer
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
+  <description>OASP4J provides cool stuff.</description>
+</setup:Project>
