@@ -1071,6 +1071,15 @@
       xsi:type="jdt:JRETask"
       version="JavaSE-1.7"
       location="${jre.target.location-1.7}"/>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="org.eclipse.oomph.setup.ui">
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
+        value="true"/>
+    <description>adds the oomph toolbar to the UI</description>
+  </setupTask>
   <product name="oasp4j"
       label="OASP4J">
     <annotation
