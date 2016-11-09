@@ -1071,15 +1071,6 @@
       xsi:type="jdt:JRETask"
       version="JavaSE-1.7"
       location="${jre.target.location-1.7}"/>
-  <setupTask
-      xsi:type="setup:CompoundTask"
-      name="org.eclipse.oomph.setup.ui">
-    <setupTask
-        xsi:type="setup:PreferenceTask"
-        key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
-        value="true"/>
-    <description>adds the oomph toolbar to the UI</description>
-  </setupTask>
   <product name="oasp4j"
       label="OASP4J">
     <annotation
@@ -1101,88 +1092,6 @@
         <value>https://oasp.github.io/</value>
       </detail>
     </annotation>
-    <version
-        name="Luna"
-        label="Luna"
-        requiredJavaVersion="1.7">
-      <setupTask
-          xsi:type="setup.p2:P2Task">
-        <repository
-            url="http://download.eclipse.org/releases/luna"/>
-        <repository
-            url="http://download.eclipse.org/mylyn/releases/luna"/>
-        <repository
-            url="http://download.eclipse.org/mylyn/releases/3.17"/>
-        <repository
-            url="http://download.eclipse.org/webtools/repository/luna"/>
-        <repository
-            url="http://dist.springsource.com/release/TOOLS/update/e4.4/"/>
-        <repository
-            url="http://download.eclipse.org/eclipse/updates/4.4/"/>
-        <repository
-            url="http://download.jboss.org/jbosstools/updates/webtools/luna"/>
-        <repository
-            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
-      <description>OASP4J for Luna</description>
-    </version>
-    <version
-        name="Mars"
-        label="Mars"
-        requiredJavaVersion="1.7">
-      <setupTask
-          xsi:type="setup.p2:P2Task">
-        <repository
-            url="http://download.eclipse.org/mylyn/releases/3.17"/>
-        <repository
-            url="http://dist.springsource.com/release/TOOLS/update/e4.5/"/>
-        <repository
-            url="http://download.eclipse.org/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/mylyn/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/webtools/repository/mars"/>
-        <repository
-            url="http://download.eclipse.org/eclipse/updates/4.5/"/>
-        <repository
-            url="http://download.jboss.org/jbosstools/updates/webtools/mars"/>
-        <repository
-            url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/mars/repository/dependencies"/>
-        <repository
-            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
-      <description>OASP4J for Mars.</description>
-    </version>
     <version
         name="Neon"
         label="Neon"
@@ -1237,6 +1146,88 @@
         <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
       </setupTask>
       <description>OASP4J for Neon (Experimental)</description>
+    </version>
+    <version
+        name="Mars"
+        label="Mars"
+        requiredJavaVersion="1.7">
+      <setupTask
+          xsi:type="setup.p2:P2Task">
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/3.17"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.5/"/>
+        <repository
+            url="http://download.eclipse.org/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/mars"/>
+        <repository
+            url="http://download.eclipse.org/webtools/repository/mars"/>
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.5/"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/mars"/>
+        <repository
+            url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/mars/repository/dependencies"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="java.location"
+          value="${jre.location-1.7}"
+          defaultValue="${jre.location-1.7}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.7"
+          value="${software.location/java}"
+          storageURI="scope://Installation"/>
+      <description>OASP4J for Mars.</description>
+    </version>
+    <version
+        name="Luna"
+        label="Luna"
+        requiredJavaVersion="1.7">
+      <setupTask
+          xsi:type="setup.p2:P2Task">
+        <repository
+            url="http://download.eclipse.org/releases/luna"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/luna"/>
+        <repository
+            url="http://download.eclipse.org/mylyn/releases/3.17"/>
+        <repository
+            url="http://download.eclipse.org/webtools/repository/luna"/>
+        <repository
+            url="http://dist.springsource.com/release/TOOLS/update/e4.4/"/>
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.4/"/>
+        <repository
+            url="http://download.jboss.org/jbosstools/updates/webtools/luna"/>
+        <repository
+            url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          id="neon.jre.map"
+          type="JRE"
+          name="java.location"
+          value="${jre.location-1.7}"
+          defaultValue="${jre.location-1.7}"
+          storageURI="scope://Installation">
+        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="jre.target.location-1.7"
+          value="${software.location/java}"
+          storageURI="scope://Installation"/>
+      <description>OASP4J for Luna</description>
     </version>
     <description>This setup provides an eclipse instance of the OASP4J with all needed plugins, external software packages and the OASP4J folder structure.</description>
   </product>
