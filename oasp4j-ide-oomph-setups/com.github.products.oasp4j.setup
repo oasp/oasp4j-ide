@@ -53,6 +53,7 @@
         xsi:type="setup:VariableTask"
         id="oasp.scripts.version"
         name="oasp.scripts.version"
+        value="1.3.1"
         defaultValue="1.3.1"
         storageURI="scope://Installation"
         label="oasp4j-scripts version">
@@ -62,6 +63,7 @@
         xsi:type="setup:VariableTask"
         id="ant.version"
         name="ant.version"
+        value="1.9.7"
         defaultValue="1.9.7"
         storageURI="scope://Installation"
         label="ant version">
@@ -71,6 +73,7 @@
         xsi:type="setup:VariableTask"
         id="maven.version"
         name="maven.version"
+        value="3.3.9"
         defaultValue="3.3.9"
         storageURI="scope://Installation"
         label="maven version">
@@ -80,6 +83,7 @@
         xsi:type="setup:VariableTask"
         id="tomcat.version"
         name="tomcat.version"
+        value="7.0.8"
         defaultValue="7.0.8"
         storageURI="scope://Installation"
         label="tomcat version">
@@ -89,6 +93,7 @@
         xsi:type="setup:VariableTask"
         id="python.version"
         name="python.version"
+        value="2.7.8"
         defaultValue="2.7.8"
         storageURI="scope://Installation"
         label="python version">
@@ -98,6 +103,7 @@
         xsi:type="setup:VariableTask"
         id="nodejs.version"
         name="nodejs.version"
+        value="4.4.5"
         defaultValue="4.4.5"
         storageURI="scope://Installation"
         label="nodejs version">
