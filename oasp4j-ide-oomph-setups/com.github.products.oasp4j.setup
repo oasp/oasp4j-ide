@@ -161,32 +161,6 @@
       name="download tasks of external resources">
     <setupTask
         xsi:type="com.github.maybeec.oomph.task:downloadTask"
-        id="download.ant"
-        excludedTriggers="STARTUP"
-        filter=""
-        resourceLocation="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.zip"
-        isURL="true"
-        readTimeout="5000"
-        destinationPath="${tmp.download.location}"
-        destinationFile="apache-ant-${ant.version}-bin.zip"
-        priority="100">
-      <description>Downloads the ant binaries as zip file</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task:downloadTask"
-        id="download.maven"
-        excludedTriggers="STARTUP"
-        filter=""
-        resourceLocation="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.zip"
-        isURL="true"
-        readTimeout="5000"
-        destinationPath="${tmp.download.location}"
-        destinationFile="apache-maven-${maven.version}-bin.zip"
-        priority="100">
-      <description>Downloads the maven binaries as a zip file</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task:downloadTask"
         id="download.oasp"
         excludedTriggers="STARTUP"
         filter=""
@@ -203,6 +177,32 @@
         id="tasks.download.external.ressources.windows"
         filter="(os.name=Windows*)"
         name="windows">
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task:downloadTask"
+          id="download.ant"
+          excludedTriggers="STARTUP"
+          filter=""
+          resourceLocation="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.zip"
+          isURL="true"
+          readTimeout="5000"
+          destinationPath="${tmp.download.location}"
+          destinationFile="apache-ant-${ant.version}-bin.zip"
+          priority="100">
+        <description>Downloads the ant binaries as zip file</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task:downloadTask"
+          id="download.maven"
+          excludedTriggers="STARTUP"
+          filter=""
+          resourceLocation="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.zip"
+          isURL="true"
+          readTimeout="5000"
+          destinationPath="${tmp.download.location}"
+          destinationFile="apache-maven-${maven.version}-bin.zip"
+          priority="100">
+        <description>Downloads the maven binaries as a zip file</description>
+      </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.oasp.scripts"
@@ -330,16 +330,42 @@
         name="linux">
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.tomcat"
+          id="download.ant"
           excludedTriggers="STARTUP"
           filter=""
-          resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.zip"
+          resourceLocation="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.tar.gz"
           isURL="true"
           readTimeout="5000"
           destinationPath="${tmp.download.location}"
-          destinationFile="apache-tomcat-${tomcat.version}.zip"
+          destinationFile="apache-ant-${ant.version}-bin.tar.gz"
           priority="100">
-        <description>Downloads the tomcat binaries as zip file</description>
+        <description>Downloads the ant binaries as zip file</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task:downloadTask"
+          id="download.maven"
+          excludedTriggers="STARTUP"
+          filter=""
+          resourceLocation="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.tar.gz"
+          isURL="true"
+          readTimeout="5000"
+          destinationPath="${tmp.download.location}"
+          destinationFile="apache-maven-${maven.version}-bin.tar.gz"
+          priority="100">
+        <description>Downloads the maven binaries as a zip file</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task:downloadTask"
+          id="download.tomcat"
+          excludedTriggers="STARTUP"
+          filter=""
+          resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.tar.gz"
+          isURL="true"
+          readTimeout="5000"
+          destinationPath="${tmp.download.location}"
+          destinationFile="apache-tomcat-${tomcat.version}.tar.gz"
+          priority="100">
+        <description>Downloads the tomcat binaries as tar gzipped file</description>
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
@@ -423,35 +449,6 @@
     </setupTask>
     <setupTask
         xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
-        id="unzip.ant"
-        excludedTriggers="STARTUP"
-        predecessor="download.ant"
-        zipFile="${tmp.download.location/}apache-ant-${ant.version}-bin.zip"
-        destinationDir="${software.location}"
-        priority="100">
-      <description>Unzips the ant binaries</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
-        id="unzip.maven"
-        excludedTriggers="STARTUP"
-        predecessor="download.maven"
-        zipFile="${tmp.download.location/}apache-maven-${maven.version}-bin.zip"
-        destinationDir="${software.location}"
-        priority="100">
-      <description>Unzips the maven binaries</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
-        id="unzip.tomcat"
-        excludedTriggers="STARTUP"
-        zipFile="${tmp.download.location/}apache-tomcat-${tomcat.version}.zip"
-        destinationDir="${software.location}"
-        priority="100">
-      <description>Unzips the tomcat binaries</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
         id="unzip.oasp.scripts"
         excludedTriggers="STARTUP"
         predecessor="compound.downloads"
@@ -483,6 +480,71 @@
           priority="100">
         <description>unarchives the nodejs tar ball</description>
       </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.ant"
+          excludedTriggers="STARTUP"
+          predecessor="download.ant"
+          zipFile="${tmp.download.location/}apache-ant-${ant.version}-bin.tar.gz"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>Unzips the ant binaries</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.maven"
+          excludedTriggers="STARTUP"
+          predecessor="download.maven"
+          zipFile="${tmp.download.location/}apache-maven-${maven.version}-bin.tar.gz"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>Unzips the maven binaries</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.tomcat"
+          excludedTriggers="STARTUP"
+          zipFile="${tmp.download.location/}apache-tomcat-${tomcat.version}.tar.gz"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>Unzips the tomcat binaries</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        id="tasks.download.external.ressources.windows"
+        filter="(os.name=Windows*)"
+        name="windows">
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.ant"
+          excludedTriggers="STARTUP"
+          predecessor="download.ant"
+          zipFile="${tmp.download.location/}apache-ant-${ant.version}-bin.zip"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>Unzips the ant binaries</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.maven"
+          excludedTriggers="STARTUP"
+          predecessor="download.maven"
+          zipFile="${tmp.download.location/}apache-maven-${maven.version}-bin.zip"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>Unzips the maven binaries</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          id="unzip.tomcat"
+          excludedTriggers="STARTUP"
+          zipFile="${tmp.download.location/}apache-tomcat-${tomcat.version}.zip"
+          destinationDir="${software.location}"
+          priority="100">
+        <description>Unzips the tomcat binaries</description>
+      </setupTask>
+      <description>Download tasks for external ressources on windows</description>
     </setupTask>
     <description></description>
   </setupTask>
