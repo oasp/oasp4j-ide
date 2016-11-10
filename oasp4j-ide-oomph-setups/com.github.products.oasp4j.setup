@@ -559,10 +559,6 @@
       id="tasks.finalize.external.resources"
       name="finalize external resources">
     <setupTask
-        xsi:type="setup:ResourceCopyTask"
-        sourceURL="${jre.location-1.7}"
-        targetURL="${jre.target.location-1.7}"/>
-    <setupTask
         xsi:type="fscopy:FileSystemCopyTask"
         id="fscopy.java.7"
         resource="${jre.location-1.7}"
