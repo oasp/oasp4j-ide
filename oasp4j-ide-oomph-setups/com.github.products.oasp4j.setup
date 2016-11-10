@@ -559,6 +559,10 @@
       id="tasks.finalize.external.resources"
       name="finalize external resources">
     <setupTask
+        xsi:type="setup:ResourceCopyTask"
+        sourceURL="${jre.location.7}"
+        targetURL="${jre.target.location.7}"/>
+    <setupTask
         xsi:type="fscopy:FileSystemCopyTask"
         id="fscopy.java.7"
         resource="${jre.location-1.7}"
@@ -1250,16 +1254,6 @@
       </setupTask>
       <setupTask
           xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
           name="jre.target.location-1.7"
           value="${software.location/java}"
           storageURI="scope://Installation"/>
@@ -1287,16 +1281,6 @@
             url="http://download.jboss.org/jbosstools/updates/webtools/luna"/>
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id="neon.jre.map"
-          type="JRE"
-          name="java.location"
-          value="${jre.location-1.7}"
-          defaultValue="${jre.location-1.7}"
-          storageURI="scope://Installation">
-        <description>Maps the JRE1.7 location on the JRE1.8 location</description>
       </setupTask>
       <setupTask
           xsi:type="setup:VariableTask"
