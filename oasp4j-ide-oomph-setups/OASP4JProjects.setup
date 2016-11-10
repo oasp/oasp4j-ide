@@ -104,7 +104,7 @@
         name="dev_oomph"/>
   </project>
   <logicalProjectContainer
-      xsi:type="setup:Project"
-      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']/@projects[name='user.project']"/>
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
   <description>OASP4J provides cool stuff.</description>
 </setup:Project>
