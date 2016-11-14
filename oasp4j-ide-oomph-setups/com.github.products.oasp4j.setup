@@ -703,6 +703,40 @@
         filter="(osgi.os=linux)"
         name="Linux">
       <setupTask
+          xsi:type="fsrename:FSRenameTask"
+          id="rename.python"
+          resource="${software.location/}Python-${python.version}"
+          destination="python"
+          priority="100"/>
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          id="tasks.download.external.ressources.linux.x32"
+          filter="(osgi.arch=x86)"
+          name="x32">
+        <setupTask
+            xsi:type="fsrename:FSRenameTask"
+            id="rename.node"
+            resource="${software.location/}node-v${nodejs.version}-linux-x86"
+            destination="nodejs"
+            priority="100">
+          <description></description>
+        </setupTask>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:CompoundTask"
+          id="tasks.download.external.ressources.linux.x64"
+          filter="(osgi.arch=x86_64)"
+          name="x64">
+        <setupTask
+            xsi:type="fsrename:FSRenameTask"
+            id="rename.node"
+            resource="${software.location/}node-v${nodejs.version}-linux-x64"
+            destination="nodejs"
+            priority="100">
+          <description></description>
+        </setupTask>
+      </setupTask>
+      <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="set.permissions"
           excludedTriggers="STARTUP"
