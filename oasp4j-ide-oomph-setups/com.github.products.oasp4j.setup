@@ -103,8 +103,8 @@
         xsi:type="setup:VariableTask"
         id="nodejs.version"
         name="nodejs.version"
-        value="4.4.5"
-        defaultValue="4.4.5"
+        value="6.9.1"
+        defaultValue="6.9.1"
         storageURI="scope://Installation"
         label="nodejs version">
       <description>NodeJS version to be installed</description>
