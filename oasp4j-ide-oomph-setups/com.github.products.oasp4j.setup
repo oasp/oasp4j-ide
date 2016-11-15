@@ -559,14 +559,6 @@
       id="tasks.finalize.external.resources"
       name="finalize external resources">
     <setupTask
-        xsi:type="fscopy:FileSystemCopyTask"
-        id="fscopy.java.7"
-        resource="${jre.location-1.7}"
-        destination="${jre.target.location-1.7}"
-        priority="100">
-      <description>Copies the chosen Java 7 DK into ${jre.target.location-1.7}</description>
-    </setupTask>
-    <setupTask
         xsi:type="fsrename:FSRenameTask"
         id="rename.ant"
         predecessor="unzip.ant"
@@ -1170,16 +1162,35 @@
         url="http://zipeditor.sourceforge.net/update/"/>
   </setupTask>
   <setupTask
-      xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"
-      location="${jre.target.location-1.7}"/>
-  <setupTask
       xsi:type="setup:CompoundTask"
       name="UI Setup">
     <setupTask
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
         value="true"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="JDK config">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id=""
+        excludedTriggers="STARTUP"
+        type="JRE"
+        name="jre.target.location-1.8"
+        value="${software.location/java}"
+        defaultValue="${software.location/java}"
+        storageURI="scope://Installation">
+      <description></description>
+    </setupTask>
+    <setupTask
+        xsi:type="fscopy:FileSystemCopyTask"
+        id="fscopy.java.8"
+        resource="${jre.location-1.8}"
+        destination="${jre.target.location-1.8}"
+        priority="100">
+      <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
+    </setupTask>
   </setupTask>
   <product name="oasp4j"
       label="OASP4J">
@@ -1227,34 +1238,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          excludedTriggers="STARTUP"
-          type="PATTERN"
-          name="jre.target.location-1.7"
-          value="${software.location/additionalJDKs/java-1.7}"
-          defaultValue="${software.location/additionalJDKs/java-1.7}"
-          storageURI="scope://Installation"
-          label=""/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          excludedTriggers="STARTUP"
-          name="jre.target.location-1.8"
-          value="${software.location/java}"
-          defaultValue="${software.location/java}"
-          storageURI="scope://Installation"/>
-      <setupTask
-          xsi:type="jdt:JRETask"
-          version="JavaSE-1.8"
-          location="${jre.target.location-1.8}"/>
-      <setupTask
-          xsi:type="fscopy:FileSystemCopyTask"
-          id="fscopy.java.8"
-          resource="${jre.location-1.8}"
-          destination="${jre.target.location-1.8}"
-          priority="100">
-        <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
-      </setupTask>
       <description>OASP4J for Neon (Experimental)</description>
     </version>
     <version
@@ -1282,11 +1265,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
       <description>OASP4J for Mars.</description>
     </version>
     <version
@@ -1312,11 +1290,6 @@
         <repository
             url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
       </setupTask>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="jre.target.location-1.7"
-          value="${software.location/java}"
-          storageURI="scope://Installation"/>
       <description>OASP4J for Luna</description>
     </version>
     <description>This setup provides an eclipse instance of the OASP4J with all needed plugins, external software packages and the OASP4J folder structure.</description>
