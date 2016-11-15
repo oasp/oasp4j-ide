@@ -735,12 +735,14 @@
           successor="update.workspaces"
           directory="${installation.root}"
           command="chmod">
+        <argument>--recursive</argument>
+        <argument>--changes</argument>
         <argument>+x</argument>
         <argument>update-all-workspaces</argument>
         <argument>create-or-update-workspace</argument>
         <argument>env.sh</argument>
         <argument>variables</argument>
-        <argument>scripts/*</argument>
+        <argument>scripts</argument>
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
