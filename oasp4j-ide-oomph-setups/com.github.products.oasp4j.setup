@@ -33,8 +33,7 @@
         id="installation.root"
         type="FOLDER"
         name="Root installation path"
-        storageURI="scope://Installation"
-        label="">
+        label="OASP installation folder">
       <description>Installation Folder</description>
     </setupTask>
   </setupTask>
@@ -156,7 +155,7 @@
     <setupTask
         xsi:type="com.github.maybeec.oomph.task:downloadTask"
         id="download.oasp"
-        excludedTriggers="STARTUP"
+        excludedTriggers="STARTUP MANUAL"
         filter=""
         resourceLocation="https://github.com/oasp/oasp4j-ide/archive/master.zip"
         isURL="true"
@@ -174,7 +173,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.ant"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           resourceLocation="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.zip"
           isURL="true"
@@ -187,7 +186,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.maven"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           resourceLocation="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.zip"
           isURL="true"
@@ -200,7 +199,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.oasp.scripts"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           resourceLocation="http://repo1.maven.org/maven2/io/oasp/java/ide/oasp4j-ide-scripts/${oasp.scripts.version}/oasp4j-ide-scripts-${oasp.scripts.version}.zip"
           isURL="true"
@@ -213,7 +212,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.win.help"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           resourceLocation="https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/resources/help.bat"
           isURL="true"
@@ -231,7 +230,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.tomcat"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             filter=""
             resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}-windows-x64.zip"
             isURL="true"
@@ -244,7 +243,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.win.nodejs"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             filter=""
             resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x64.msi"
             isURL="true"
@@ -257,7 +256,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.win.python"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             filter=""
             resourceLocation="https://www.python.org/ftp/python/${python.version}/python-${python.version}.amd64.msi"
             isURL="true"
@@ -277,7 +276,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.tomcat"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             filter=""
             resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}-windows-x32.zip"
             isURL="true"
@@ -290,7 +289,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.win.nodejs"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             filter=""
             resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x86.msi"
             isURL="true"
@@ -303,7 +302,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.win.python"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             filter=""
             resourceLocation="https://www.python.org/ftp/python/${python.version}/python-${python.version}.msi"
             isURL="true"
@@ -325,7 +324,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.ant"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           resourceLocation="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.tar.gz"
           isURL="true"
@@ -338,7 +337,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.maven"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           resourceLocation="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.tar.gz"
           isURL="true"
@@ -351,7 +350,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.tomcat"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.tar.gz"
           isURL="true"
@@ -364,7 +363,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.linux.python"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           successor="unzip.linux.python"
           filter=""
           resourceLocation="https://www.python.org/ftp/python/${python.version}/Python-${python.version}.tgz"
@@ -378,7 +377,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task:downloadTask"
           id="download.linux.oasp.scripts"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           resourceLocation="https://github.com/oasp/oasp4j-ide/raw/master/oasp4j-ide-oomph-setups/resources/oasp4j-ide-scripts-linux.zip"
           isURL="true"
           destinationPath="${tmp.download.location}"
@@ -392,7 +391,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.linux.nodejs"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             successor="unzip.linux.nodejs"
             filter=""
             resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x64.tar.gz"
@@ -412,7 +411,7 @@
         <setupTask
             xsi:type="com.github.maybeec.oomph.task:downloadTask"
             id="download.linux.nodejs"
-            excludedTriggers="STARTUP"
+            excludedTriggers="STARTUP MANUAL"
             successor="unzip.linux.nodejs"
             filter=""
             resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x86.tar.gz"
@@ -434,7 +433,7 @@
     <setupTask
         xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
         id="unzip.oasp"
-        excludedTriggers="STARTUP"
+        excludedTriggers="STARTUP MANUAL"
         predecessor="download.oasp"
         zipFile="${tmp.download.location/}oasp4j.zip"
         destinationDir="${tmp.download.location}"
@@ -444,7 +443,7 @@
     <setupTask
         xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
         id="unzip.oasp.scripts"
-        excludedTriggers="STARTUP"
+        excludedTriggers="STARTUP MANUAL"
         predecessor="compound.downloads"
         zipFile="${tmp.download.location/}oasp4j-ide-scripts-${oasp.scripts.version}.zip"
         destinationDir="${installation.root}"
@@ -459,7 +458,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.linux.python"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           zipFile="${tmp.download.location/python.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
@@ -468,7 +467,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.linux.nodejs"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           zipFile="${tmp.download.location/node.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
@@ -477,7 +476,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.ant"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           predecessor="download.ant"
           zipFile="${tmp.download.location/}apache-ant-${ant.version}-bin.tar.gz"
           destinationDir="${software.location}"
@@ -487,7 +486,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.maven"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           predecessor="download.maven"
           zipFile="${tmp.download.location/}apache-maven-${maven.version}-bin.tar.gz"
           destinationDir="${software.location}"
@@ -497,7 +496,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.tomcat"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           zipFile="${tmp.download.location/}apache-tomcat-${tomcat.version}.tar.gz"
           destinationDir="${software.location}"
           priority="100">
@@ -512,7 +511,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.ant"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           predecessor="download.ant"
           zipFile="${tmp.download.location/}apache-ant-${ant.version}-bin.zip"
           destinationDir="${software.location}"
@@ -522,7 +521,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.maven"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           predecessor="download.maven"
           zipFile="${tmp.download.location/}apache-maven-${maven.version}-bin.zip"
           destinationDir="${software.location}"
@@ -532,7 +531,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
           id="unzip.tomcat"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           zipFile="${tmp.download.location/}apache-tomcat-${tomcat.version}.zip"
           destinationDir="${software.location}"
           priority="100">
@@ -549,6 +548,7 @@
     <setupTask
         xsi:type="fsrename:FSRenameTask"
         id="rename.ant"
+        excludedTriggers="MANUAL"
         predecessor="unzip.ant"
         resource="${software.location/}apache-ant-${ant.version}"
         destination="ant"
@@ -558,6 +558,7 @@
     <setupTask
         xsi:type="fsrename:FSRenameTask"
         id="rename.maven"
+        excludedTriggers="MANUAL"
         predecessor="unzip.maven"
         filter=""
         resource="${software.location/}apache-maven-${maven.version}"
@@ -566,6 +567,7 @@
     <setupTask
         xsi:type="fsrename:FSRenameTask"
         id="rename.tomcat"
+        excludedTriggers="MANUAL"
         predecessor="unzip.tomcat"
         resource="${software.location/}apache-tomcat-${tomcat.version}"
         destination="tomcat"
@@ -573,6 +575,7 @@
     <setupTask
         xsi:type="fsmove:FSMoveTask"
         id="move.settings"
+        excludedTriggers="MANUAL"
         predecessor="unzip.oasp.scripts"
         resource="${tmp.download.location/oasp4j-ide-master/oasp4j-ide-settings/src/main/settings}"
         destination="${settings.location/development/settings}"
@@ -585,7 +588,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="mkdir.nodejs.folder"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           predecessor="download.win.nodejs"
           directory="${installation.root}"
           command="mkdir"
@@ -595,7 +598,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="install.nodejs"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="msiexec"
           priority="100">
@@ -608,7 +611,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="install.nodejs.cleanup.msi"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="del"
           priority="100">
@@ -617,7 +620,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="mkdir.python.folder"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="mkdir"
           priority="100">
@@ -626,7 +629,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="install.python"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           directory="${installation.root}"
           command="msiexec"
@@ -640,7 +643,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="install.python.cleanup"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="del"
           priority="100">
@@ -649,7 +652,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="update.workspaces"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           predecessor="unzip.oasp.scripts"
           filter=""
           directory="${installation.root}"
@@ -658,7 +661,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="remove.tmp.files"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="rmdir"
           priority="2000">
@@ -670,7 +673,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="remove.tmp.help.bat"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="del"
           priority="2000">
@@ -685,6 +688,7 @@
       <setupTask
           xsi:type="fsrename:FSRenameTask"
           id="rename.python"
+          excludedTriggers="MANUAL"
           resource="${software.location/}Python-${python.version}"
           destination="python"
           priority="100"/>
@@ -696,6 +700,7 @@
         <setupTask
             xsi:type="fsrename:FSRenameTask"
             id="rename.node"
+            excludedTriggers="MANUAL"
             resource="${software.location/}node-v${nodejs.version}-linux-x86"
             destination="nodejs"
             priority="100">
@@ -710,6 +715,7 @@
         <setupTask
             xsi:type="fsrename:FSRenameTask"
             id="rename.node"
+            excludedTriggers="MANUAL"
             resource="${software.location/}node-v${nodejs.version}-linux-x64"
             destination="nodejs"
             priority="100">
@@ -719,7 +725,7 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="set.permissions"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           successor="update.workspaces"
           directory="${installation.root}"
           command="chmod">
@@ -735,14 +741,14 @@
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="update.workspaces"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="./update-all-workspaces"
           priority="1000"/>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_2:cliTask"
           id="remove.tmp.files"
-          excludedTriggers="STARTUP"
+          excludedTriggers="STARTUP MANUAL"
           filter=""
           directory="${installation.root}"
           command="rm"
@@ -1184,8 +1190,16 @@
       <description></description>
     </setupTask>
     <setupTask
+        xsi:type="setup:VariableTask"
+        id="jre.location-1.8"
+        type="JRE"
+        name="jre.location-1.8"
+        storageURI="scope://Installation"
+        label="Java 8 JDK"/>
+    <setupTask
         xsi:type="fscopy:FileSystemCopyTask"
         id="fscopy.java.8"
+        excludedTriggers="MANUAL"
         resource="${jre.location-1.8}"
         destination="${jre.target.location-1.8}"
         priority="100">
