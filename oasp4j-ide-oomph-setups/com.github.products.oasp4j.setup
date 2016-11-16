@@ -9,10 +9,9 @@
     xmlns:fscopy="http://com.github.maybeec/task-fscopy/1.0"
     xmlns:fsmove="http://maybeec.github.io/task-fsmove/1.0"
     xmlns:fsrename="http://maybeec.github.io/task-fsrename/1.0"
-    xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsmove/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsmove/master/task-fsmove-updatesite/model/Oomph-task-fsmove.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore"
+    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsmove/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsmove/master/task-fsmove-updatesite/model/Oomph-task-fsmove.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore"
     name="com.github.products.oasp4j"
     label="OASP4J">
   <annotation
@@ -25,12 +24,6 @@
   <setupTask
       xsi:type="setup:InstallationTask"
       id="installation"/>
-  <setupTask
-      xsi:type="setup:RedirectionTask"
-      sourceURL="index:/redirectable.products.setup"
-      targetURL="https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/com.github.products.oasp4j.setup">
-    <description>points to the repo this setup lies</description>
-  </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
       id="config.user.input"
@@ -143,11 +136,6 @@
         storageURI="scope://Installation">
       <description>Specifies where temporary data will be stored</description>
     </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="workspace.location"
-        value="${workspaces.location/master}"
-        storageURI="scope://Workspace"/>
     <description>Configuration of commonly used paths</description>
   </setupTask>
   <setupTask
@@ -767,6 +755,7 @@
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task"
+      excludedTriggers="STARTUP"
       label="${scope.product.label} (${scope.product.version.label})">
     <requirement
         name="AnyEditTools.feature.group"/>
@@ -1145,8 +1134,6 @@
     <repository
         url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.8.0/N/0.8.0.201409231215/"/>
     <repository
-        url="http://sourceforge.net/projects/dep4e/files/repository/"/>
-    <repository
         url="http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.16.0"/>
     <repository
         url="http://subclipse.tigris.org/update_1.10.x"/>
@@ -1170,6 +1157,17 @@
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
         value="true"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Eclipse Ini">
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        option="-Doomph.redirection.oasp="
+        value="index:/redirectable.products.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/com.github.products.oasp4j.setup"
+        vm="true">
+      <description></description>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
