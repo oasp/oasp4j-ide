@@ -33,6 +33,7 @@
         id="installation.root"
         type="FOLDER"
         name="installation.root"
+        storageURI="scope://Installation"
         label="OASP installation folder">
       <description>Installation Folder</description>
     </setupTask>
@@ -997,6 +998,10 @@
     <requirement
         name="org.eclipse.oomph.setup.core.feature.group"/>
     <requirement
+        name="org.eclipse.oomph.setup.git.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.maven.feature.group"/>
+    <requirement
         name="org.eclipse.pde.feature.group"/>
     <requirement
         name="org.eclipse.platform.ide"/>
@@ -1163,6 +1168,10 @@
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
         value="true"/>
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.oomph.setup.ui/skip.startup.tasks"
+        value="true"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -1181,7 +1190,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         id=""
-        excludedTriggers="STARTUP"
+        excludedTriggers="STARTUP MANUAL"
         type="JRE"
         name="jre.target.location-1.8"
         value="${software.location/java}"
@@ -1198,6 +1207,12 @@
         priority="100">
       <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP MANUAL"
+        type="JRE"
+        name="jre.location-1.8"
+        label="JDK 8 Location"/>
   </setupTask>
   <product name="oasp4j"
       label="OASP4J">

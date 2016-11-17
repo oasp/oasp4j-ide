@@ -25,7 +25,7 @@
         xsi:type="setup:VariableTask"
         name="github.remoteURIs.oasp4j"
         storageURI="scope://Workspace"
-        label="Github repository">
+        label="Github repository for OASP4J">
       <choice
           value="git@github.com:oasp/oasp4j.git"
           label="Git (read-write)"/>
@@ -67,7 +67,7 @@
         name="github.remoteURIs.oasp4jide"
         defaultValue="https://github.com/oasp/oasp4j-ide.git"
         storageURI="scope://Workspace"
-        label="Github repository">
+        label="Github repository for OASP4J-IDE">
       <choice
           value="git@github.com:oasp/oasp4j-ide.git"
           label="Git (read-write)"/>
