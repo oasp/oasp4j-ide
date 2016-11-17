@@ -5,8 +5,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:maven="http://www.eclipse.org/oomph/setup/maven/1.0"
+    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore"
+    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
     name="oasp4j"
     label="OASP4J">
   <setupTask
@@ -56,12 +58,39 @@
           rootFolder="${mvn.root.oasp4j}"
           locateNestedProjects="true"/>
     </setupTask>
+    <setupTask
+        xsi:type="setup.workingsets:WorkingSetTask">
+      <workingSet
+          name="OASP4J">
+        <predicate
+            xsi:type="predicates:AndPredicate">
+          <operand
+              xsi:type="predicates:NamePredicate"
+              pattern="oasp4j.*"/>
+          <operand
+              xsi:type="predicates:NotPredicate">
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern="oasp4j-ide.*"/>
+          </operand>
+        </predicate>
+      </workingSet>
+    </setupTask>
     <stream
         name="master"/>
     <stream
         name="develop"/>
   </project>
   <project name="OASP4J-IDE">
+    <setupTask
+        xsi:type="setup.workingsets:WorkingSetTask">
+      <workingSet
+          name="OASP4J-IDE">
+        <predicate
+            xsi:type="predicates:NamePredicate"
+            pattern="oasp4j-ide.*"/>
+      </workingSet>
+    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         name="github.remoteURIs.oasp4jide"
