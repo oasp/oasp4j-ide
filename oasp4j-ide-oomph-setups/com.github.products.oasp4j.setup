@@ -32,7 +32,7 @@
         xsi:type="setup:VariableTask"
         id="installation.root"
         type="FOLDER"
-        name="Root installation path"
+        name="installation.root"
         label="OASP installation folder">
       <description>Installation Folder</description>
     </setupTask>
@@ -1189,13 +1189,6 @@
         storageURI="scope://Installation">
       <description></description>
     </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="jre.location-1.8"
-        type="JRE"
-        name="jre.location-1.8"
-        storageURI="scope://Installation"
-        label="Java 8 JDK"/>
     <setupTask
         xsi:type="fscopy:FileSystemCopyTask"
         id="fscopy.java.8"
