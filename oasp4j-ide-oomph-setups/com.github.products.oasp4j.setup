@@ -8,9 +8,10 @@
     xmlns:com.github.maybeec.oomph.task_2="http://maybeec.github.io/oomph-task-cli/1.0"
     xmlns:fscopy="http://com.github.maybeec/task-fscopy/1.0"
     xmlns:fsrename="http://maybeec.github.io/task-fsrename/1.0"
+    xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore"
+    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore"
     name="com.github.products.oasp4j"
     label="OASP4J">
   <annotation
@@ -1182,6 +1183,11 @@
         value="index:/redirectable.products.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/com.github.products.oasp4j.setup"
         vm="true">
       <description></description>
+    </setupTask>
+    <setupTask
+        xsi:type="projects:ProjectsImportTask">
+      <sourceLocator
+          rootFolder="${workspace.location/Server}"/>
     </setupTask>
   </setupTask>
   <setupTask
