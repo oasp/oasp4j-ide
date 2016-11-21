@@ -1184,11 +1184,6 @@
         vm="true">
       <description></description>
     </setupTask>
-    <setupTask
-        xsi:type="projects:ProjectsImportTask">
-      <sourceLocator
-          rootFolder="${workspace.location/Server}"/>
-    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -1241,6 +1236,11 @@
         <value>https://oasp.github.io/</value>
       </detail>
     </annotation>
+    <setupTask
+        xsi:type="projects:ProjectsImportTask">
+      <sourceLocator
+          rootFolder="${workspace.location/Servers}"/>
+    </setupTask>
     <version
         name="Neon"
         label="Neon"
