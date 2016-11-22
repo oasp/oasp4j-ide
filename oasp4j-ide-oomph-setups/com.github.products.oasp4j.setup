@@ -1184,6 +1184,14 @@
         vm="true">
       <description></description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        excludedTriggers="STARTUP MANUAL"
+        option="-Doomph.redirection.oaspProjects="
+        value="index:/redirectable.projects.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/OASP4JProjects.setup"
+        vm="true">
+      <description></description>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -1239,7 +1247,8 @@
     <setupTask
         xsi:type="projects:ProjectsImportTask">
       <sourceLocator
-          rootFolder="${workspace.location/Servers}"/>
+          rootFolder="${workspace.location/Servers}"
+          locateNestedProjects="true"/>
     </setupTask>
     <version
         name="Neon"

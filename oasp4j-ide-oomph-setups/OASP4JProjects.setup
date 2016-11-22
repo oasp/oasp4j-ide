@@ -22,6 +22,14 @@
       <description>The Github user ID</description>
     </setupTask>
   </setupTask>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      excludedTriggers="STARTUP MANUAL"
+      option="-Doomph.redirection.oaspProjects="
+      value="index:/redirectable.projects.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/OASP4JProjects.setup"
+      vm="true">
+    <description></description>
+  </setupTask>
   <project name="OASP4J">
     <setupTask
         xsi:type="setup:VariableTask"
