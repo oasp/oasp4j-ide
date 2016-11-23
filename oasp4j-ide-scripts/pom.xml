@@ -80,9 +80,11 @@
               <goal>single</goal>
             </goals>
             <configuration>
-              <appendAssemblyId>false</appendAssemblyId>
+              <appendAssemblyId>true</appendAssemblyId>
               <descriptors>
-                <descriptor>src/main/assembly/zip.xml</descriptor>
+                <descriptor>src/main/assembly/windows.xml</descriptor>
+                <descriptor>src/main/assembly/linux.xml</descriptor>
+                <descriptor>src/main/assembly/all.xml</descriptor>
               </descriptors>
             </configuration>
           </execution>
