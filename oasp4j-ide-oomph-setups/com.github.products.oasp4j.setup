@@ -3,15 +3,14 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:com.github.maybeec.oomph.task="http://maybeec.github.io/oomph-task-download/1.0"
-    xmlns:com.github.maybeec.oomph.task_1="http://maybeec.github.io/oomph-task-unzip/1.0"
-    xmlns:com.github.maybeec.oomph.task_2="http://maybeec.github.io/oomph-task-cli/1.0"
+    xmlns:com.github.maybeec.oomph.task="http://maybeec.github.io/oomph-task-unzip/1.0"
+    xmlns:com.github.maybeec.oomph.task_1="http://maybeec.github.io/oomph-task-cli/1.0"
     xmlns:fscopy="http://com.github.maybeec/task-fscopy/1.0"
     xmlns:fsrename="http://maybeec.github.io/task-fsrename/1.0"
     xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://maybeec.github.io/oomph-task-download/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-download/master/task-download-updatesite/model/Oomph-task-download.ecore http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore"
+    xsi:schemaLocation="http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore"
     name="com.github.products.oasp4j"
     label="OASP4J">
   <annotation
@@ -154,17 +153,12 @@
       id="compound.downloads"
       name="download tasks of external resources">
     <setupTask
-        xsi:type="com.github.maybeec.oomph.task:downloadTask"
-        id="download.oasp"
+        xsi:type="setup:ResourceCopyTask"
+        id="rc.oasp"
         excludedTriggers="STARTUP MANUAL"
-        filter=""
-        resourceLocation="https://github.com/oasp/oasp4j-ide/archive/master.zip"
-        isURL="true"
-        readTimeout="5000"
-        destinationPath="${tmp.download.location}"
-        destinationFile="oasp4j.zip"
-        priority="100">
-      <description>Downloads the main zip file for the OASP4J</description>
+        sourceURL="https://github.com/oasp/oasp4j-ide/archive/master.zip"
+        targetURL="${tmp.download.location/oasp4j.zip|uri}">
+      <description>Fetches the OASP4J file archive</description>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
@@ -172,56 +166,37 @@
         filter="(os.name=Windows*)"
         name="windows">
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.ant"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.win.ant"
           excludedTriggers="STARTUP MANUAL"
-          filter=""
-          resourceLocation="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.zip"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${tmp.download.location}"
-          destinationFile="apache-ant-${ant.version}-bin.zip"
-          priority="100">
-        <description>Downloads the ant binaries as zip file</description>
+          sourceURL="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.zip"
+          targetURL="${tmp.download.location/ant.zip|uri}">
+        <description>Fetches the ant ${ant.version} archive for windows</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.maven"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.win.maven"
           excludedTriggers="STARTUP MANUAL"
-          filter=""
-          resourceLocation="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.zip"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${tmp.download.location}"
-          destinationFile="apache-maven-${maven.version}-bin.zip"
-          priority="100">
-        <description>Downloads the maven binaries as a zip file</description>
+          sourceURL="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.zip"
+          targetURL="${tmp.download.location/maven.zip|uri}">
+        <description>Fetches the maven ${maven.version} archive</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.oasp.scripts"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.win.oasp.scripts"
           excludedTriggers="STARTUP MANUAL"
-          filter=""
-          resourceLocation="http://repo1.maven.org/maven2/io/oasp/java/ide/oasp4j-ide-scripts/${oasp.scripts.version}/oasp4j-ide-scripts-${oasp.scripts.version}.zip"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${tmp.download.location}"
-          destinationFile="oasp4j-ide-scripts-${oasp.scripts.version}.zip"
-          priority="100">
-        <description>Downloads the scripts for the OASP4j</description>
+          sourceURL="http://repo1.maven.org/maven2/io/oasp/java/ide/oasp4j-ide-scripts/${oasp.scripts.version}/oasp4j-ide-scripts-${oasp.scripts.version}.zip"
+          targetURL="${tmp.download.location/oasp4jScripts.zip|uri}">
+        <description>Fetches the OASP4J scripts archive</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.win.help"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.win.help.bat"
           excludedTriggers="STARTUP MANUAL"
-          filter=""
-          resourceLocation="https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/resources/help.bat"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${installation.root}"
-          destinationFile="help.bat"
-          priority="100">
-        <description>Downloads a helper script</description>
+          predecessor="rc.win.oasp.scripts rc.oasp"
+          sourceURL="https://raw.githubusercontent.com/oasp/oasp4j-ide/master/oasp4j-ide-oomph-setups/resources/help.bat"
+          targetURL="${installation.root/help.bat|uri}">
+        <description>Fetches the windows helper script for automatic oasp4j script execution at the end of the installation process</description>
       </setupTask>
       <setupTask
           xsi:type="setup:CompoundTask"
@@ -229,43 +204,29 @@
           filter="(osgi.arch=x86_64)"
           name="x64">
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.tomcat"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.win.x64.tomcat"
             excludedTriggers="STARTUP MANUAL"
-            filter=""
-            resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}-windows-x64.zip"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="apache-tomcat-${tomcat.version}.zip"
-            priority="100">
-          <description>Downloads the tomcat binaries as zip file</description>
+            sourceURL="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}-windows-x64.zip"
+            targetURL="${tmp.download.location/tomcat.zip|uri}">
+          <description>Fetches the win x64 tomcat ${tomcat.version} archive</description>
         </setupTask>
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.win.nodejs"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.win.x64.nodejs"
             excludedTriggers="STARTUP MANUAL"
             filter=""
-            resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x64.msi"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="node-v${nodejs.version}.msi"
-            priority="100">
-          <description>Downloads a nodejs installer</description>
+            sourceURL="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x64.msi"
+            targetURL="${tmp.download.location/nodejs.msi|uri}">
+          <description>Fetches the x64 nodejs ${nodejs.version} msi installer package</description>
         </setupTask>
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.win.python"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.win.x64.python"
             excludedTriggers="STARTUP MANUAL"
-            filter=""
-            resourceLocation="https://www.python.org/ftp/python/${python.version}/python-${python.version}.amd64.msi"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="python-${python.version}.msi"
-            priority="100">
-          <description>Downloads the python installable</description>
+            sourceURL="https://www.python.org/ftp/python/${python.version}/python-${python.version}.amd64.msi"
+            targetURL="${tmp.download.location/python.msi|uri}">
+          <description>Fetches the x64 Python ${python.version} windows installer package</description>
         </setupTask>
         <description>Download tasks for external ressources on windows x64</description>
       </setupTask>
@@ -275,43 +236,29 @@
           filter="(osgi.arch=x86)"
           name="x32">
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.tomcat"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.win.x32.tomcat"
             excludedTriggers="STARTUP MANUAL"
-            filter=""
-            resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}-windows-x32.zip"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="apache-tomcat-${tomcat.version}.zip"
-            priority="100">
-          <description>Downloads the tomcat binaries as zip file</description>
+            sourceURL="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}-windows-x32.zip"
+            targetURL="${tmp.download.location/tomcat.zip|uri}">
+          <description>Fetches the win x32 tomcat ${tomcat.version} archive</description>
         </setupTask>
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.win.nodejs"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.win.x32.nodejs"
             excludedTriggers="STARTUP MANUAL"
             filter=""
-            resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x86.msi"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="node-v${nodejs.version}.msi"
-            priority="100">
-          <description>Downloads a nodejs installer</description>
+            sourceURL="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x86.msi"
+            targetURL="${tmp.download.location/nodejs.msi|uri}">
+          <description>Fetches the x32 nodejs ${nodejs.version} msi installer package</description>
         </setupTask>
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.win.python"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.win.x32.python"
             excludedTriggers="STARTUP MANUAL"
-            filter=""
-            resourceLocation="https://www.python.org/ftp/python/${python.version}/python-${python.version}.msi"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="python-${python.version}.msi"
-            priority="100">
-          <description>Downloads the python installable</description>
+            sourceURL="https://www.python.org/ftp/python/${python.version}/python-${python.version}.msi"
+            targetURL="${tmp.download.location/python.msi|uri}">
+          <description>Fetches the x32 Python ${python.version} windows installer package</description>
         </setupTask>
         <description></description>
       </setupTask>
@@ -323,85 +270,57 @@
         filter="(osgi.os=linux)"
         name="linux">
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.ant"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.linux.ant"
           excludedTriggers="STARTUP MANUAL"
-          filter=""
-          resourceLocation="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.tar.gz"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${tmp.download.location}"
-          destinationFile="apache-ant-${ant.version}-bin.tar.gz"
-          priority="100">
-        <description>Downloads the ant binaries as zip file</description>
+          sourceURL="http://archive.apache.org/dist/ant/binaries/apache-ant-${ant.version}-bin.tar.gz"
+          targetURL="${tmp.download.location/ant.tar.gz|uri}">
+        <description>Fetches the linux ant ${ant.version} archive</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.maven"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.linux.maven"
           excludedTriggers="STARTUP MANUAL"
-          filter=""
-          resourceLocation="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.tar.gz"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${tmp.download.location}"
-          destinationFile="apache-maven-${maven.version}-bin.tar.gz"
-          priority="100">
-        <description>Downloads the maven binaries as a zip file</description>
+          sourceURL="http://www-us.apache.org/dist/maven/maven-3/${maven.version}/binaries/apache-maven-${maven.version}-bin.tar.gz"
+          targetURL="${tmp.download.location/maven.tar.gz|uri}">
+        <description>Fetches the maven ${maven.version} archive for linux</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.tomcat"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.linux.tomcat"
           excludedTriggers="STARTUP MANUAL"
-          filter=""
-          resourceLocation="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.tar.gz"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${tmp.download.location}"
-          destinationFile="apache-tomcat-${tomcat.version}.tar.gz"
-          priority="100">
-        <description>Downloads the tomcat binaries as tar gzipped file</description>
+          sourceURL="http://archive.apache.org/dist/tomcat/tomcat-7/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.tar.gz"
+          targetURL="${tmp.download.location/tomcat.tar.gz|uri}">
+        <description>Fetches the tomcat ${tomcat.version} linux package</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.linux.python"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.linux.python"
           excludedTriggers="STARTUP MANUAL"
-          successor="unzip.linux.python"
-          filter=""
-          resourceLocation="https://www.python.org/ftp/python/${python.version}/Python-${python.version}.tgz"
-          isURL="true"
-          readTimeout="5000"
-          destinationPath="${tmp.download.location}"
-          destinationFile="python.tar.gz"
-          priority="100">
-        <description>Downloads the python installable</description>
+          sourceURL="https://www.python.org/ftp/python/${python.version}/Python-${python.version}.tgz"
+          targetURL="${tmp.download.location/python.tar.gz|uri}">
+        <description>Fetches the python ${python.version} linux package</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task:downloadTask"
-          id="download.linux.oasp.scripts"
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.linux.oasp4j.scripts"
           excludedTriggers="STARTUP MANUAL"
-          resourceLocation="https://github.com/oasp/oasp4j-ide/raw/master/oasp4j-ide-oomph-setups/resources/oasp4j-ide-scripts-linux.zip"
-          isURL="true"
-          destinationPath="${tmp.download.location}"
-          destinationFile="oasp4j-ide-scripts-${oasp.scripts.version}.zip"
-          priority="100"/>
+          sourceURL="https://github.com/oasp/oasp4j-ide/raw/master/oasp4j-ide-oomph-setups/resources/oasp4j-ide-scripts-linux.zip"
+          targetURL="${tmp.download.location/oasp4jScripts.zip|uri}">
+        <description>Fetches the oasp4j scripts for linux</description>
+      </setupTask>
       <setupTask
           xsi:type="setup:CompoundTask"
           id="tasks.download.external.ressources.linux.x64"
           filter="(osgi.arch=x86_64)"
           name="x64">
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.linux.nodejs"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.linux.x64.nodejs"
             excludedTriggers="STARTUP MANUAL"
-            successor="unzip.linux.nodejs"
-            filter=""
-            resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x64.tar.gz"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="node.tar.gz"
-            priority="100">
-          <description>Downloads a nodejs installer</description>
+            sourceURL="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x64.tar.gz"
+            targetURL="${tmp.download.location/nodejs.tar.gz|uri}">
+          <description>Fetches the x64 nodejs ${nodejs.version} package for linux</description>
         </setupTask>
       </setupTask>
       <setupTask
@@ -410,18 +329,12 @@
           filter="(osgi.arch=x86)"
           name="x32">
         <setupTask
-            xsi:type="com.github.maybeec.oomph.task:downloadTask"
-            id="download.linux.nodejs"
+            xsi:type="setup:ResourceCopyTask"
+            id="rc.linux.x32.nodejs"
             excludedTriggers="STARTUP MANUAL"
-            successor="unzip.linux.nodejs"
-            filter=""
-            resourceLocation="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x86.tar.gz"
-            isURL="true"
-            readTimeout="5000"
-            destinationPath="${tmp.download.location}"
-            destinationFile="node.tar.gz"
-            priority="100">
-          <description>Downloads a nodejs installer</description>
+            sourceURL="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-linux-x86.tar.gz"
+            targetURL="${tmp.download.location/nodejs.tar.gz|uri}">
+          <description>Fetches the x32 nodejs ${nodejs.version} package for linux</description>
         </setupTask>
       </setupTask>
     </setupTask>
@@ -432,21 +345,21 @@
       id="tasks.unzip.external.resources"
       name="unzip tasks of external resources">
     <setupTask
-        xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+        xsi:type="com.github.maybeec.oomph.task:unzipTask"
         id="unzip.oasp"
         excludedTriggers="STARTUP MANUAL"
-        predecessor="download.oasp"
-        zipFile="${tmp.download.location/}oasp4j.zip"
+        predecessor="rc.oasp"
+        zipFile="${tmp.download.location/oasp4j.zip}"
         destinationDir="${tmp.download.location}"
         priority="100">
       <description>Unzips the oasp into the supposed folder</description>
     </setupTask>
     <setupTask
-        xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+        xsi:type="com.github.maybeec.oomph.task:unzipTask"
         id="unzip.oasp.scripts"
         excludedTriggers="STARTUP MANUAL"
-        predecessor="compound.downloads"
-        zipFile="${tmp.download.location/}oasp4j-ide-scripts-${oasp.scripts.version}.zip"
+        predecessor="rc.win.oasp.scripts rc.linux.oasp4j.scripts"
+        zipFile="${tmp.download.location/oasp4jScripts.zip}"
         destinationDir="${installation.root}"
         priority="100">
       <description></description>
@@ -457,48 +370,51 @@
         filter="(osgi.os=linux)"
         name="linux">
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.linux.python"
           excludedTriggers="STARTUP MANUAL"
+          predecessor="rc.linux.python"
           zipFile="${tmp.download.location/python.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
         <description>unzips the python tar ball</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.linux.nodejs"
           excludedTriggers="STARTUP MANUAL"
-          zipFile="${tmp.download.location/node.tar.gz}"
+          predecessor="rc.linux.x64.nodejs rc.linux.x32.nodejs"
+          zipFile="${tmp.download.location/nodejs.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
         <description>unarchives the nodejs tar ball</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.ant"
           excludedTriggers="STARTUP MANUAL"
-          predecessor="download.ant"
-          zipFile="${tmp.download.location/}apache-ant-${ant.version}-bin.tar.gz"
+          predecessor="rc.linux.ant"
+          zipFile="${tmp.download.location/ant.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
         <description>Unzips the ant binaries</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.maven"
           excludedTriggers="STARTUP MANUAL"
-          predecessor="download.maven"
-          zipFile="${tmp.download.location/}apache-maven-${maven.version}-bin.tar.gz"
+          predecessor="rc.linux.maven"
+          zipFile="${tmp.download.location/maven.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
         <description>Unzips the maven binaries</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.tomcat"
           excludedTriggers="STARTUP MANUAL"
-          zipFile="${tmp.download.location/}apache-tomcat-${tomcat.version}.tar.gz"
+          predecessor="rc.linux.tomcat"
+          zipFile="${tmp.download.location/tomcat.tar.gz}"
           destinationDir="${software.location}"
           priority="100">
         <description>Unzips the tomcat binaries</description>
@@ -510,30 +426,31 @@
         filter="(os.name=Windows*)"
         name="windows">
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.ant"
           excludedTriggers="STARTUP MANUAL"
-          predecessor="download.ant"
-          zipFile="${tmp.download.location/}apache-ant-${ant.version}-bin.zip"
+          predecessor="rc.win.ant"
+          zipFile="${tmp.download.location/ant.zip}"
           destinationDir="${software.location}"
           priority="100">
         <description>Unzips the ant binaries</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.maven"
           excludedTriggers="STARTUP MANUAL"
-          predecessor="download.maven"
-          zipFile="${tmp.download.location/}apache-maven-${maven.version}-bin.zip"
+          predecessor="rc.win.maven"
+          zipFile="${tmp.download.location/maven.zip}"
           destinationDir="${software.location}"
           priority="100">
         <description>Unzips the maven binaries</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:unzipTask"
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
           id="unzip.tomcat"
           excludedTriggers="STARTUP MANUAL"
-          zipFile="${tmp.download.location/}apache-tomcat-${tomcat.version}.zip"
+          predecessor="rc.win.x32.tomcat rc.win.x64.tomcat"
+          zipFile="${tmp.download.location/tomcat.zip}"
           destinationDir="${software.location}"
           priority="100">
         <description>Unzips the tomcat binaries</description>
@@ -587,48 +504,49 @@
         filter="(os.name=Windows*)"
         name="Windows">
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="mkdir.nodejs.folder"
           excludedTriggers="STARTUP MANUAL"
-          predecessor="download.win.nodejs"
+          predecessor="rc.win.x64.nodejs rc.win.x32.nodejs"
           directory="${installation.root}"
           command="mkdir"
           priority="100">
         <argument>${software.location/nodejs}</argument>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="install.nodejs"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="msiexec"
           priority="100">
         <argument>/a</argument>
-        <argument>&quot;${tmp.download.location/}node-v${nodejs.version}.msi&quot;</argument>
+        <argument>&quot;${tmp.download.location/nodejs.msi}&quot;</argument>
         <argument>/qn</argument>
         <argument>TARGETDIR=&quot;${software.location/nodejs/}&quot;</argument>
         <description>Extracts NodeJS</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="install.nodejs.cleanup.msi"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="del"
           priority="100">
-        <argument>&quot;${software.location/nodejs/}node-v${nodejs.version}.msi&quot;</argument>
+        <argument>&quot;${software.location/nodejs/nodejs.msi}&quot;</argument>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="mkdir.python.folder"
           excludedTriggers="STARTUP MANUAL"
+          predecessor="rc.win.x64.python rc.win.x32.python"
           directory="${installation.root}"
           command="mkdir"
           priority="100">
         <argument>${software.location/python}</argument>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="install.python"
           excludedTriggers="STARTUP MANUAL"
           filter=""
@@ -636,22 +554,22 @@
           command="msiexec"
           priority="100">
         <argument>/a</argument>
-        <argument>&quot;${tmp.download.location/}python-${python.version}.msi&quot;</argument>
+        <argument>&quot;${tmp.download.location/python.msi}&quot;</argument>
         <argument>/qn</argument>
         <argument>TARGETDIR=&quot;${software.location/python/}&quot;</argument>
         <description>Install MSI Python Package</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="install.python.cleanup"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="del"
           priority="100">
-        <argument>&quot;${software.location/python/}python-${python.version}.msi&quot;</argument>
+        <argument>&quot;${software.location/python/python.msi}&quot;</argument>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="update.workspaces"
           excludedTriggers="STARTUP MANUAL"
           predecessor="unzip.oasp.scripts"
@@ -660,7 +578,7 @@
           command="help.bat"
           priority="1000"/>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="remove.tmp.files"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
@@ -672,7 +590,7 @@
         <description>Remove all temporary files</description>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="remove.tmp.help.bat"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
@@ -724,7 +642,7 @@
         </setupTask>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="set.permissions"
           excludedTriggers="STARTUP MANUAL"
           successor="update.workspaces"
@@ -740,14 +658,14 @@
         <argument>scripts</argument>
       </setupTask>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="update.workspaces"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
           command="./update-all-workspaces"
           priority="1000"/>
       <setupTask
-          xsi:type="com.github.maybeec.oomph.task_2:cliTask"
+          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="remove.tmp.files"
           excludedTriggers="STARTUP MANUAL"
           filter=""
