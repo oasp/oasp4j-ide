@@ -7,4 +7,10 @@ call scripts\environment-project.bat
 
 popd
 
-start "" "%SYSTEMDRIVE%\Program Files\Git\git-bash.exe"
+if EXIST "%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe". (
+	"%SYSTEMDRIVE%\Program Files\Git\bin\sh.exe" --login
+) else (
+	if EXIST "%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe". (
+		"%SYSTEMDRIVE%\Program Files (x86)\Git\bin\sh.exe" --login
+	)
+)
