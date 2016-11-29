@@ -10,7 +10,7 @@
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xsi:schemaLocation="http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore"
-    name="com.github.products.oasp4j"
+    name="oasp4j.products"
     label="OASP4J">
   <annotation
       source="http://www.eclipse.org/oomph/setup/BrandingInfo">
@@ -134,6 +134,14 @@
         storageURI="scope://Installation">
       <description>Specifies where temporary data will be stored</description>
     </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP MANUAL"
+        name="installation.workspace"
+        defaultValue="master"
+        label="Workspace name for chosen projects">
+      <description>The name of the workspace folder to be created for checked out projects during installation</description>
+    </setupTask>
     <description>Configuration of commonly used paths</description>
   </setupTask>
   <setupTask
@@ -143,9 +151,15 @@
     <setupTask
         xsi:type="setup:VariableTask"
         id="installation.location"
+        excludedTriggers="STARTUP MANUAL"
         name="installation.location"
         value="${software.location}"
         storageURI="scope://Installation"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP MANUAL"
+        name="workspace.location"
+        value="${workspaces.location}/${installation.workspace}"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -520,10 +534,15 @@
           command="msiexec"
           priority="100">
         <argument>/a</argument>
-        <argument>&quot;${tmp.download.location/nodejs.msi}&quot;</argument>
+        <argument>&quot;${tmp.download.location/nodejs.msi|property}&quot;</argument>
         <argument>/qn</argument>
-        <argument>TARGETDIR=&quot;${software.location/nodejs/}&quot;</argument>
-        <description>Extracts NodeJS</description>
+        <argument>TARGETDIR=&quot;${software.location/nodejs/|property}&quot;</argument>
+        <argument>/log</argument>
+        <argument>&quot;${tmp.download.location/log_node.log|property}&quot;</argument>
+        <description>
+          Extracts NodeJS
+
+        </description>
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:cliTask"
@@ -556,6 +575,8 @@
         <argument>&quot;${tmp.download.location/python.msi}&quot;</argument>
         <argument>/qn</argument>
         <argument>TARGETDIR=&quot;${software.location/python/}&quot;</argument>
+        <argument>/log</argument>
+        <argument>&quot;${tmp.download.location/python_log.log}&quot;</argument>
         <description>Install MSI Python Package</description>
       </setupTask>
       <setupTask

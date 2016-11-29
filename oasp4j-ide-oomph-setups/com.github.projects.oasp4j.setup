@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<setup:Project
+<setup:ProjectCatalog
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:maven="http://www.eclipse.org/oomph/setup/maven/1.0"
-    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
-    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
-    name="oasp4j"
-    label="OASP4J">
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore"
+    name="oasp4j.projects"
+    label="OASP4J Projects">
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Github">
@@ -26,7 +24,7 @@
       xsi:type="setup:EclipseIniTask"
       excludedTriggers="STARTUP MANUAL"
       option="-Doomph.redirection.oaspProjects="
-      value="index:/redirectable.projects.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/OASP4JProjects.setup"
+      value="index:/redirectable.projects.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/com.github.projects.oasp4j.setup"
       vm="true">
     <description></description>
   </setupTask>
@@ -66,39 +64,12 @@
           rootFolder="${mvn.root.oasp4j}"
           locateNestedProjects="true"/>
     </setupTask>
-    <setupTask
-        xsi:type="setup.workingsets:WorkingSetTask">
-      <workingSet
-          name="OASP4J">
-        <predicate
-            xsi:type="predicates:AndPredicate">
-          <operand
-              xsi:type="predicates:NamePredicate"
-              pattern="oasp4j.*"/>
-          <operand
-              xsi:type="predicates:NotPredicate">
-            <operand
-                xsi:type="predicates:NamePredicate"
-                pattern="oasp4j-ide.*"/>
-          </operand>
-        </predicate>
-      </workingSet>
-    </setupTask>
     <stream
         name="master"/>
     <stream
         name="develop"/>
   </project>
   <project name="OASP4J-IDE">
-    <setupTask
-        xsi:type="setup.workingsets:WorkingSetTask">
-      <workingSet
-          name="OASP4J-IDE">
-        <predicate
-            xsi:type="predicates:NamePredicate"
-            pattern="oasp4j-ide.*"/>
-      </workingSet>
-    </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
         name="github.remoteURIs.oasp4jide"
@@ -140,8 +111,5 @@
     <stream
         name="dev_oomph"/>
   </project>
-  <logicalProjectContainer
-      xsi:type="setup:ProjectCatalog"
-      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
-  <description>OASP4J provides cool stuff.</description>
-</setup:Project>
+  <description>Projects to develop the OASP4J</description>
+</setup:ProjectCatalog>
