@@ -318,6 +318,7 @@
           xsi:type="setup:ResourceCopyTask"
           id="rc.win.oasp.scripts"
           excludedTriggers="STARTUP MANUAL"
+          successor="unzip.oasp.scripts"
           sourceURL="http://repo.maven.org/maven2/io/oasp/java/ide/oasp4j-ide-scripts/${oasp.scripts.version}/oasp4j-ide-scripts-${oasp.scripts.version}-linux.tar.gz"
           targetURL="${tmp.download.location/oasp4jScripts.tar.gz|uri}">
         <description>Fetches the OASP4J scripts archive</description>
