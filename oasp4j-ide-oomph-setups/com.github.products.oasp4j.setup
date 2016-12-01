@@ -44,8 +44,8 @@
         xsi:type="setup:VariableTask"
         id="oasp.scripts.version"
         name="oasp.scripts.version"
-        value="1.3.1"
-        defaultValue="1.3.1"
+        value="1.4.0"
+        defaultValue="1.4.0"
         storageURI="scope://Installation"
         label="oasp4j-scripts version">
       <description>OASP Scripts version to be used</description>
@@ -198,7 +198,7 @@
           xsi:type="setup:ResourceCopyTask"
           id="rc.win.oasp.scripts"
           excludedTriggers="STARTUP MANUAL"
-          sourceURL="http://repo1.maven.org/maven2/io/oasp/java/ide/oasp4j-ide-scripts/${oasp.scripts.version}/oasp4j-ide-scripts-${oasp.scripts.version}.zip"
+          sourceURL="http://repo.maven.org/maven2/io/oasp/java/ide/oasp4j-ide-scripts/${oasp.scripts.version}/oasp4j-ide-scripts-${oasp.scripts.version}-windows.zip"
           targetURL="${tmp.download.location/oasp4jScripts.zip|uri}">
         <description>Fetches the OASP4J scripts archive</description>
       </setupTask>
@@ -316,11 +316,11 @@
       </setupTask>
       <setupTask
           xsi:type="setup:ResourceCopyTask"
-          id="rc.linux.oasp4j.scripts"
+          id="rc.win.oasp.scripts"
           excludedTriggers="STARTUP MANUAL"
-          sourceURL="https://github.com/oasp/oasp4j-ide/raw/master/oasp4j-ide-oomph-setups/resources/oasp4j-ide-scripts-linux.zip"
-          targetURL="${tmp.download.location/oasp4jScripts.zip|uri}">
-        <description>Fetches the oasp4j scripts for linux</description>
+          sourceURL="http://repo.maven.org/maven2/io/oasp/java/ide/oasp4j-ide-scripts/${oasp.scripts.version}/oasp4j-ide-scripts-${oasp.scripts.version}-linux.tar.gz"
+          targetURL="${tmp.download.location/oasp4jScripts.tar.gz|uri}">
+        <description>Fetches the OASP4J scripts archive</description>
       </setupTask>
       <setupTask
           xsi:type="setup:CompoundTask"
@@ -366,16 +366,6 @@
         destinationDir="${tmp.download.location}"
         priority="100">
       <description>Unzips the oasp into the supposed folder</description>
-    </setupTask>
-    <setupTask
-        xsi:type="com.github.maybeec.oomph.task:unzipTask"
-        id="unzip.oasp.scripts"
-        excludedTriggers="STARTUP MANUAL"
-        predecessor="rc.win.oasp.scripts rc.linux.oasp4j.scripts"
-        zipFile="${tmp.download.location/oasp4jScripts.zip}"
-        destinationDir="${installation.root}"
-        priority="100">
-      <description></description>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
@@ -432,6 +422,15 @@
           priority="100">
         <description>Unzips the tomcat binaries</description>
       </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
+          id="unzip.oasp.scripts"
+          excludedTriggers="STARTUP MANUAL"
+          zipFile="${tmp.download.location/oasp4jScripts.tar.gz}"
+          destinationDir="${installation.root}"
+          priority="100">
+        <description></description>
+      </setupTask>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
@@ -467,6 +466,16 @@
           destinationDir="${software.location}"
           priority="100">
         <description>Unzips the tomcat binaries</description>
+      </setupTask>
+      <setupTask
+          xsi:type="com.github.maybeec.oomph.task:unzipTask"
+          id="unzip.oasp.scripts"
+          excludedTriggers="STARTUP MANUAL"
+          predecessor="rc.win.oasp.scripts"
+          zipFile="${tmp.download.location/oasp4jScripts.zip}"
+          destinationDir="${installation.root}"
+          priority="100">
+        <description></description>
       </setupTask>
       <description>Download tasks for external ressources on windows</description>
     </setupTask>
