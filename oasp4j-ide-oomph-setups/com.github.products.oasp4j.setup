@@ -1127,8 +1127,8 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         excludedTriggers="STARTUP MANUAL"
-        option="-Doomph.redirection.oasp="
-        value="index:/redirectable.products.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/com.github.products.oasp4j.setup"
+        option="-Doomph.redirection.setups="
+        value="http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/->https://themetalone.github.io/oomph-fork/index/"
         vm="true">
       <description></description>
     </setupTask>
