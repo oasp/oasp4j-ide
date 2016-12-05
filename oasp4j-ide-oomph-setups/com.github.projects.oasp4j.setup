@@ -28,6 +28,12 @@
       vm="true">
     <description></description>
   </setupTask>
+  <setupTask
+      xsi:type="setup:ResourceCreationTask"
+      excludedTriggers="STARTUP MANUAL"
+      content="This is just to ensure that this folder is there when the project is build"
+      targetURL="${workspace.location/.deleteme|uri}"
+      encoding="UTF-8"/>
   <project name="OASP4J">
     <setupTask
         xsi:type="setup:VariableTask"

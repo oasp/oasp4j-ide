@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:ProjectCatalog
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore"
+    name="org.eclipse"
+    label="Eclipse Projects">
+  <annotation
+      source="http://www.eclipse.org/oomph/setup/BrandingInfo">
+    <detail
+        key="imageURI">
+      <value>platform:/plugin/org.eclipse.oomph.setup.ui/icons/committers.png</value>
+    </detail>
+    <detail
+        key="siteURI">
+      <value>https://projects.eclipse.org/</value>
+    </detail>
+  </annotation>
+  <annotation
+      source="http://www.eclipse.org/oomph/setup/StatsSending">
+    <detail
+        key="uri">
+      <value>http://download.eclipse.org/stats/oomph</value>
+    </detail>
+  </annotation>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Global Variables">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.user.id"
+        defaultValue="anonymous"
+        label="Eclipse Git/Gerrit user ID"
+        documentation="The Eclipse user ID for Git/Gerrit commits.  Use 'anonymous' if you have no Eclipse user ID.">
+      <description>The user ID of the Eclipse Git/Gerrit account</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.author.name"
+        label="Eclipse author name for Git/Gerrit"
+        documentation="The Eclipse author name for Git/Gerrit commits.  Use 'Anonymous' if you're not a registered Eclipse Git author or don't plan to commit to Git.">
+      <description>The author name used for Git/Gerrit commits</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="git.author.email"
+        label="Eclipse author email for Git/Gerrit"
+        documentation="The Eclipse author email for Git/Gerrit commits.  Use 'anonymous@example.com' if you're not a registered Eclipse Git author or don't plan to commit to Git.">
+      <description>The email address associated with Git/Gerrit commits</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="bugzilla.id"
+        defaultValue="anonymous"
+        label="Eclipse user ID for Bugzilla/Hudson"
+        documentation="The Eclipse user ID for Bugzilla/Hudson.  Leave empty if you don't have an account or don't plan to submit bugs.">
+      <description>The email associated with the Eclipse Bugzilla/Hudson account</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="PASSWORD"
+        name="eclipse.user.password"
+        label="Eclipse password for Bugzilla/Hudson"
+        documentation="The Eclipse password for Bugzilla/Hudson.  Leave empty if you don't have an account or don't plan to submit bugs.">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
+        <detail
+            key="type">
+          <value>form</value>
+        </detail>
+        <detail
+            key="form.url">
+          <value>https://dev.eclipse.org/site_login/</value>
+        </detail>
+        <detail
+            key="form.cookie">
+          <value>PHPSESSID</value>
+        </detail>
+        <detail
+            key="form.parameters">
+          <value>username password submit</value>
+        </detail>
+        <detail
+            key="form.secure.parameters">
+          <value>password</value>
+        </detail>
+        <detail
+            key="form.filter">
+          <value>username=anonymous\&amp;.*</value>
+        </detail>
+        <detail
+            key="form.parameter.username">
+          <value>$${bugzilla.id}</value>
+        </detail>
+        <detail
+            key="form.parameter.password">
+          <value>$${value}</value>
+        </detail>
+        <detail
+            key="form.parameter.submit">
+          <value>Login</value>
+        </detail>
+        <detail
+            key="form.ok">
+          <value>Valid password for $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.info">
+          <value>Validate the password for $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.warning">
+          <value>Unable to validate the password for $${form.parameter.username} because $${form.url} is unreachable.</value>
+        </detail>
+        <detail
+            key="form.error">
+          <value>Invalid password for $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+      </annotation>
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/PasswordVerification">
+        <detail
+            key="type">
+          <value>form</value>
+        </detail>
+        <detail
+            key="form.url">
+          <value>https://git.eclipse.org/r/login/</value>
+        </detail>
+        <detail
+            key="form.parameters">
+          <value>username password submit</value>
+        </detail>
+        <detail
+            key="form.secure.parameters">
+          <value>password</value>
+        </detail>
+        <detail
+            key="form.filter">
+          <value>username=anonymous\&amp;.*</value>
+        </detail>
+        <detail
+            key="form.parameter.username">
+          <value>$${bugzilla.id}</value>
+        </detail>
+        <detail
+            key="form.parameter.password">
+          <value>$${value}</value>
+        </detail>
+        <detail
+            key="form.parameter.submit">
+          <value>Sign In</value>
+        </detail>
+        <detail
+            key="form.verification.url">
+          <value>https://git.eclipse.org/r/accounts/$${git.user.id|username}</value>
+        </detail>
+        <detail
+            key="form.verification.matches">
+          <value>.*&quot;email&quot;: &quot;$${form.parameter.username}&quot;.*</value>
+        </detail>
+        <detail
+            key="form.ok">
+          <value>Valid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.info">
+          <value>Validate the password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.warning">
+          <value>Unable to validate the password for account $${git.user.id} of $${form.parameter.username} because $${form.url} is unreachable.</value>
+        </detail>
+        <detail
+            key="form.error">
+          <value>Invalid password for account $${git.user.id} of $${form.parameter.username} at $${form.url}.</value>
+        </detail>
+      </annotation>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.gerrit.uri.pattern"
+        value="(https|ssh)://([^@/]+@)?(git.eclipse.org:29418/.*|git.eclipse.org/r/.*)"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.gerrit.remoteURIs"
+        label="Eclipse Gerrit Repository">
+      <choice
+          value="https://git.eclipse.org/r/@{remoteURI}"
+          label="HTTPS (read-only, anonymous, Gerrit)"/>
+      <choice
+          value="ssh://${git.user.id|username}@git.eclipse.org:29418/@{remoteURI}"
+          label="SSH (read-write, Gerrit)">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+      </choice>
+      <choice
+          value="https://${git.user.id|username}@git.eclipse.org/r/@{remoteURI}"
+          label="HTTPS (read-write, Gerrit)">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+      </choice>
+      <description>Choose from the available remote Gerrit URIs</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.git.remoteURIs"
+        label="Eclipse Git Repository">
+      <choice
+          value="http://git.eclipse.org/gitroot/@{remoteURI}.git"
+          label="HTTP (read-only, anonymous, direct)"/>
+      <choice
+          value="ssh://${git.user.id|username}@git.eclipse.org/gitroot/@{remoteURI}.git"
+          label="SSH (read-write, direct)">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+      </choice>
+      <choice
+          value="git://git.eclipse.org/gitroot/@{remoteURI}"
+          label="Git (read-only, anonymous, direct)"/>
+      <description>Choose from the available Git URIs</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.git.gerrit.remoteURIs"
+        label="Eclipse Gerrit or Git Repository">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/InheritedChoices">
+        <detail
+            key="inherit">
+          <value>eclipse.gerrit.remoteURIs eclipse.git.remoteURIs</value>
+        </detail>
+      </annotation>
+      <description>Choose from the available Gerrit or Git URIs</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        defaultValue="None"
+        storageURI="scope://Workspace"
+        label="Target Platform">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <choice
+          value="Oxygen"
+          label="Eclipse Oxygen - 4.7"/>
+      <choice
+          value="Neon"
+          label="Eclipse Neon - 4.6"/>
+      <choice
+          value="Mars"
+          label="Eclipse Mars - 4.5"/>
+      <choice
+          value="Luna"
+          label="Eclipse Luna - 4.4"/>
+      <choice
+          value="Kepler"
+          label="Eclipse Kepler - 4.3"/>
+      <choice
+          value="Juno"
+          label="Eclipse Juno - 4.2"/>
+      <choice
+          value="Indigo"
+          label="Eclipse Indigo - 3.7"/>
+      <choice
+          value="Helios"
+          label="Eclipse Helios - 3.6"/>
+      <choice
+          value="Galileo"
+          label="Eclipse Galileo - 3.5"/>
+      <choice
+          value="None"
+          label="None"/>
+      <description>Choose the compatibility level of the target platform</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.api.baseline.target.platform"
+        value="None"
+        storageURI="scope://Workspace"
+        label="API Baseline Target Platform">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <choice
+          value="Oxygen"
+          label="Eclipse Oxygen - 4.7"/>
+      <choice
+          value="Neon"
+          label="Eclipse Neon - 4.6"/>
+      <choice
+          value="Mars"
+          label="Eclipse Mars - 4.5"/>
+      <choice
+          value="Luna"
+          label="Eclipse Luna - 4.4"/>
+      <choice
+          value="Kepler"
+          label="Eclipse Kepler - 4.3"/>
+      <choice
+          value="Juno"
+          label="Eclipse Juno - 4.2"/>
+      <choice
+          value="Indigo"
+          label="Eclipse Indigo - 3.7"/>
+      <choice
+          value="Helios"
+          label="Eclipse Helios - 3.6"/>
+      <choice
+          value="Galileo"
+          label="Eclipse Galileo - 3.5"/>
+      <choice
+          value="None"
+          label="None"/>
+      <description>Choose the compatibility level of the target platform for the modular API baseline</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="Github">
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.user.id"
+          label="Github user ID">
+        <description>The Github user ID</description>
+      </setupTask>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.author.name"
+          label="Github author name"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.author.email"
+          label="Github author email"/>
+      <setupTask
+          xsi:type="setup:VariableTask"
+          name="github.remoteURIs"
+          label="Github repository">
+        <choice
+            value="git@github.com:@{remoteURI}.git"
+            label="Git (read-write)"/>
+        <choice
+            value="https://${github.user.id|username}@github.com/@{remoteURI}.git"
+            label="HTTPS (read-write)"/>
+        <choice
+            value="https://github.com/@{remoteURI}.git"
+            label="HTTPS (read-only, anonymous)"/>
+        <description>Choose from the available Github URIs</description>
+      </setupTask>
+    </setupTask>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:WorkspaceTask"
+      id="workspace"/>
+  <setupTask
+      xsi:type="setup:ResourceCreationTask"
+      content="MAX_RECENT_WORKSPACES=5&#xD;&#xA;RECENT_WORKSPACES=${workspace.location|property}&#xD;&#xA;RECENT_WORKSPACES_PROTOCOL=3&#xD;&#xA;SHOW_WORKSPACE_SELECTION_DIALOG=true&#xD;&#xA;eclipse.preferences.version=1"
+      targetURL="configuration:/.settings/org.eclipse.ui.ide.prefs"/>
+  <setupTask
+      xsi:type="setup:TextModifyTask"
+      url="configuration:/config.ini">
+    <modification
+        pattern="osgi\.instance\.area\.default=(@user\.home/workspace)">
+      <substitution>${workspace.location|path}</substitution>
+    </modification>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.targlets:TargletTask">
+    <targlet
+        name="Eclipse Platform"
+        activeRepositoryList="${eclipse.target.platform}">
+      <repositoryList
+          name="None"/>
+      <repositoryList
+          name="Oxygen">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.7-I-builds"/>
+      </repositoryList>
+      <repositoryList
+          name="Neon">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.6"/>
+      </repositoryList>
+      <repositoryList
+          name="Mars">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.5"/>
+      </repositoryList>
+      <repositoryList
+          name="Luna">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.4"/>
+      </repositoryList>
+      <repositoryList
+          name="Kepler">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.3"/>
+      </repositoryList>
+      <repositoryList
+          name="Juno">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.2"/>
+      </repositoryList>
+      <repositoryList
+          name="Indigo">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/3.7"/>
+      </repositoryList>
+      <repositoryList
+          name="Helios">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/3.6"/>
+      </repositoryList>
+      <repositoryList
+          name="Galileo">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/3.5"/>
+      </repositoryList>
+    </targlet>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.targlets:TargletTask"
+      id="api.baseline.targlet"
+      targetName="Modular API Baseline Target"
+      activateTarget="false">
+    <targlet
+        name="Eclipse Platform"
+        activeRepositoryList="${eclipse.api.baseline.target.platform}"
+        includeSources="false">
+      <repositoryList
+          name="None"/>
+      <repositoryList
+          name="Oxygen">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.7-I-builds"/>
+      </repositoryList>
+      <repositoryList
+          name="Neon">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.6"/>
+      </repositoryList>
+      <repositoryList
+          name="Mars">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.5"/>
+      </repositoryList>
+      <repositoryList
+          name="Luna">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.4"/>
+      </repositoryList>
+      <repositoryList
+          name="Kepler">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.3"/>
+      </repositoryList>
+      <repositoryList
+          name="Juno">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/4.2"/>
+      </repositoryList>
+      <repositoryList
+          name="Indigo">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/3.7"/>
+      </repositoryList>
+      <repositoryList
+          name="Helios">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/3.6"/>
+      </repositoryList>
+      <repositoryList
+          name="Galileo">
+        <repository
+            url="http://download.eclipse.org/eclipse/updates/3.5"/>
+      </repositoryList>
+    </targlet>
+  </setupTask>
+  <setupTask
+      xsi:type="pde:APIBaselineFromTargetTask"
+      predecessor="api.baseline.targlet"
+      name="Modular API Baseline"
+      targetName="Modular API Baseline Target"
+      version="0.0.0">
+    <description>An API baseline based on the target platform named 'Modular API Baseline Target'</description>
+  </setupTask>
+  <project href="user:/org.eclipse.projects.setup?name='user.project',label='&lt;User>',description='A container project for local user projects that are virtual members of the Eclipse.org project catalog'#/"/>
+  <project href="https://git.eclipse.org/c/acceleo/org.eclipse.acceleo.git/plain/releng/org.eclipse.acceleo.releng/Acceleo.setup#/"/>
+  <project href="https://git.eclipse.org/c/amalgam/org.eclipse.amalgam.git/plain/releng/org.eclipse.amalgam.releng/Amalgam.setup#/"/>
+  <project href="https://raw.githubusercontent.com/eclipse/buildship/master/buildship.setup#/"/>
+  <project href="http://git.eclipse.org/c/cdo/cdo.git/plain/plugins/org.eclipse.emf.cdo.releng/CDO.setup#/"/>
+  <project href="http://git.eclipse.org/c/cdt/org.eclipse.cdt.git/plain/releng/CDT.setup#/"/>
+  <project href="http://git.eclipse.org/c/recommenders/org.eclipse.recommenders.git/plain/tools/oomph/recommenders.setup#/"/>
+  <project href="interim/E4Tools.setup#/"/>
+  <project href="https://git.eclipse.org/c/ease/org.eclipse.ease.core.git/plain/releng/org.eclipse.ease.releng/oomph/ease.setup#/"/>
+  <project href="https://raw.githubusercontent.com/eclipse/elk/master/setups/EclipseLayoutKernel.setup#/"/>
+  <project href="https://git.eclipse.org/c/ecoretools/org.eclipse.ecoretools.git/plain/org.eclipse.emf.ecoretools.build/EcoreTools.setup#/"/>
+  <project href="https://git.eclipse.org/c/egit/egit.git/plain/tools/oomph/EGit.setup#/"/>
+  <project href="http://git.eclipse.org/c/emf/org.eclipse.emf.git/plain/releng/org.eclipse.emf.releng/EMF.setup#/"/>
+  <project href="interim/EMFCompare.setup#/"/>
+  <project href="interim/EMFDiffMerge.setup#/"/>
+  <project href="http://git.eclipse.org/c/emf-parsley/org.eclipse.emf-parsley.git/plain/devtools/org.eclipse.emf.parsley.oomph/EMFParsley.setup#/"/>
+  <project href="http://git.eclipse.org/c/epp/org.eclipse.epp.logging.git/plain/releng/tools/oomph/epp.setup#/"/>
+  <project href="interim/Equinox.setup#/"/>
+  <project href="https://git.eclipse.org/c/emf/org.eclipse.emf.eson.git/plain/releng/org.eclipse.emf.eson.releng/ESON.setup#/"/>
+  <project href="https://raw.githubusercontent.com/eclipse/ice/master/org.eclipse.ice.aggregator/ICE.setup#/"/>
+  <project href="https://git.eclipse.org/c/jdt/eclipse.jdt.git/plain/org.eclipse.jdt.releng/JDT.setup#/"/>
+  <project href="https://git.eclipse.org/c/jubula/org.eclipse.jubula.core.git/plain/org.eclipse.jubula.project.configuration/oomph/jubula.setup#/"/>
+  <project href="https://raw.githubusercontent.com/eclipse/kura/develop/kura/setups/kura.setup#/"/>
+  <project href="http://git.eclipse.org/c/mylyn/org.eclipse.mylyn.git/plain/org.eclipse.mylyn.releng/oomph/Mylyn.setup#/"/>
+  <project href="https://git.eclipse.org/c/nebula/org.eclipse.nebula.git/plain/oomph.setup#/"/>
+  <project href="http://git.eclipse.org/c/ocl/org.eclipse.ocl.git/plain/releng/org.eclipse.ocl.oomph/setups/ocl.setup#/"/>
+  <project href="Oomph.setup#/"/>
+  <project href="https://raw.githubusercontent.com/eclipse/packagedrone/master/setups/org.eclipse.packagedrone.oomph/PackageDrone.setup#/"/>
+  <project href="http://git.eclipse.org/c/papyrus/org.eclipse.papyrus.git/plain/releng/org.eclipse.papyrus.oomph/setups/papyrus.setup#/"/>
+  <project href="https://www.eclipse.org/papyrus-rt/content/setup/papyrus-rt-developer.setup#/"/>
+  <project href="interim/PDE.setup#/"/>
+  <project href="interim/Platform.setup#/"/>
+  <project href="http://git.eclipse.org/c/mmt/org.eclipse.qvtd.git/plain/releng/org.eclipse.qvtd.oomph/setups/qvtd.setup#/"/>
+  <project href="http://git.eclipse.org/c/mmt/org.eclipse.qvto.git/plain/releng/org.eclipse.qvto.oomph/setups/qvto.setup#/"/>
+  <project href="http://git.eclipse.org/c/rcptt/org.eclipse.rcptt.git/plain/releng/RCPTT.setup#/"/>
+  <project href="http://git.eclipse.org/c/rmf/org.eclipse.rmf.git/plain/org.eclipse.rmf.releng/oomph/RMF.setup#/"/>
+  <project href="interim/SimultaneousReleaseTrain.setup#/"/>
+  <project href="https://git.eclipse.org/c/scout/oomph.git/plain/Scout.setup#/"/>
+  <project href="http://git.eclipse.org/c/sirius/org.eclipse.sirius.git/plain/releng/org.eclipse.sirius.settings/Sirius.setup#/"/>
+  <project href="https://raw.githubusercontent.com/eclipse/smarthome/master/targetplatform/EclipseSmartHome.setup#/"/>
+  <project href="http://git.eclipse.org/c/swtbot/org.eclipse.swtbot.git/plain/devtools/oomph/SWTBot.setup#/"/>
+  <project href="http://git.eclipse.org/c/tracecompass/org.eclipse.tracecompass.git/plain/TraceCompass.setup#/"/>
+  <project href="https://git.eclipse.org/c/tycho/org.eclipse.tycho.git/plain/setup/Tycho.setup#/"/>
+  <project href="http://git.eclipse.org/c/oomph/uss.git/plain/org.eclipse.userstorage.releng/UserStorage.setup#/"/>
+  <project href="http://git.eclipse.org/c/mylyn/org.eclipse.mylyn.docs.vex.git/plain/org.eclipse.vex.releng/Vex.setup#/"/>
+  <project href="https://git.eclipse.org/c/viatra/org.eclipse.viatra.git/plain/releng/org.eclipse.viatra.setup/VIATRAEMF.setup#/"/>
+  <project href="http://git.eclipse.org/c/webtools/webtools.releng.git/plain/installer/WTP.setup#/"/>
+  <project href="https://raw.githubusercontent.com/eclipse/xtext-eclipse/master/releng/org.eclipse.xtext.contributor/Xtext.setup#/"/>
+  <project href="http://git.eclipse.org/c/m2t/org.eclipse.xpand.git/plain/releng/org.eclipse.xpand.releng/Xpand.setup#/"/>
+  <project href="http://git.eclipse.org/c/xsd/org.eclipse.xsd.git/plain/plugins/org.eclipse.xsd/XSD.setup#/"/>
+  <description>All the projects at Eclipse.org that provide automated setup support along with additional user-added projects</description>
+</setup:ProjectCatalog>

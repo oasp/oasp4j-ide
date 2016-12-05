@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:ProjectCatalog
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    name="com.github"
+    label="Github Projects">
+  <annotation
+      source="http://www.eclipse.org/oomph/setup/StatsSending">
+    <detail
+        key="uri">
+      <value>http://download.eclipse.org/stats/oomph</value>
+    </detail>
+  </annotation>
+  <annotation
+      source="http://www.eclipse.org/oomph/setup/BrandingInfo">
+    <detail
+        key="imageURI">
+      <value>https://raw.githubusercontent.com/github-archive/media/master/octocats/blacktocat-32.png</value>
+    </detail>
+    <detail
+        key="siteURI">
+      <value>https://github.com/</value>
+    </detail>
+  </annotation>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="Global Variables">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.user.id"
+        defaultValue="anonymous"
+        label="Github user ID"
+        documentation="The Eclipse user ID for Git/Gerrit commits.  Use 'anonymous' if you have no Eclipse user ID.">
+      <description>The user ID of the Github account</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.author.name"
+        label="Github author name"
+        documentation="The Eclipse author name for Git/Gerrit commits.  Use 'Anonymous' if you're not a registered Eclipse Git author or don't plan to commit to Git.">
+      <description>The author name used for Github commits</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.author.email"
+        label="Github author email"
+        documentation="The Eclipse author email for Git/Gerrit commits.  Use 'anonymous@example.com' if you're not a registered Eclipse Git author or don't plan to commit to Git.">
+      <description>The email address associated with Github commits</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        type="PASSWORD"
+        name="github.user.password"
+        label="Github password for issues">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/PasswordVerificationDisabled">
+        <detail
+            key="type">
+          <value>form</value>
+        </detail>
+        <detail
+            key="form.url">
+          <value>https://github.com/session</value>
+        </detail>
+        <detail
+            key="form.cookie">
+          <value>PHPSESSID</value>
+        </detail>
+        <detail
+            key="form.parameters">
+          <value>login password authenticity_token utf8 commit</value>
+        </detail>
+        <detail
+            key="form.secure.parameters">
+          <value>password</value>
+        </detail>
+        <detail
+            key="form.filter">
+          <value>login=anonymous\&amp;.*</value>
+        </detail>
+        <detail
+            key="form.parameter.login">
+          <value>$${github.user.id}</value>
+        </detail>
+        <detail
+            key="form.parameter.password">
+          <value>$${value}</value>
+        </detail>
+        <detail
+            key="form.parameter.utf8">
+          <value>✓</value>
+        </detail>
+        <detail
+            key="form.parameter.commit">
+          <value>Sign in</value>
+        </detail>
+        <detail
+            key="form.ok">
+          <value>Valid password for $${form.parameter.login} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.info">
+          <value>Validate the password for $${form.parameter.login} at $${form.url}.</value>
+        </detail>
+        <detail
+            key="form.warning">
+          <value>Unable to validate the password for $${form.parameter.login} because $${form.url} is unreachable.</value>
+        </detail>
+        <detail
+            key="form.error">
+          <value>Invalid password for $${form.parameter.login} at $${form.url}.</value>
+        </detail>
+      </annotation>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="github.remoteURIs"
+        label="Github repository">
+      <choice
+          value="git@github.com:@{remoteURI}.git"
+          label="Git (read-write)"/>
+      <choice
+          value="https://${github.user.id|username}@github.com/@{remoteURI}.git"
+          label="HTTPS (read-write)">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/MatchChoice"/>
+      </choice>
+      <choice
+          value="https://github.com/@{remoteURI}.git"
+          label="HTTPS (read-only, anonymous)"/>
+      <description>Choose from the available Github URIs</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        name="eclipse.target.platform"
+        defaultValue="None"
+        storageURI="scope://Workspace"
+        label="Target Platform">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/GlobalVariable"/>
+      <choice
+          value="Oxygen"
+          label="Eclipse Oxygen - 4.7"/>
+      <choice
+          value="Neon"
+          label="Eclipse Neon - 4.6"/>
+      <choice
+          value="Mars"
+          label="Eclipse Mars - 4.5"/>
+      <choice
+          value="Luna"
+          label="Eclipse Luna - 4.4"/>
+      <choice
+          value="Kepler"
+          label="Eclipse Kepler - 4.3"/>
+      <choice
+          value="Juno"
+          label="Eclipse Juno - 4.2"/>
+      <choice
+          value="Indigo"
+          label="Eclipse Indigo - 3.7"/>
+      <choice
+          value="Helios"
+          label="Eclipse Helios - 3.6"/>
+      <choice
+          value="Galileo"
+          label="Eclipse Galileo - 3.5"/>
+      <choice
+          value="None"
+          label="None"/>
+      <description>Choose the compatibility level of the target platform</description>
+    </setupTask>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:WorkspaceTask"
+      id="workspace"/>
+  <setupTask
+      xsi:type="setup:ResourceCreationTask"
+      content="MAX_RECENT_WORKSPACES=5&#xD;&#xA;RECENT_WORKSPACES=${workspace.location|property}&#xD;&#xA;RECENT_WORKSPACES_PROTOCOL=3&#xD;&#xA;SHOW_WORKSPACE_SELECTION_DIALOG=true&#xD;&#xA;eclipse.preferences.version=1"
+      targetURL="configuration:/.settings/org.eclipse.ui.ide.prefs"/>
+  <setupTask
+      xsi:type="setup:TextModifyTask"
+      url="configuration:/config.ini">
+    <modification
+        pattern="osgi\.instance\.area\.default=(@user\.home/workspace)">
+      <substitution>${workspace.location|path}</substitution>
+    </modification>
+  </setupTask>
+  <project href="user:/com.github.projects.setup?name='user.project',label='&lt;User>',description='A container project for local user projects that are virtual members of the Github.com project catalog'#/"/>
+  <project href="https://raw.githubusercontent.com/JanKoehnlein/FXDiagram/master/de.fxdiagram.docs/FXDiagram.setup#/"/>
+  <project href="https://raw.githubusercontent.com/LorenzoBettini/javamm/master/javamm.workspace/Javamm.setup#/"/>
+  <project href="https://raw.githubusercontent.com/LorenzoBettini/jbase/master/jbase.workspace/Jbase.setup#/"/>
+  <project href="https://raw.githubusercontent.com/m2e-code-quality/m2e-code-quality/master/m2e-code-quality.setup#/"/>
+  <project href="https://raw.githubusercontent.com/openhab/openhab-distro/master/launch/openHAB2.setup#/"/>
+  <project href="https://raw.githubusercontent.com/NumberFour/n4js/master/releng/eu.numberfour.n4js.targetplatform/N4JS.setup#/"/>
+  <project href="https://raw.githubusercontent.com/tlaplus/tlaplus/master/general/ide/TLA.setup#/"/>
+  <project href="https://github.com/meysholdt/Xpect/raw/master/org.xpect.releng/Xpect.setup#/"/>
+  <project href="https://raw.githubusercontent.com/LorenzoBettini/xsemantics/master/devtools/it.xsemantics.workspace/Xsemantics.setup#/"/>
+  <description>All the projects at Github.com that provide automated setup support along with additional user-added projects</description>
+</setup:ProjectCatalog>

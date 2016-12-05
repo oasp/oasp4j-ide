@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Product
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
+    name="oomph.installer"
+    label="Oomph's Eclipse Installer">
+  <annotation
+      source="http://www.eclipse.org/oomph/setup/BrandingInfo">
+    <detail
+        key="imageURI">
+      <value>http://www.eclipse.org/downloads/images/oomph-42x42.png</value>
+    </detail>
+    <detail
+        key="folderName">
+      <value>eclipse-installer</value>
+    </detail>
+    <detail
+        key="folderName.macosx">
+      <value>Eclipse Installer</value>
+    </detail>
+  </annotation>
+  <version name="local"
+      label="Local"
+      requiredJavaVersion="1.7">
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="Eclipse Installer">
+      <requirement
+          name="org.eclipse.oomph.setup.installer.product"/>
+      <repository
+          url="${oomph.product.update.url}"/>
+    </setupTask>
+  </version>
+  <version name="mars"
+      label="Mars"
+      requiredJavaVersion="1.7">
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="Eclipse Installer">
+      <requirement
+          name="org.eclipse.oomph.setup.installer.product"/>
+      <repository
+          url="http://download.eclipse.org/oomph/products/repository"/>
+    </setupTask>
+  </version>
+  <description>Oomph's Eclipse Installer product</description>
+</setup:Product>
