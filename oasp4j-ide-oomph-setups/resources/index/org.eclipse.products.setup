@@ -1100,8 +1100,6 @@
     <repository
         url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.8.0/N/0.8.0.201409231215/"/>
     <repository
-        url="http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.16.0"/>
-    <repository
         url="http://subclipse.tigris.org/update_1.10.x"/>
     <repository
         url="http://update.eclemma.org/"/>
@@ -1153,7 +1151,6 @@
       name="JDK config">
     <setupTask
         xsi:type="setup:VariableTask"
-        id=""
         excludedTriggers="STARTUP MANUAL"
         type="JRE"
         name="jre.target.location-1.8"
