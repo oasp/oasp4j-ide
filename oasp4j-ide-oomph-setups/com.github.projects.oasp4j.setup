@@ -29,11 +29,27 @@
     <description></description>
   </setupTask>
   <setupTask
-      xsi:type="setup:ResourceCreationTask"
-      excludedTriggers="STARTUP MANUAL"
-      content="This is just to ensure that this folder is there when the project is build"
-      targetURL="${workspace.location/.deleteme|uri}"
-      encoding="UTF-8"/>
+      xsi:type="setup:CompoundTask"
+      id="cmp.workspaces"
+      name="Workspace Ini">
+    <setupTask
+        xsi:type="setup:WorkspaceTask"
+        excludedTriggers="STARTUP MANUAL"
+        location="${workspace.location}"/>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP MANUAL"
+        name="installation.workspace"
+        defaultValue="master"
+        label="Workspace name for chosen projects">
+      <description>The name of the workspace folder to be created for checked out projects during installation</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP MANUAL"
+        name="workspace.location"
+        value="${workspaces.location/}${installation.workspace}"/>
+  </setupTask>
   <project name="OASP4J">
     <setupTask
         xsi:type="setup:VariableTask"

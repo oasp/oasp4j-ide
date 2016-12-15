@@ -141,14 +141,6 @@
         storageURI="scope://Installation">
       <description>Specifies where temporary data will be stored</description>
     </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        excludedTriggers="STARTUP MANUAL"
-        name="installation.workspace"
-        defaultValue="master"
-        label="Workspace name for chosen projects">
-      <description>The name of the workspace folder to be created for checked out projects during installation</description>
-    </setupTask>
     <description>Configuration of commonly used paths</description>
   </setupTask>
   <setupTask
@@ -162,11 +154,6 @@
         name="installation.location"
         value="${software.location}"
         storageURI="scope://Installation"/>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        excludedTriggers="STARTUP MANUAL"
-        name="workspace.location"
-        value="${workspaces.location}/${installation.workspace}"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
