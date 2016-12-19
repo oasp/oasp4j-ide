@@ -1,3 +1,3 @@
 @echo off
 
-msiexec /a "%~dp0test\%1.msi" /qn TARGETDIR="%~dp0software" /L* log.txt
+msiexec /a temp\%1.msi /qn TARGETDIR="%~dp0software" /L* temp\%1_log.txt
