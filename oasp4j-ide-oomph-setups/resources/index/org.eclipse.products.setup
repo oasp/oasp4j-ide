@@ -206,6 +206,15 @@
         <description>Fetches the windows helper script for automatic oasp4j script execution at the end of the installation process</description>
       </setupTask>
       <setupTask
+          xsi:type="setup:ResourceCopyTask"
+          id="rc.win.msiiinstall.bat"
+          excludedTriggers="STARTUP MANUAL"
+          predecessor="rc.win.oasp.scripts rc.oasp"
+          sourceURL="https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/resources/msiinstall.bat"
+          targetURL="${installation.root/msiinstall.bat|uri}">
+        <description>Fetches the windows helper script for installation of msi packages</description>
+      </setupTask>
+      <setupTask
           xsi:type="setup:CompoundTask"
           id="tasks.download.external.ressources.windows.x64"
           filter="(osgi.arch=x86_64)"
@@ -222,6 +231,7 @@
             xsi:type="setup:ResourceCopyTask"
             id="rc.win.x64.nodejs"
             excludedTriggers="STARTUP MANUAL"
+            successor="install.nodejs"
             filter=""
             sourceURL="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x64.msi"
             targetURL="${tmp.download.location/nodejs.msi|uri}">
@@ -231,6 +241,7 @@
             xsi:type="setup:ResourceCopyTask"
             id="rc.win.x64.python"
             excludedTriggers="STARTUP MANUAL"
+            successor="install.python"
             sourceURL="https://www.python.org/ftp/python/${python.version}/python-${python.version}.amd64.msi"
             targetURL="${tmp.download.location/python.msi|uri}">
           <description>Fetches the x64 Python ${python.version} windows installer package</description>
@@ -254,6 +265,7 @@
             xsi:type="setup:ResourceCopyTask"
             id="rc.win.x32.nodejs"
             excludedTriggers="STARTUP MANUAL"
+            successor="install.nodejs"
             filter=""
             sourceURL="https://nodejs.org/dist/v${nodejs.version}/node-v${nodejs.version}-x86.msi"
             targetURL="${tmp.download.location/nodejs.msi|uri}">
@@ -263,6 +275,7 @@
             xsi:type="setup:ResourceCopyTask"
             id="rc.win.x32.python"
             excludedTriggers="STARTUP MANUAL"
+            successor="install.python"
             sourceURL="https://www.python.org/ftp/python/${python.version}/python-${python.version}.msi"
             targetURL="${tmp.download.location/python.msi|uri}">
           <description>Fetches the x32 Python ${python.version} windows installer package</description>
@@ -518,31 +531,17 @@
     <setupTask
         xsi:type="setup:CompoundTask"
         id="tasks.finalize.external.resources.win"
+        predecessor="rc.win.msiiinstall.bat"
         filter="(os.name=Windows*)"
         name="Windows">
-      <setupTask
-          xsi:type="com.github.maybeec.oomph.task_1:cliTask"
-          id="mkdir.nodejs.folder"
-          excludedTriggers="STARTUP MANUAL"
-          predecessor="rc.win.x64.nodejs rc.win.x32.nodejs"
-          directory="${installation.root}"
-          command="mkdir"
-          priority="100">
-        <argument>${software.location/nodejs}</argument>
-      </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="install.nodejs"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
-          command="msiexec"
+          command="msiinstall.bat"
           priority="100">
-        <argument>/a</argument>
-        <argument>&quot;${tmp.download.location/nodejs.msi|property}&quot;</argument>
-        <argument>/qn</argument>
-        <argument>TARGETDIR=&quot;${software.location/nodejs/|property}&quot;</argument>
-        <argument>/log</argument>
-        <argument>&quot;${tmp.download.location/log_node.log|property}&quot;</argument>
+        <argument>nodejs</argument>
         <description>
           Extracts NodeJS
 
@@ -555,32 +554,29 @@
           directory="${installation.root}"
           command="del"
           priority="100">
-        <argument>&quot;${software.location/nodejs/nodejs.msi}&quot;</argument>
+        <argument>&quot;${software.location/nodejs.msi}&quot;</argument>
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:cliTask"
-          id="mkdir.python.folder"
+          id="mkdir.python"
           excludedTriggers="STARTUP MANUAL"
-          predecessor="rc.win.x64.python rc.win.x32.python"
           directory="${installation.root}"
-          command="mkdir"
+          command="mdkir"
           priority="100">
         <argument>${software.location/python}</argument>
+        <description>creates the installation directory for python</description>
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:cliTask"
           id="install.python"
           excludedTriggers="STARTUP MANUAL"
+          predecessor="mkdir.python"
           filter=""
           directory="${installation.root}"
-          command="msiexec"
+          command="msiinstall.bat"
           priority="100">
-        <argument>/a</argument>
-        <argument>&quot;${tmp.download.location/python.msi}&quot;</argument>
-        <argument>/qn</argument>
-        <argument>TARGETDIR=&quot;${software.location/python/}&quot;</argument>
-        <argument>/log</argument>
-        <argument>&quot;${tmp.download.location/python_log.log}&quot;</argument>
+        <argument>python</argument>
+        <argument>python</argument>
         <description>Install MSI Python Package</description>
       </setupTask>
       <setupTask
