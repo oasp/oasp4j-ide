@@ -561,7 +561,7 @@
           id="mkdir.python"
           excludedTriggers="STARTUP MANUAL"
           directory="${installation.root}"
-          command="mdkir"
+          command="mkdir"
           priority="100">
         <argument>${software.location/python}</argument>
         <description>creates the installation directory for python</description>
