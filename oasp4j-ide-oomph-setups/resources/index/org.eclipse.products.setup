@@ -243,7 +243,7 @@
             excludedTriggers="STARTUP MANUAL"
             successor="install.python"
             sourceURL="https://www.python.org/ftp/python/${python.version}/python-${python.version}.amd64.msi"
-            targetURL="${tmp.download.location/python.msi|uri}">
+            targetURL="${tmp.download.location/py.msi|uri}">
           <description>Fetches the x64 Python ${python.version} windows installer package</description>
         </setupTask>
         <description>Download tasks for external ressources on windows x64</description>
@@ -277,7 +277,7 @@
             excludedTriggers="STARTUP MANUAL"
             successor="install.python"
             sourceURL="https://www.python.org/ftp/python/${python.version}/python-${python.version}.msi"
-            targetURL="${tmp.download.location/python.msi|uri}">
+            targetURL="${tmp.download.location/py.msi|uri}">
           <description>Fetches the x32 Python ${python.version} windows installer package</description>
         </setupTask>
         <description></description>
@@ -575,7 +575,7 @@
           directory="${installation.root}"
           command="msiinstall.bat"
           priority="100">
-        <argument>python</argument>
+        <argument>py</argument>
         <argument>python</argument>
         <description>Install MSI Python Package</description>
       </setupTask>
@@ -586,7 +586,7 @@
           directory="${installation.root}"
           command="del"
           priority="100">
-        <argument>&quot;${software.location/python/python.msi}&quot;</argument>
+        <argument>&quot;${software.location/python/py.msi}&quot;</argument>
       </setupTask>
       <setupTask
           xsi:type="com.github.maybeec.oomph.task_1:cliTask"
