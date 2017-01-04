@@ -7,7 +7,7 @@ call scripts\environment-project.bat
 set WORKSPACES=%CD%\%WORKSPACES_PATH%
 set UPDATING_ALL_WORKSPACES=true
 
-if not exist %WORKSPACES% (
+if not exist "%WORKSPACES%" (
 	echo Can not find directory: %WORKSPACES%
 	echo Execution aborted
 	goto :end
