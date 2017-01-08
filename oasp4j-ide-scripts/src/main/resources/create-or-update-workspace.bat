@@ -14,7 +14,7 @@ pushd %~dp0
 
 rem ********************************************************************************
 rem if SOFTWARE_PATH does not exist, do nothing
-if not exist %SOFTWARE_PATH% (
+if not exist "%SOFTWARE_PATH%" (
 	echo Could not find folder "%SOFTWARE_PATH%"
 	echo If you want to change its name see the variables.bat
 	echo Execution aborted
@@ -32,7 +32,7 @@ if not exist %WORKSPACES_PATH% (
 
 rem ********************************************************************************
 rem if the current workspace does not exist, do nothing
-if not exist %WORKSPACE_PATH% (
+if not exist "%WORKSPACE_PATH%" (
 	echo Could not find workspace %WORKSPACE_PATH%
 	echo Execution aborted
 	goto :end
