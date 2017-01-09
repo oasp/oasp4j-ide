@@ -40,7 +40,7 @@
         xsi:type="setup:VariableTask"
         excludedTriggers="STARTUP MANUAL"
         name="installation.workspace"
-        defaultValue="oasp"
+        defaultValue="main"
         label="Workspace name for chosen projects">
       <description>The name of the workspace folder to be created for checked out projects during installation</description>
     </setupTask>
