@@ -25,7 +25,12 @@ import java.util.logging.Level;
  *
  */
 public class Configurator {
+	
 
+  /**
+   * Handler for .pref files.
+   */
+  private final TextHandler textHandler;
   /**
    * Handler for .pref files.
    */
@@ -50,6 +55,11 @@ public class Configurator {
    * Relative path to eclipse workspace update templates.
    */
   private final String pluginsUpdateDirectoryPath;
+  
+  /**
+   * Relative path to eclipse workspace update templates.
+   */
+  private final String pluginsPLDirectoryPath;
 
   /**
    * Creates a new {@link Configurator} with the given paths.
@@ -64,10 +74,23 @@ public class Configurator {
     Resolver resolver = createResolver(replacementPatternsPath, Strings.REPLACEMENT_REG_EX);
     this.prefHandler = new PrefHandler(resolver);
     this.xmlHandler = new XmlHandler(resolver);
+    this.textHandler = new TextHandler(resolver);
     this.pluginsSetupDirectoryPath = eclipseTemplatesPath + Strings.FILE_SEPARATOR + Strings.FOLDER_SETUP;
     this.pluginsUpdateDirectoryPath = eclipseTemplatesPath + Strings.FILE_SEPARATOR + Strings.FOLDER_UPDATE;
+    this.pluginsPLDirectoryPath = eclipseTemplatesPath + Strings.FILE_SEPARATOR + Strings.FOLDER_PL;
   }
 
+  /**
+   * inject Production Line contents (url and user name) in settings file
+   */
+  public void injectPLContent() {
+
+    for (EclipseWorkspaceFile file : collectProductionLineWorkspaceFiles()) {
+    	System.out.println(file.plFile.getPath());
+    	mergePLFiles(file);
+    }
+  }
+  
   /**
    * Creates/updates the workspace. See {@link #mergeFiles(EclipseWorkspaceFile)} for further details.
    */
@@ -90,6 +113,32 @@ public class Configurator {
     }
   }
 
+  /**
+   * Update the workspaceFile from the Production Line settings file. 
+   * with the updateFile.
+   *
+   * @param file is the {@link EclipseWorkspaceFile}.
+   */
+  protected void mergePLFiles(EclipseWorkspaceFile file) {
+
+    if (file.relativePath.endsWith(".prefs")) {
+      this.prefHandler.updatePL(file.workspaceFile, file.plFile);
+    } else {
+      File source;
+      if (file.plFile.exists()) {
+        source = file.plFile;
+      } else {
+        return;
+      }
+      if ((file.relativePath.endsWith(".xml")) || (file.relativePath.endsWith(".xmi"))
+          || (file.relativePath.endsWith(".launch"))) {
+        this.xmlHandler.update(source, file.workspaceFile);
+      } else if (file.relativePath.endsWith(".txt")) {
+        this.textHandler.update(source,file.workspaceFile);
+      }
+    }
+  }
+  
   /**
    * Creates or updates the workspaceFile with setupFile or updateFile. If the workspaceFile does not exist, the
    * workspaceFile will be the setupFile merged with the updateFile. If the workspaceFile does exist, it will be merged
@@ -274,14 +323,18 @@ public class Configurator {
         }
         workspacePath = workspacePath + Strings.FILE_SEPARATOR + workspacePathSuffix;
         Log.LOGGER.info("No .metadata folder found. Relocated to " + workspacePathSuffix);
+        
       }
-
       Configurator configurator = new Configurator(workspacePath, replacementPatternsPath, eclipseTemplatesPath);
 
       if (args[0].equals("-u")) {
         Log.LOGGER.info("Updating workspace");
         configurator.updateWorkspace();
         Log.LOGGER.info("Completed");
+      } else if (args[0].equals("-pl")) {
+          Log.LOGGER.info("Updating Production Line workspace settings");
+          configurator.injectPLContent();
+          Log.LOGGER.info("Completed");
       } else if (args[0].equals("-c")) {
         Log.LOGGER.info("Merging workspace changes back into templates (excluding new properties)");
         configurator.saveChangesInWorkspace(false);
@@ -307,6 +360,18 @@ public class Configurator {
     Log.LOGGER.info(buffer.toString());
   }
 
+  /**
+   * @return a {@link Collection} with all available {@link EclipseWorkspaceFile}.
+   */
+  private Collection<EclipseWorkspaceFile> collectProductionLineWorkspaceFiles() {
+
+    Map<String, EclipseWorkspaceFile> fileMap = new HashMap<String, EclipseWorkspaceFile>();
+    collectWorkspaceFiles(new File(this.pluginsPLDirectoryPath), fileMap);
+    Collection<EclipseWorkspaceFile> values = fileMap.values();
+    Log.LOGGER.info("Collected " + values.size() + " configuration files.");
+    return values;
+  }
+  
   /**
    * @return a {@link Collection} with all available {@link EclipseWorkspaceFile}.
    */
@@ -395,6 +460,9 @@ public class Configurator {
 
     /** The file template for update. */
     private final File updateFile;
+    
+    /** The file template for update. */
+    private final File plFile;
 
     /**
      * Creates a new instance.
@@ -412,7 +480,8 @@ public class Configurator {
       this.workspaceFile = new File(Configurator.this.workspacePath + Strings.FILE_SEPARATOR + relativePath);
       this.setupFile = new File(Configurator.this.pluginsSetupDirectoryPath + Strings.FILE_SEPARATOR + relativePath);
       this.updateFile = new File(Configurator.this.pluginsUpdateDirectoryPath + Strings.FILE_SEPARATOR + relativePath);
-      assert (this.setupFile.exists() || this.updateFile.exists());
+      this.plFile = new File(Configurator.this.pluginsPLDirectoryPath + Strings.FILE_SEPARATOR + relativePath);
+      assert (this.setupFile.exists() || this.updateFile.exists() || this.plFile.exists());
     }
 
     /**

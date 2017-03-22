@@ -28,7 +28,12 @@ public abstract class Strings {
    * templates for the update of an workspace.
    */
   public static final String FOLDER_UPDATE = "update";
-
+  
+  /**
+   * The {@link java.io.File#getName() name} of the {@link java.io.File#isDirectory() folder} with the configuration
+   * templates for the update of an workspace.
+   */
+  public static final String FOLDER_PL = "productionLine";
   /**
    * The {@link java.io.File#getName() name} of the {@link java.io.File#isDirectory() folder} with the plugin
    * configuration in the eclipse workspace.
