@@ -8,7 +8,7 @@
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://de-mucevolve02/oomph/tasks/models/Git.ecore http://www.eclipse.org/oomph/setup/maven/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Maven.ecore"
     name="oasp4j.ide.git"
-    label="OASP4J IDE">
+    label="OASP4J">
   <setupTask
       xsi:type="setup:VariableTask"
       name="github.remoteURIs.oasp4j"
