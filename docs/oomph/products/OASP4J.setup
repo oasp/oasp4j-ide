@@ -1120,16 +1120,8 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         excludedTriggers="STARTUP MANUAL"
-        option="-Doomph.redirection.oaspProjects="
-        value="index:/redirectable.projects.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/OASP4JProjects.setup"
-        vm="true">
-      <description></description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:EclipseIniTask"
-        excludedTriggers="STARTUP MANUAL"
-        option="-Doomph.redirection.setups="
-        value="http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/resources/index/"
+        option="-Doomph.redirection.index.redirection="
+        value="index:/org.eclipse.setup->http://oasp.github.io/oasp4j-ide/oomph/index/org.eclipse.setup"
         vm="true">
       <description></description>
     </setupTask>

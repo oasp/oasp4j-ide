@@ -2,7 +2,9 @@
 <setup:ProductCatalog
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     name="oasp"
     label="OASP">
   <annotation
@@ -19,6 +21,35 @@
       <value>https://oasp.github.io/</value>
     </detail>
   </annotation>
-  <description>Provides the IDE of the OASP project</description>
+  <setupTask
+      xsi:type="setup:InstallationTask"
+      id="installation"/>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      label="Oomph Tasks"
+      licenseConfirmationDisabled="true">
+    <requirement
+        name="org.eclipse.oomph.p2.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.core.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.git.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.jdt.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.maven.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.targlets.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.setup.workingsets.feature.group"/>
+    <requirement
+        name="org.eclipse.oomph.targlets.feature.group"/>
+    <repository
+        url="${oomph.update.url}"/>
+  </setupTask>
   <product href="http://oasp.github.io/oasp4j-ide/oomph/products/OASP4J.setup#/"/>
+  <product href="http://oasp.github.io/oasp4j-ide/oomph/products/OomphDev.setup#/"/>
+  <description>Provides the IDE of the OASP project</description>
 </setup:ProductCatalog>
