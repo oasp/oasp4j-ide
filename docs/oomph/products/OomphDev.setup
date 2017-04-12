@@ -7,9 +7,10 @@
     xmlns:com.github.maybeec.oomph.task_1="http://maybeec.github.io/oomph-task-cli/1.0"
     xmlns:fscopy="http://com.github.maybeec/task-fscopy/1.0"
     xmlns:fsrename="http://maybeec.github.io/task-fsrename/1.0"
+    xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore"
+    xsi:schemaLocation="http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore"
     name="oasp.oomph.ide"
     label="oasp-oomph-ide">
   <annotation
@@ -33,9 +34,33 @@
   </annotation>
   <setupTask
       xsi:type="setup.p2:P2Task"
-      excludedTriggers="STARTUP"
-      label="OASP4J"
+      label="Oomph SDK"
       licenseConfirmationDisabled="true">
+    <requirement
+        name="org.eclipse.oomph.setup.sdk.feature.group"/>
+    <requirement
+        name="com.github.maybeec.oomph.task.unzip.feature.feature.group"/>
+    <requirement
+        name="com.github.maybeec.oomph.task.cli.feature.feature.group"/>
+    <requirement
+        name="com.github.maybeec.oomph.task.fscopy.feature.feature.group"/>
+    <requirement
+        name="com.github.maybeec.oomph.task.fsrename.feature.feature.group"/>
+    <repository
+        url="${oomph.update.url}"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-fscopy/update/"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-fsrename/updates/"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-cli/update/"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-unzip/update/"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task"
+      excludedTriggers="STARTUP"
+      label="OASP4j">
     <requirement
         name="AnyEditTools.feature.group"/>
     <requirement
@@ -427,34 +452,7 @@
     <repository
         url="http://www.objectaid.com/update"/>
     <repository
-        url="http://www.pramati.com/downloads/eclipse/updates/"/>
-    <repository
         url="http://zipeditor.sourceforge.net/update/"/>
-  </setupTask>
-  <setupTask
-      xsi:type="setup.p2:P2Task"
-      label="Oomph SDK"
-      licenseConfirmationDisabled="true">
-    <requirement
-        name="org.eclipse.oomph.setup.sdk.feature.group"/>
-    <requirement
-        name="com.github.maybeec.oomph.task.unzip.feature.feature.group"/>
-    <requirement
-        name="com.github.maybeec.oomph.task.cli.feature.feature.group"/>
-    <requirement
-        name="com.github.maybeec.oomph.task.fscopy.feature.feature.group"/>
-    <requirement
-        name="com.github.maybeec.oomph.task.fsrename.feature.feature.group"/>
-    <repository
-        url="${oomph.update.url}"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-fscopy/update/"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-fsrename/updates/"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-cli/update/"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-unzip/update/"/>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
@@ -486,6 +484,16 @@
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
+        id="ant.version"
+        name="ant.version"
+        value="1.9.7"
+        defaultValue="1.9.7"
+        storageURI="scope://Installation"
+        label="ant version">
+      <description>ANT version to be installed</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
         id="maven.version"
         name="maven.version"
         value="3.3.9"
@@ -493,6 +501,36 @@
         storageURI="scope://Installation"
         label="maven version">
       <description>Maven version to be installed</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id="tomcat.version"
+        name="tomcat.version"
+        value="7.0.8"
+        defaultValue="7.0.8"
+        storageURI="scope://Installation"
+        label="tomcat version">
+      <description>Tomcat version to be installed</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id="python.version"
+        name="python.version"
+        value="2.7.8"
+        defaultValue="2.7.8"
+        storageURI="scope://Installation"
+        label="python version">
+      <description>Python Version to be installed</description>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:VariableTask"
+        id="nodejs.version"
+        name="nodejs.version"
+        value="6.9.1"
+        defaultValue="6.9.1"
+        storageURI="scope://Installation"
+        label="nodejs version">
+      <description>NodeJS version to be installed</description>
     </setupTask>
     <description>Configuration of product versions of non-eclipse resources</description>
   </setupTask>
@@ -752,35 +790,6 @@
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
-      name="JDK config">
-    <setupTask
-        xsi:type="setup:VariableTask"
-        excludedTriggers="STARTUP MANUAL"
-        type="JRE"
-        name="jre.target.location-1.8"
-        value="${software.location/java}"
-        defaultValue="${software.location/java}"
-        storageURI="scope://Installation">
-      <description></description>
-    </setupTask>
-    <setupTask
-        xsi:type="fscopy:FileSystemCopyTask"
-        id="fscopy.java.8"
-        excludedTriggers="MANUAL"
-        resource="${jdk.location-1.8}"
-        destination="${jre.target.location-1.8}"
-        priority="100">
-      <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        excludedTriggers="STARTUP MANUAL"
-        type="JRE"
-        name="jdk.location-1.8"
-        label="JDK 8 Location"/>
-  </setupTask>
-  <setupTask
-      xsi:type="setup:CompoundTask"
       id="tasks.finalize.external.resources"
       name="finalize external resources">
     <setupTask
@@ -901,6 +910,33 @@
       </setupTask>
     </setupTask>
     <description></description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="JDK config">
+    <setupTask
+        xsi:type="setup:VariableTask"
+        excludedTriggers="STARTUP MANUAL"
+        type="JRE"
+        name="jre.target.location-1.8"
+        value="${software.location/java}"
+        defaultValue="${software.location/java}"
+        storageURI="scope://Installation">
+      <description></description>
+    </setupTask>
+    <setupTask
+        xsi:type="fscopy:FileSystemCopyTask"
+        id="fscopy.java.8"
+        excludedTriggers="MANUAL"
+        resource="${jre.location-1.8}"
+        destination="${jre.target.location-1.8}"
+        priority="100">
+      <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
+    </setupTask>
+    <setupTask
+        xsi:type="jdt:JRETask"
+        version="JavaSE-1.8"
+        location="${jre.location-1.8}"/>
   </setupTask>
   <version name="Neon"
       label="Neon"

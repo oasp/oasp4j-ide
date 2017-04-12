@@ -7,9 +7,10 @@
     xmlns:com.github.maybeec.oomph.task_1="http://maybeec.github.io/oomph-task-cli/1.0"
     xmlns:fscopy="http://com.github.maybeec/task-fscopy/1.0"
     xmlns:fsrename="http://maybeec.github.io/task-fsrename/1.0"
+    xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xsi:schemaLocation="http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore"
+    xsi:schemaLocation="http://maybeec.github.io/oomph-task-unzip/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-unzip/master/task-unzip-updatesite/model/Oomph-task-unzip.ecore http://maybeec.github.io/oomph-task-cli/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-cli/master/task-cli-updatesite/model/Oomph-cli-task-1.0.ecore http://com.github.maybeec/task-fscopy/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fscopy/master/task-fscopy-updatesite/model/Oomph-task-fscopy.ecore http://maybeec.github.io/task-fsrename/1.0 https://raw.githubusercontent.com/maybeec/oomph-task-fsrename/master/task-fsrename-updatesite/model/Oomph-task-fsrename.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore"
     name="oasp4j"
     label="OASP4J">
   <annotation
@@ -706,7 +707,7 @@
   <setupTask
       xsi:type="setup.p2:P2Task"
       excludedTriggers="STARTUP"
-      label="${scope.product.label} (${scope.product.version.label})">
+      label="OASP4j">
     <requirement
         name="AnyEditTools.feature.group"/>
     <requirement
@@ -1098,8 +1099,6 @@
     <repository
         url="http://www.objectaid.com/update"/>
     <repository
-        url="http://www.pramati.com/downloads/eclipse/updates/"/>
-    <repository
         url="http://zipeditor.sourceforge.net/update/"/>
   </setupTask>
   <setupTask
@@ -1143,17 +1142,15 @@
         xsi:type="fscopy:FileSystemCopyTask"
         id="fscopy.java.8"
         excludedTriggers="MANUAL"
-        resource="${jdk.location-1.8}"
+        resource="${jre.location-1.8}"
         destination="${jre.target.location-1.8}"
         priority="100">
       <description>Copies the chosen Java 8 DK into ${jre.target.location-1.8}</description>
     </setupTask>
     <setupTask
-        xsi:type="setup:VariableTask"
-        excludedTriggers="STARTUP MANUAL"
-        type="JRE"
-        name="jdk.location-1.8"
-        label="JDK 8 Location"/>
+        xsi:type="jdt:JRETask"
+        version="JavaSE-1.8"
+        location="${jre.location-1.8}"/>
   </setupTask>
   <version name="Neon"
       label="Neon"
