@@ -42,6 +42,7 @@
   <productCatalog
       href="redirectable.products.setup#/"/>
   <projectCatalog href="http://oasp.github.io/oasp4j-ide/oomph/projects/catalog_oasp.setup#/"/>
+  <projectCatalog href="http://oasp.github.io/oasp4j-ide/oomph/projects/catalog_oaspjs.setup#/"/>
   <projectCatalog
       href="redirectable.projects.setup#/"/>
 </setup:Index>
