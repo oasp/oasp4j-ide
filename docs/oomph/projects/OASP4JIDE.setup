@@ -47,14 +47,6 @@
         pushURI="https://github.com/oasp/oasp4j-ide"/>
   </setupTask>
   <setupTask
-      xsi:type="setup:EclipseIniTask"
-      excludedTriggers="STARTUP MANUAL"
-      option="-Doomph.redirection.oaspProjects="
-      value="index:/redirectable.projects.setup->https://raw.githubusercontent.com/oasp/oasp4j-ide/dev_oomph/oasp4j-ide-oomph-setups/com.github.projects.oasp4j.setup"
-      vm="true">
-    <description></description>
-  </setupTask>
-  <setupTask
       xsi:type="maven:MavenImportTask"
       id="mvn.import.oasp4jide">
     <sourceLocator
