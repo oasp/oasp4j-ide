@@ -28,7 +28,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         name="github.remoteURIs.oasp4jide"
-        defaultValue="https://github.com/oasp/oasp4j-ide.git"
+        defaultValue="https://github.com/${github.fork.name}/oasp4j-ide.git"
         storageURI="scope://Workspace"
         label="${scope.project.label} remote uri">
       <choice
