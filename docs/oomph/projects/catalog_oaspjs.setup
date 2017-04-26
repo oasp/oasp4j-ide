@@ -131,7 +131,7 @@
             value="https://github.com/${github.user.name}/${github.project.name}.git"
             label="HTTPS"/>
         <choice
-            value="ssh://git@github:${github.user.name}/${github.project.name}.git"
+            value="ssh://git@github.com/${github.user.name}/${github.project.name}.git"
             label="SSH"/>
       </setupTask>
       <setupTask
