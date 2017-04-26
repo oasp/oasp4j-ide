@@ -32,11 +32,11 @@
         storageURI="scope://Workspace"
         label="${scope.project.label} remote uri">
       <choice
-          value="ssh://git@github.com:${github.fork.name}/oasp4j-ide.git"
-          label="SSH"/>
-      <choice
           value="https://github.com/${github.fork.name}/oasp4j-ide.git"
           label="HTTPS"/>
+      <choice
+          value="ssh://git@github.com/${github.fork.name}/oasp4j-ide.git"
+          label="SSH"/>
       <description>Choose from the available Github URIs</description>
     </setupTask>
     <setupTask
