@@ -287,8 +287,6 @@
     <requirement
         name="org.eclipse.mylyn.versions.feature.group"/>
     <requirement
-        name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
-    <requirement
         name="org.eclipse.oomph.p2.feature.group"/>
     <requirement
         name="org.eclipse.oomph.setup.feature.group"/>
@@ -450,7 +448,7 @@
     <repository
         url="http://www.nodeclipse.org/updates/"/>
     <repository
-        url="http://www.objectaid.com/update"/>
+        url="http://www.objectaid.com/update/current"/>
     <repository
         url="http://zipeditor.sourceforge.net/update/"/>
   </setupTask>
@@ -557,7 +555,7 @@
     <setupTask
         xsi:type="setup:VariableTask"
         name="settings.location"
-        value="${workspaces.location/cobigen-master}"
+        value="${workspaces.location/main}"
         storageURI="scope://Installation"/>
     <setupTask
         xsi:type="setup:VariableTask"
@@ -592,6 +590,10 @@
     <setupTask
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.oomph.setup.ui/showToolBarContributions"
+        value="true"/>
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.oomph.setup.ui/showProgressInWizard"
         value="true"/>
   </setupTask>
   <setupTask
@@ -942,7 +944,8 @@
       label="Neon"
       requiredJavaVersion="1.7">
     <setupTask
-        xsi:type="setup.p2:P2Task">
+        xsi:type="setup.p2:P2Task"
+        label="OASP4J Neon">
       <repository
           url="http://download.eclipse.org/releases/neon"/>
       <repository
@@ -954,7 +957,7 @@
       <repository
           url="http://download.eclipse.org/eclipse/updates/4.6/"/>
       <repository
-          url="http://download.eclipse.org/mylyn/releases/3.20"/>
+          url="http://download.eclipse.org/mylyn/releases/neon"/>
       <repository
           url="http://download.jboss.org/jbosstools/updates/webtools/neon"/>
       <repository
@@ -990,7 +993,8 @@
       label="Mars"
       requiredJavaVersion="1.7">
     <setupTask
-        xsi:type="setup.p2:P2Task">
+        xsi:type="setup.p2:P2Task"
+        label="OASP4J Mars">
       <repository
           url="http://download.eclipse.org/mylyn/releases/3.17"/>
       <repository

@@ -934,8 +934,6 @@
     <requirement
         name="org.eclipse.mylyn.versions.feature.group"/>
     <requirement
-        name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
-    <requirement
         name="org.eclipse.oomph.p2.feature.group"/>
     <requirement
         name="org.eclipse.oomph.setup.feature.group"/>
@@ -1097,7 +1095,7 @@
     <repository
         url="http://www.nodeclipse.org/updates/"/>
     <repository
-        url="http://www.objectaid.com/update"/>
+        url="http://www.objectaid.com/update/current"/>
     <repository
         url="http://zipeditor.sourceforge.net/update/"/>
   </setupTask>
@@ -1175,6 +1173,8 @@
           url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/neon/repository/dependencies"/>
       <repository
           url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
+      <repository
+          url="http://download.eclipse.org/mylyn/releases/neon"/>
     </setupTask>
     <description>OASP4J for Neon (Experimental)</description>
   </version>
@@ -1201,6 +1201,8 @@
           url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/mars/repository/dependencies"/>
       <repository
           url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/mars/"/>
+      <repository
+          url="http://download.eclipse.org/mylyn/releases/mars"/>
     </setupTask>
     <description>OASP4J for Mars.</description>
   </version>
@@ -1225,6 +1227,8 @@
           url="http://download.jboss.org/jbosstools/updates/webtools/luna"/>
       <repository
           url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/luna/"/>
+      <repository
+          url="http://download.eclipse.org/mylyn/releases/luna"/>
     </setupTask>
     <description>OASP4J for Luna</description>
   </version>
