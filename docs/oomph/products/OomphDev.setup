@@ -46,21 +46,6 @@
         name="com.github.maybeec.oomph.task.fscopy.feature.feature.group"/>
     <requirement
         name="com.github.maybeec.oomph.task.fsrename.feature.feature.group"/>
-    <repository
-        url="${oomph.update.url}"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-fscopy/update/"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-fsrename/updates/"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-cli/update/"/>
-    <repository
-        url="http://maybeec.github.io/oomph-task-unzip/update/"/>
-  </setupTask>
-  <setupTask
-      xsi:type="setup.p2:P2Task"
-      excludedTriggers="STARTUP"
-      label="OASP4j">
     <requirement
         name="AnyEditTools.feature.group"/>
     <requirement
@@ -73,131 +58,23 @@
     <requirement
         name="com.ifedorenko.m2e.sourcelookup.feature.feature.group"/>
     <requirement
-        name="com.mountainminds.eclemma.feature.feature.group"/>
-    <requirement
-        name="com.objectaid.uml.addon.feature.group"/>
-    <requirement
-        name="com.objectaid.uml.cls.feature.group"/>
-    <requirement
-        name="com.objectaid.uml.seq.feature.group"/>
-    <requirement
         name="de.bastiankrol.startexplorer.feature.feature.group"/>
     <requirement
         name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
     <requirement
         name="epp.package.jee"/>
     <requirement
-        name="net.sf.eclipsecs.feature.group"/>
-    <requirement
         name="org.apache.batik.feature.group"/>
     <requirement
         name="org.eclipse.aether.maven.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.common.doc.user.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.connectivity.doc.user.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.connectivity.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.connectivity.oda.designer.core.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.connectivity.oda.designer.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.connectivity.oda.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.doc.user.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.apache.derby.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.hsqldb.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.ibm.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.ingres.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.jdbc.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.jdt.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.msft.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.mysql.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.oda.designer.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.oda.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.oracle.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.postgresql.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.sap.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.sdk.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.sqlite.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.enablement.sybase.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.intro.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.modelbase.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.sqldevtools.ddlgen.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.sqldevtools.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.sqldevtools.parsers.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.datatools.sqltools.doc.user.feature.group"/>
-    <requirement
-        name="org.eclipse.draw2d.feature.group"/>
     <requirement
         name="org.eclipse.egit.feature.group"/>
     <requirement
         name="org.eclipse.egit.mylyn.feature.group"/>
     <requirement
-        name="org.eclipse.emf.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.codegen.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.codegen.ecore.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.codegen.ecore.ui.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.common.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.common.ui.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.converter.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.databinding.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.databinding.edit.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.ecore.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.ecore.edit.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.edit.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.edit.ui.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.mapping.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.mapping.ecore.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.mapping.ecore.editor.feature.group"/>
-    <requirement
-        name="org.eclipse.emf.mapping.ui.feature.group"/>
-    <requirement
         name="org.eclipse.epp.mpc.feature.group"/>
     <requirement
         name="org.eclipse.epp.package.jee.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.gef.feature.group"/>
     <requirement
         name="org.eclipse.help.feature.group"/>
     <requirement
@@ -205,55 +82,11 @@
     <requirement
         name="org.eclipse.jgit.feature.group"/>
     <requirement
-        name="org.eclipse.jpt.common.eclipselink.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jpt.common.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jpt.dbws.eclipselink.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jpt.jaxb.eclipselink.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jpt.jaxb.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jpt.jpa.eclipselink.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jpt.jpa.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jst.common.fproj.enablement.jdt.feature.group"/>
-    <requirement
-        name="org.eclipse.jst.enterprise_ui.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jst.server_adapters.feature.feature.group"
-        filter=""/>
-    <requirement
-        name="org.eclipse.jst.server_adapters.ext.feature.feature.group"
-        filter=""/>
-    <requirement
-        name="org.eclipse.jst.server_ui.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jst.web_ui.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jst.ws.axis2tools.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jst.ws.cxf.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.jst.ws.jaxws.feature.feature.group"/>
-    <requirement
         name="org.eclipse.m2e.feature.feature.group"/>
     <requirement
         name="org.eclipse.m2e.logback.feature.feature.group"/>
     <requirement
-        name="org.eclipse.m2e.wtp.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.m2e.wtp.jaxrs.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.m2e.wtp.jpa.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.m2e.wtp.jsf.feature.feature.group"/>
-    <requirement
         name="org.eclipse.mylyn_feature.feature.group"/>
-    <requirement
-        name="org.eclipse.mylyn.bugzilla_feature.feature.group"/>
     <requirement
         name="org.eclipse.mylyn.builds.feature.group"/>
     <requirement
@@ -307,82 +140,21 @@
     <requirement
         name="org.eclipse.recommenders.rcp.feature.feature.group"/>
     <requirement
-        name="org.eclipse.rse.feature.group"/>
-    <requirement
-        name="org.eclipse.rse.core.feature.group"/>
-    <requirement
-        name="org.eclipse.rse.dstore.feature.group"/>
-    <requirement
-        name="org.eclipse.rse.ftp.feature.group"/>
-    <requirement
-        name="org.eclipse.rse.local.feature.group"/>
-    <requirement
-        name="org.eclipse.rse.ssh.feature.group"/>
-    <requirement
-        name="org.eclipse.rse.telnet.feature.group"/>
-    <requirement
-        name="org.eclipse.rse.useractions.feature.group"/>
-    <requirement
-        name="org.eclipse.tm.terminal.control.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.tm.terminal.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.tm.terminal.view.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.wst.common.fproj.feature.group"/>
-    <requirement
-        name="org.eclipse.wst.jsdt.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.wst.server_adapters.feature.feature.group"
-        filter=""/>
-    <requirement
-        name="org.eclipse.wst.web_ui.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.wst.xml_ui.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.wst.xml.xpath2.processor.feature.feature.group"/>
-    <requirement
-        name="org.eclipse.wst.xsl.feature.feature.group"/>
-    <requirement
-        name="org.sonar.ide.eclipse.feature.feature.group"/>
-    <requirement
-        name="org.sonar.ide.eclipse.jdt.feature.feature.group"/>
-    <requirement
-        name="org.sonar.ide.eclipse.m2e.feature.feature.group"/>
-    <requirement
         name="org.sonatype.m2e.buildhelper.feature.feature.group"/>
     <requirement
         name="org.sonatype.m2e.mavenarchiver.feature.feature.group"/>
     <requirement
         name="org.sonatype.tycho.m2e.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.ajdt.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.aop.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.autowire.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.batch.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.boot.dash.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.data.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.integration.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.maven.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.mylyn.feature.feature.group"/>
-    <requirement
-        name="org.springframework.ide.eclipse.security.feature.feature.group"/>
-    <requirement
-        name="org.tigris.subversion.clientadapter.feature.feature.group"/>
-    <requirement
-        name="org.tigris.subversion.clientadapter.javahl.feature.feature.group"/>
-    <requirement
-        name="org.tigris.subversion.subclipse.feature.group"/>
+    <repository
+        url="${oomph.update.url}"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-fscopy/update/"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-fsrename/updates/"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-cli/update/"/>
+    <repository
+        url="http://maybeec.github.io/oomph-task-unzip/update/"/>
     <repository
         url="http://andrei.gmxhome.de/eclipse/"/>
     <repository
