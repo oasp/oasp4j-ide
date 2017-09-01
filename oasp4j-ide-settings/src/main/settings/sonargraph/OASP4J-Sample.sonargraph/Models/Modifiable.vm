@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<virtualModel version="9.4.4.454">
+    <resolutions>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.general.dataaccess.base.dao" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T07:15:00.211Z" description="Accessed from other components for implementation. Should therefore be part of the base package reserved for such purpose.">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="06732586ba93ce5ca185033b34a7df0a"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:dataaccess:api:dao:ApplicationDao.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.general.dataaccess.base.dao" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T07:15:22.143Z" description="Accessed from other components for implementation. Should therefore be part of the base package reserved for such purpose.">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="41f1e9e654f7748848003e053de83118"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:dataaccess:api:dao:ApplicationRevisionedDao.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.general.dataaccess.base" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T07:16:33.061Z" description="Accessed from other components as base class for entities. Should therefore be part of the base package reserved for such purpose.">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="097433820ac70bcbda63b6364fd72842"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:dataaccess:api:ApplicationPersistenceEntity.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.general.service.impl.config" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T07:28:16.644Z" description="Configuriguration of service layer, not logic layer. At least its referenced from service configuration...">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="dee6655da772cb55e541595fbb797e47"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:logic:impl:config:DefaultRolesPrefixPostProcessor.java</elementPattern>
+        </move>
+        <fix assignedTo="" priority="Medium" date="2017-05-18T07:29:43.755Z" description="Introduce dependency inversion e.g. by a veto listener. Otherwise we end up with a cyclic component dependency">
+            <type class="Architecture" name="ArchitectureViolation" descriptor="./components.arc"></type>
+            <dependencyPattern type="Wildcard" from="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:tablemanagement:logic:impl:TablemanagementImpl.java:TablemanagementImpl:salesmanagement" to="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:salesmanagement:logic:api:Salesmanagement.java:Salesmanagement"></dependencyPattern>
+            <dependencyPattern type="Wildcard" from="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:tablemanagement:logic:impl:TablemanagementImpl.java:TablemanagementImpl:isTableReleasable(io.oasp.gastronomy.restaurant.tablemanagement.logic.api.to.TableEto)" to="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:salesmanagement:logic:api:Salesmanagement.java:Salesmanagement:findOpenOrderForTable(long)"></dependencyPattern>
+            <dependencyPattern type="Wildcard" from="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:tablemanagement:logic:impl:TablemanagementImpl.java:TablemanagementImpl:isTableReleasable(io.oasp.gastronomy.restaurant.tablemanagement.logic.api.to.TableEto)" to="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:salesmanagement:logic:api:to:OrderEto.java:OrderEto"></dependencyPattern>
+            <dependencyPattern type="Wildcard" from="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:tablemanagement:logic:impl:TablemanagementImpl.java:TablemanagementImpl:setSalesmanagement(io.oasp.gastronomy.restaurant.salesmanagement.logic.api.Salesmanagement)" to="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:salesmanagement:logic:api:Salesmanagement.java:Salesmanagement"></dependencyPattern>
+        </fix>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.application.service.impl.config" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T09:11:49.331Z" description="Configuration on application level, should sit therefore in new application component">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="43eed83294914ebe32f14e62c03d91d4"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:service:impl:rest:ApplicationObjectMapperFactory.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.application.service.impl.config" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T09:13:11.809Z" description="Configuration on application level, should sit therefore in new application component">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="3d0521c4d49cc33a735b34f3c631aab3"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:service:impl:config:ServiceConfig.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.general.logic.api" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T09:22:37.867Z" description="This is a UC and should be part of API. Also used as such.">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="21172c638ff7ce6b2aee6f1353aafc5b"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:logic:base:UcManageBinaryObject.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.application" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T09:36:31.122Z" description="Moving to new application component, because this is were it belongs.">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="9299270d23e6612adb00249537cb6a29"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:SpringBootApp.java</elementPattern>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:SpringBootBatchApp.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.application" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-05-18T09:47:13.115Z" description="Moving to new application component, because this is were it belongs.">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="9c9e55252336e0a76078afb6a40a2644"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:service:impl:config:ServletInitializer.java</elementPattern>
+        </move>
+        <move targetRootDirectory="Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java" moveToParentName="io.oasp.gastronomy.restaurant.general.service.impl.rest" language="Java" elementType="Component" assignedTo="" priority="Medium" date="2017-09-01T13:05:49.127Z" description="">
+            <type class="com.hello2morrow.sonargraph.core.model.element.CoreIssueId" name="MoveRefactoring" descriptor="23f3560428d66cc2ce0aef0b92e75bd8"></type>
+            <elementPattern type="FullyQualifiedName">Workspace:oasp4j-sample-core:../../../../../../samples/core/src/main/java:io:oasp:gastronomy:restaurant:general:gui:api:LoginController.java</elementPattern>
+        </move>
+    </resolutions>
+</virtualModel>
