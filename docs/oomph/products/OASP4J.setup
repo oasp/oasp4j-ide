@@ -720,7 +720,7 @@
     <requirement
         name="com.ifedorenko.m2e.sourcelookup.feature.feature.group"/>
     <requirement
-        name="com.mountainminds.eclemma.feature.feature.group"/>
+        name="org.eclipse.eclemma.feature.feature.group"/>
     <requirement
         name="com.objectaid.uml.addon.feature.group"/>
     <requirement
