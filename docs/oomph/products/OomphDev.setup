@@ -216,7 +216,7 @@
     <repository
         url="http://update.eclemma.org/"/>
     <repository
-        url="http://www.apache.org/dist/geronimo/eclipse/updates/"/>
+        url="http://archive.apache.org/dist/geronimo/eclipse/updates/"/>
     <repository
         url="http://www.nodeclipse.org/updates/"/>
     <repository
