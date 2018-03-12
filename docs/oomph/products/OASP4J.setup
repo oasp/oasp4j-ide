@@ -77,8 +77,8 @@
         xsi:type="setup:VariableTask"
         id="maven.version"
         name="maven.version"
-        value="3.3.9"
-        defaultValue="3.3.9"
+        value="3.5.2"
+        defaultValue="3.5.2"
         storageURI="scope://Installation"
         label="maven version">
       <description>Maven version to be installed</description>
