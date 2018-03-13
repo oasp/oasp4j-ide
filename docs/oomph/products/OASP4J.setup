@@ -77,8 +77,8 @@
         xsi:type="setup:VariableTask"
         id="maven.version"
         name="maven.version"
-        value="3.3.9"
-        defaultValue="3.3.9"
+        value="3.5.2"
+        defaultValue="3.5.2"
         storageURI="scope://Installation"
         label="maven version">
       <description>Maven version to be installed</description>
@@ -1170,13 +1170,34 @@
       <repository
           url="http://download.jboss.org/jbosstools/updates/webtools/neon"/>
       <repository
-          url="http://download.oracle.com/otn_software/oepe/12.2.1.2.1/neon/repository/dependencies"/>
+          url="http://download.oracle.com/otn_software/oepe/12.2.1.6/neon/repository/dependencies"/>
       <repository
           url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/neon/"/>
-      <repository
-          url="http://download.eclipse.org/mylyn/releases/neon"/>
     </setupTask>
     <description>OASP4J for Neon (Experimental)</description>
+  </version>
+  <version name="Oxygen"
+      label="Oxygen">
+    <setupTask
+        xsi:type="setup.p2:P2Task">
+      <repository
+          url="http://download.eclipse.org/releases/oxygen"/>
+      <repository
+          url="http://download.eclipse.org/mylyn/releases/oxygen"/>
+      <repository
+          url="http://download.eclipse.org/webtools/repository/oxygen"/>
+      <repository
+          url="http://dist.springsource.com/release/TOOLS/update/e4.7"/>
+      <repository
+          url="http://download.eclipse.org/eclipse/updates/4.7"/>
+      <repository
+          url="http://download.jboss.org/jbosstools/updates/webtools/oxygen"/>
+      <repository
+          url="http://download.oracle.com/otn_software/oepe/12.2.1.6/oxygen/repository/dependencies"/>
+      <repository
+          url="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/bluemixAdapter/oxygen/"/>
+    </setupTask>
+    <description>OASP for Oxygen</description>
   </version>
   <version name="Mars"
       label="Mars"
