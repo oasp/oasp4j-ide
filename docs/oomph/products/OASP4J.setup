@@ -1091,8 +1091,6 @@
     <repository
         url="http://update.eclemma.org/"/>
     <repository
-        url="http://www.apache.org/dist/geronimo/eclipse/updates/"/>
-    <repository
         url="http://www.nodeclipse.org/updates/"/>
     <repository
         url="http://www.objectaid.com/update/current"/>
