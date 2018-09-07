@@ -71,6 +71,7 @@
   </setupTask>
   <project href="http://oasp.github.io/oasp4j/oomph/projects/OASP4J.setup#/"/>
   <project href="http://oasp.github.io/oasp4j-ide/oomph/projects/OASP4JIDE.setup#/"/>
+  <project href="http://oasp.github.io/oasp-docgen/oomph/projects/OASPdocgen.setup#/"/>
   <project href="user:/MyProjects.setup?name='user.project',label='&lt;User>',description='A container project for local user projects that are virtual members of the My Projects project catalog'#/"/>
   <description>This catalog provides the OASP4J projects</description>
 </setup:ProjectCatalog>
