@@ -24,7 +24,8 @@ public class Resolver {
    * RegEx to look for to find variables.
    */
   private String replacementRegEx;
-
+  
+  
   /**
    * Creates a new {@link Resolver} with the given <code>replacementPatterns</code> and <code>regEx</code>.
    * 

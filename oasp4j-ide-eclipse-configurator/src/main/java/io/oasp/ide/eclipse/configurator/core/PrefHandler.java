@@ -49,6 +49,23 @@ public class PrefHandler {
    * @param setupPrefFile - prefFile needed for creation.
    * @param updatePrefFile - prefFile need for creation and update.
    */
+  public void updatePL(File workspacePrefFile, File plFile) {
+
+    SortedProperties properties = new SortedProperties();
+    mergeProperties(properties, plFile);
+    resolveVariables(properties);
+    writeProperties(properties, workspacePrefFile);
+  }
+  
+  /**
+   * Creates or updates the workspacePrefFile with setupPrefFile or updatePrefFile. If the workspacePrefFile does not
+   * exist, the workspacePrefFile will be the setupPrefFile merged with the updatePrefFile. If the workspacePrefFile
+   * does exist, it will be merged with the updatePrefFile.
+   * 
+   * @param workspacePrefFile - the prefFile to be updated.
+   * @param setupPrefFile - prefFile needed for creation.
+   * @param updatePrefFile - prefFile need for creation and update.
+   */
   public void update(File workspacePrefFile, File setupPrefFile, File updatePrefFile) {
 
     SortedProperties properties = new SortedProperties();
