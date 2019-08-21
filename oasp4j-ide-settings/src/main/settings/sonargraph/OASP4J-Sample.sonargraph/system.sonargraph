@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<ns2:softwareSystem xmlns:ns2="http://www.hello2morrow.com/sonargraph/core" id="c610dff0e26ea61387ec1244e55a1b33" version="9.4.4.454">
+    <description></description>
+    <module xmlns:ns4="http://www.hello2morrow.com/sonargraph/languageprovider/java" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns4:xsdJavaModule" name="oasp4j-sample-core" id="d451c185f4a658d82d5fc402de140b37" language="Java">
+        <description>Core of the server for the restaurant application - a simple example using the Open Application Standard Platform for Java (OASP4J).</description>
+        <rootPath xsi:type="ns4:xsdSourceRootPath" name="../../../../../../samples/core/src/main/java"></rootPath>
+        <rootPath name="../../../../../../samples/core/eclipse-target/classes"></rootPath>
+    </module>
+</ns2:softwareSystem>

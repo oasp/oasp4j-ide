@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<analyzerConfiguration version="9.4.2.446" analyzer="ArchitectureCheck">
+    <stringEntry value="" name="./components.arc"></stringEntry>
+</analyzerConfiguration>
